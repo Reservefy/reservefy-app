@@ -2,16 +2,15 @@ import { platformSelect } from 'nativewind/theme';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './app/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './app/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+  ],
   presets: [require('nativewind/preset')],
   theme: {
     extend: {
       fontFamily: {
-        light: platformSelect({
-          ios: 'Montserrat-Light',
-          android: 'Montserrat-Light',
-          default: 'sans-serif',
-        }),
         regular: platformSelect({
           ios: 'Montserrat-Regular',
           android: 'Montserrat-Regular',

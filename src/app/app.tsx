@@ -5,7 +5,6 @@ import { Suspense, useEffect } from 'react';
 import { ActivityIndicator } from 'react-native';
 
 import MontserratBold from '@/assets/fonts/Montserrat-Bold.ttf';
-import MontserratLight from '@/assets/fonts/Montserrat-Light.ttf';
 import MontserratMedium from '@/assets/fonts/Montserrat-Medium.ttf';
 import MontserratRegular from '@/assets/fonts/Montserrat-Regular.ttf';
 
@@ -14,7 +13,6 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [loaded] = useFonts({
-    light: MontserratLight,
     regular: MontserratRegular,
     medium: MontserratMedium,
     bold: MontserratBold,

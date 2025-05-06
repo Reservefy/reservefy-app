@@ -14,7 +14,8 @@
     "edit": "Edit",
     "loading": "Loading...",
     "error": "Error",
-    "success": "Success"
+    "success": "Success",
+    "test": "Test %{name}"
   },
   "auth": {
     "loginTitle": "Login to your account",
