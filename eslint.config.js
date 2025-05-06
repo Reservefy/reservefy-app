@@ -23,6 +23,9 @@ module.exports = defineConfig([
       react: {
         version: 'detect',
       },
+      'import/resolver': {
+        typescript: {},
+      },
     },
     ignores: ['dist/*', '.expo/*', 'node_modules/*'],
     plugins: {
