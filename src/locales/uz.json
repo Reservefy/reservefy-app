@@ -1,0 +1,28 @@
+{
+  "common": {
+    "welcome": "Xush kelibsiz",
+    "login": "Kirish",
+    "signup": "Ro'yxatdan o'tish",
+    "email": "Elektron pochta",
+    "password": "Parol",
+    "submit": "Yuborish",
+    "cancel": "Bekor qilish",
+    "save": "Saqlash",
+    "delete": "O'chirish",
+    "edit": "Tahrirlash",
+    "loading": "Yuklanmoqda...",
+    "error": "Xato",
+    "success": "Muvaffaqiyatli"
+  },
+  "auth": {
+    "loginTitle": "Hisobingizga kiring",
+    "signupTitle": "Yangi hisob yaratish",
+    "forgotPassword": "Parolni unutdingizmi?",
+    "rememberMe": "Meni eslab qol"
+  },
+  "errors": {
+    "required": "Bu maydon to'ldirilishi shart",
+    "invalidEmail": "Noto'g'ri elektron pochta manzili",
+    "passwordTooShort": "Parol kamida 6 ta belgidan iborat bo'lishi kerak"
+  }
+}
