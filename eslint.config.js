@@ -1,11 +1,15 @@
 const { defineConfig } = require('eslint/config');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const tsParser = require('@typescript-eslint/parser');
 const expoConfig = require('eslint-config-expo/flat');
 const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
 const reactNativePlugin = require('eslint-plugin-react-native');
 
 module.exports = defineConfig([
   {
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
+      parser: tsParser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
@@ -22,12 +26,13 @@ module.exports = defineConfig([
     },
     ignores: ['dist/*', '.expo/*', 'node_modules/*'],
     plugins: {
+      '@typescript-eslint': tsPlugin,
       'react-native': reactNativePlugin,
     },
     rules: {
       // React & React Native
-      'react/prop-types': 'off', // We use TypeScript for prop validation
-      'react/react-in-jsx-scope': 'off', // Not needed in React 17+
+      'react/prop-types': 'off',
+      'react/react-in-jsx-scope': 'off',
       'react-native/no-inline-styles': 'off',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
