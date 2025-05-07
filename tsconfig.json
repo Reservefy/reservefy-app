@@ -16,7 +16,8 @@
       "@providers/*": ["src/providers/*"],
       "@types/*": ["src/types/*"],
       "@styles/*": ["src/styles/*"],
-      "@stores/*": ["src/stores/*"]
+      "@stores/*": ["src/stores/*"],
+      "@lib/*": ["src/lib/*"]
     }
   },
   "include": [

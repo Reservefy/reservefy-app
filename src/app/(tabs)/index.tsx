@@ -1,7 +1,9 @@
 import { Image } from 'expo-image';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import ParallaxScrollView from '@/components/shared/ParallaxScrollView';
+import { Button } from '@/components/ui/button';
+import { Text } from '@/components/ui/text';
 import { t } from '@/locales';
 
 export default function HomeScreen() {
@@ -15,7 +17,7 @@ export default function HomeScreen() {
         />
       }
     >
-      <View className="bg-gray-200 gap-y-4 p-4">
+      <View className="bg-card gap-y-4 p-4">
         <Text className="font-bold text-xl text-red-500">
           This is test bold text
         </Text>
@@ -30,6 +32,14 @@ export default function HomeScreen() {
           {t('common.test', { name: 'Salah' })}
         </Text>
       </View>
+      <Text className="font-heading text-destructive">Heading</Text>
+      <Text className="font-title text-destructive">Title</Text>
+      <Text className="font-subtitle text-destructive">Subtitle</Text>
+      <Text className="font-body text-destructive">Body text</Text>
+      <Text className="font-caption text-destructive">Caption</Text>
+      <Button variant="secondary">
+        <Text>Default</Text>
+      </Button>
     </ParallaxScrollView>
   );
 }
