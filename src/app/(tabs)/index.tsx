@@ -4,11 +4,13 @@ import { ThemeToggle } from '@/components/shared/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import { t } from '@/locales';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
+  const insets = useSafeAreaInsets();
   return (
     <SafeAreaView>
-      <ScrollView className="pb-20">
+      <ScrollView contentContainerStyle={{ paddingBottom: insets.bottom + 50 }}>
         <View className="bg-card gap-y-4 p-4">
           <Text className="font-bold text-xl text-red-500">
             This is test bold text

@@ -2,6 +2,12 @@
   "CFBundleDisplayName": "Reservefy",
   "NSContactsUsageDescription": "Allow $(CFBundleDisplayName) to access your contacts",
   "common": {
+    "theme": "Theme",
+    "themes": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
     "welcome": "Welcome",
     "login": "Login",
     "signup": "Sign Up",

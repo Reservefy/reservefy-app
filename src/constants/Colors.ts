@@ -6,7 +6,7 @@ const tintColorDark = 'hsl(265 60% 75%)';
 const Colors = {
   light: {
     text: 'hsl(240 10% 10%)', // foreground
-    background: 'hsl(40 20% 97%)', // background
+    background: 'rgba(255,255,255,0.85)', // background
     primary: tintColorLight,
     card: 'hsl(40 20% 97%)',
     border: 'hsl(240 10% 90%)',
@@ -18,7 +18,7 @@ const Colors = {
   },
   dark: {
     text: 'hsl(0 0% 95%)', // foreground
-    background: 'hsl(240 6% 10%)', // background
+    background: 'rgba(18,18,20,0.9)', // background
     primary: tintColorDark,
     card: 'hsl(240 6% 10%)',
     border: 'hsl(240 6% 15%)',
