@@ -1,64 +1,97 @@
-import { Image } from 'expo-image';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, ScrollView, View } from 'react-native';
 
-import ParallaxScrollView from '@/components/shared/ParallaxScrollView';
+import { ThemeToggle } from '@/components/shared/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import { t } from '@/locales';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <View className="bg-card gap-y-4 p-4">
-        <Text className="font-bold text-xl text-red-500">
-          This is test bold text
-        </Text>
+    <SafeAreaView>
+      <ScrollView className="pb-20">
+        <View className="bg-card gap-y-4 p-4">
+          <Text className="font-bold text-xl text-red-500">
+            This is test bold text
+          </Text>
 
-        <Text className="font-medium text-xl text-green-500">
-          {t('common.loading')}
-        </Text>
-        <Text className="font-regular text-lg text-purple-500">
-          {t('common.welcome')}
-        </Text>
-        <Text className="text-md text-gray-700 mt-10">
-          {t('common.test', { name: 'Salah' })}
-        </Text>
-      </View>
-      <Text className="font-heading text-destructive">Heading</Text>
-      <Text className="font-title text-destructive">Title</Text>
-      <Text className="font-subtitle text-destructive">Subtitle</Text>
-      <Text className="font-body text-destructive">Body text</Text>
-      <Text className="font-caption text-destructive">Caption</Text>
-      <Button variant="secondary">
-        <Text>Default</Text>
-      </Button>
-    </ParallaxScrollView>
+          <Text className="font-medium text-xl text-green-500">
+            {t('common.loading')}
+          </Text>
+          <Text className="font-regular text-lg text-purple-500">
+            {t('common.welcome')}
+          </Text>
+          <Text className="text-md text-gray-700 mt-10">
+            {t('common.test', { name: 'Salah' })}
+          </Text>
+        </View>
+        <Text className="font-heading text-primary">Heading</Text>
+        <Text className="font-title text-primary-foreground">Title</Text>
+        <Text className="font-subtitle text-secondary">Subtitle</Text>
+        <Text className="font-body text-foreground">Body text</Text>
+        <Text className="font-caption text-destructive">Caption</Text>
+        <Button>
+          <Text>Default</Text>
+        </Button>
+        <Button variant="secondary">
+          <Text>secondary</Text>
+        </Button>
+        <Button variant="ghost">
+          <Text>ghost</Text>
+        </Button>
+        <Button variant="link">
+          <Text>Default</Text>
+        </Button>
+        <Button variant="destructive">
+          <Text>destructive</Text>
+        </Button>
+        <Button variant="outline">
+          <Text>outline</Text>
+        </Button>
+        <View className="h-8 justify-center px-3 rounded bg-background">
+          <Text className="text-foreground text-sm">
+            background / foreground
+          </Text>
+        </View>
+        <View className="h-8 justify-center px-3 rounded bg-border">
+          <Text className="text-foreground text-sm">border</Text>
+        </View>
+        <View className="h-8 justify-center px-3 rounded bg-input">
+          <Text className="text-foreground text-sm">input</Text>
+        </View>
+        <View className="h-8 justify-center px-3 rounded bg-ring">
+          <Text className="text-background text-sm">ring</Text>
+        </View>
+        <View className="h-8 justify-center px-3 rounded bg-primary">
+          <Text className="text-primary-foreground text-sm">primary</Text>
+        </View>
+
+        <View className="h-8 justify-center px-3 rounded bg-secondary">
+          <Text className="text-secondary-foreground text-sm">secondary</Text>
+        </View>
+
+        <View className="h-8 justify-center px-3 rounded bg-destructive">
+          <Text className="text-destructive-foreground text-sm">
+            destructive
+          </Text>
+        </View>
+
+        <View className="h-8 justify-center px-3 rounded bg-muted">
+          <Text className="text-muted-foreground text-sm">muted</Text>
+        </View>
+
+        <View className="h-8 justify-center px-3 rounded bg-accent">
+          <Text className="text-accent-foreground text-sm">accent</Text>
+        </View>
+
+        <View className="h-8 justify-center px-3 rounded bg-popover">
+          <Text className="text-popover-foreground text-sm">popover</Text>
+        </View>
+
+        <View className="h-8 justify-center px-3 rounded bg-card">
+          <Text className="text-card-foreground text-sm">card</Text>
+        </View>
+        <ThemeToggle />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: '100%',
-    width: '100%',
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});

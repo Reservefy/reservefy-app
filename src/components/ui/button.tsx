@@ -9,13 +9,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-primary web:hover:opacity-90 active:opacity-90',
-        destructive: 'bg-destructive web:hover:opacity-90 active:opacity-90',
+        default: 'bg-primary web:hover:bg-primary/90 active:bg-primary/80',
+        destructive:
+          'bg-destructive web:hover:bg-destructive/90 active:bg-destructive/80',
         outline:
-          'border border-input bg-background web:hover:bg-accent web:hover:text-accent-foreground active:bg-accent',
-        secondary: 'bg-secondary web:hover:opacity-80 active:opacity-80',
+          'border border-border bg-background web:hover:bg-accent/40 web:hover:text-accent-foreground active:bg-accent/30',
+        secondary:
+          'bg-secondary web:hover:bg-secondary/80 active:bg-secondary/70',
         ghost:
-          'web:hover:bg-accent web:hover:text-accent-foreground active:bg-accent',
+          'web:hover:bg-accent/40 web:hover:text-accent-foreground active:bg-accent/30',
         link: 'web:underline-offset-4 web:hover:underline web:focus:underline',
       },
       size: {
@@ -39,11 +41,10 @@ const buttonTextVariants = cva(
       variant: {
         default: 'text-primary-foreground',
         destructive: 'text-destructive-foreground',
-        outline: 'group-active:text-accent-foreground',
-        secondary:
-          'text-secondary-foreground group-active:text-secondary-foreground',
-        ghost: 'group-active:text-accent-foreground',
-        link: 'text-primary group-active:underline',
+        outline: 'text-foreground group-hover:text-accent-foreground',
+        secondary: 'text-secondary-foreground',
+        ghost: 'text-foreground group-hover:text-accent-foreground',
+        link: 'text-primary group-hover:underline',
       },
       size: {
         default: '',

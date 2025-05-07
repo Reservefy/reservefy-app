@@ -54,10 +54,6 @@
                 "fontFamily": "Montserrat",
                 "fontDefinitions": [
                   {
-                    "path": "./src/assets/fonts/Montserrat-Light.ttf",
-                    "weight": 300
-                  },
-                  {
                     "path": "./src/assets/fonts/Montserrat-Regular.ttf",
                     "weight": 400
                   },

@@ -3,13 +3,14 @@ import React from 'react';
 import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/shared/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+
+import { useColorScheme } from '@/hooks/common/useColorScheme';
+import Icons from '@/lib/icons';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const { colorScheme } = useColorScheme();
 
   return (
     <Tabs
@@ -31,9 +32,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="house.fill" color={color} />
-          ),
+          tabBarIcon: ({ color }) => <Icons.Home size={28} color={color} />,
         }}
       />
     </Tabs>

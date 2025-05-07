@@ -1,26 +1,36 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+import { DarkTheme, DefaultTheme } from '@react-navigation/native';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+const tintColorLight = 'hsl(265 60% 75%)'; // soft purple
+const tintColorDark = 'hsl(265 60% 75%)';
 
-export const Colors = {
+const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
+    text: 'hsl(240 10% 10%)', // foreground
+    background: 'hsl(40 20% 97%)', // background
+    primary: tintColorLight,
+    card: 'hsl(40 20% 97%)',
+    border: 'hsl(240 10% 90%)',
+    notification: tintColorLight,
+    tint: tintColorLight, // used in links/buttons
+    icon: 'hsl(240 10% 25%)', // neutral soft
+    tabIconDefault: 'hsl(240 10% 60%)', // muted
     tabIconSelected: tintColorLight,
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
+    text: 'hsl(0 0% 95%)', // foreground
+    background: 'hsl(240 6% 10%)', // background
+    primary: tintColorDark,
+    card: 'hsl(240 6% 10%)',
+    border: 'hsl(240 6% 15%)',
+    notification: tintColorDark,
     tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
+    icon: 'hsl(240 6% 65%)',
+    tabIconDefault: 'hsl(240 6% 40%)',
     tabIconSelected: tintColorDark,
   },
 };
+
+const LIGHT_THEME = { ...DefaultTheme, colors: Colors.light };
+const DARK_THEME = { ...DarkTheme, colors: Colors.dark };
+
+export { Colors, DARK_THEME, LIGHT_THEME };
