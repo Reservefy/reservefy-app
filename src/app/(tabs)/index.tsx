@@ -18,6 +18,7 @@ export default function HomeScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 50 }}
         scrollEventThrottle={16}
         className="bg-background"
+        showsVerticalScrollIndicator={false}
       >
         <View className="bg-card gap-y-4 p-4">
           <Text className="font-bold text-xl text-red-500">
