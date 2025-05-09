@@ -19,6 +19,12 @@ export const useThemeStore = create<ThemeState>()(
     {
       name: 'theme-storage',
       storage: createJSONStorage(() => AsyncStorage),
+      onRehydrateStorage: () => (state) => {
+        if (!state || !state.theme) {
+          return { theme: 'light' } as ThemeState;
+        }
+        return state;
+      },
     },
   ),
 );

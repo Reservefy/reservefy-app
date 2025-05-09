@@ -21,11 +21,9 @@ type Props = TabTriggerSlotProps & {
 export function TabButton({ isFocused, icon, children, ...props }: Props) {
   const { colorScheme } = useColorScheme();
   const theme = Colors[colorScheme ?? 'light'];
-  const isScrollingDown = useScrollStore((s) => s.isScrollingDown);
   const containerAnim = useAnimatedStyle(() => ({
     backgroundColor: withTiming(isFocused ? theme.primary : 'transparent'),
     paddingHorizontal: withTiming(isFocused ? 6 : 0),
-    opacity: withTiming(isScrollingDown ? 0.3 : 1),
     paddingVertical: 10,
     borderRadius: 999,
     flexDirection: 'row',

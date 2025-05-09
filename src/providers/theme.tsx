@@ -1,7 +1,7 @@
 import { DARK_THEME, LIGHT_THEME } from '@/constants/colors';
+import { useColorScheme } from '@/hooks/common/useColorScheme';
 import { useThemeStore } from '@/stores/useThemeStore';
 import { ThemeProvider as NavigationThemeProvider } from '@react-navigation/native';
-import { useColorScheme as useNativewindColorScheme } from 'nativewind';
 import React, { createContext, useContext, useEffect } from 'react';
 
 interface ThemeContextType {
@@ -24,7 +24,7 @@ export const useTheme = () => {
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const { theme, toggleTheme } = useThemeStore();
-  const { setColorScheme } = useNativewindColorScheme();
+  const { setColorScheme } = useColorScheme();
   const isDark = theme === 'dark';
 
   // Sync NativeWind theme with our persisted theme
