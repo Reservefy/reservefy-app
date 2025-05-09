@@ -1,4 +1,4 @@
-import { DARK_THEME, LIGHT_THEME } from '@/constants/Colors';
+import { DARK_THEME, LIGHT_THEME } from '@/constants/colors';
 import { useThemeStore } from '@/stores/useThemeStore';
 import { ThemeProvider as NavigationThemeProvider } from '@react-navigation/native';
 import { useColorScheme as useNativewindColorScheme } from 'nativewind';

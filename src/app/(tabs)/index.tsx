@@ -3,14 +3,22 @@ import { SafeAreaView, ScrollView, View } from 'react-native';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
+import { useYScroll } from '@/hooks/common/useYScoll';
 import { t } from '@/locales';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
+  const { onScroll } = useYScroll();
   return (
-    <SafeAreaView>
-      <ScrollView contentContainerStyle={{ paddingBottom: insets.bottom + 50 }}>
+    <SafeAreaView className="bg-background backdrop-blur-3xl blur-3xl">
+      <ScrollView
+        onScroll={onScroll}
+        bounces={false}
+        contentContainerStyle={{ paddingBottom: insets.bottom + 50 }}
+        scrollEventThrottle={16}
+        className="bg-background"
+      >
         <View className="bg-card gap-y-4 p-4">
           <Text className="font-bold text-xl text-red-500">
             This is test bold text

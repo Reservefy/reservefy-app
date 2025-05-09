@@ -1,63 +1,22 @@
-import { Tabs } from 'expo-router';
+import { TabButton } from '@/components/shared/tab-button';
+import { TabList, Tabs, TabSlot, TabTrigger } from 'expo-router/ui';
 import React from 'react';
 
-import { HapticTab } from '@/components/shared/HapticTab';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/common/useColorScheme';
-import Icons from '@/lib/icons';
-import { BlurView } from 'expo-blur';
-import { Platform, StyleSheet, View } from 'react-native';
-
 export default function TabLayout() {
-  const { colorScheme } = useColorScheme();
-  const theme = Colors[colorScheme ?? 'light'];
-
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: theme.tint,
-        tabBarInactiveTintColor: theme.icon,
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarButton: HapticTab,
-        tabBarStyle: {
-          position: 'absolute',
-          borderTopWidth: 0, // Remove any border
-          bottom: 0, // Ensure correct positioning
-          paddingTop: 5,
-          height: 65,
-
-          backgroundColor: 'transparent', // Prevent solid colors
-          elevation: 0, // Remove Android shadow
-          shadowOpacity: 0.1, // Remove iOS shadow
-        },
-        tabBarBackground: () =>
-          Platform.OS === 'android' ? (
-            <View
-              style={{
-                ...StyleSheet.absoluteFillObject,
-                backgroundColor: theme.background, // Glassy fallback
-              }}
-            />
-          ) : (
-            <BlurView
-              intensity={30}
-              tint={colorScheme}
-              style={{
-                ...StyleSheet.absoluteFillObject,
-                overflow: 'hidden',
-              }}
-            />
-          ),
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <Icons.Home size={24} color={color} />,
-        }}
-      />
+    <Tabs>
+      <TabSlot />
+      <TabList className="absolute bottom-9 self-center flex-row justify-evenly bg-foreground/5 blur-3xl backdrop-blur-3xl rounded-full shadow-2xl p-0.5">
+        <TabTrigger name="third" href="/third" asChild>
+          <TabButton icon="Settings">Settings</TabButton>
+        </TabTrigger>
+        <TabTrigger name="second" href="/second" asChild>
+          <TabButton icon="Calendar">Calendar</TabButton>
+        </TabTrigger>
+        <TabTrigger name="Home" href="/" asChild>
+          <TabButton icon="Home">Home</TabButton>
+        </TabTrigger>
+      </TabList>
     </Tabs>
   );
 }
