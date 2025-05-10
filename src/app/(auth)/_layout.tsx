@@ -10,6 +10,7 @@ export default function Layout() {
         presentation: Platform.OS === 'ios' ? 'modal' : 'card',
         animation: 'slide_from_bottom',
         animationTypeForReplace: 'push',
+        keyboardHandlingEnabled: true,
       }}
     />
   );

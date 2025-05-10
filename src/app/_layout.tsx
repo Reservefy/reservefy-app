@@ -1,4 +1,5 @@
 import '@/styles/globals.css';
+import 'react-native-gesture-handler';
 import 'react-native-reanimated';
 import '../../i18n.config';
 import '../../reanimated.config';

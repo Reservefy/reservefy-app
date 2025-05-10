@@ -3,9 +3,16 @@
 @tailwind utilities;
 
 @layer utilities {
+  .main-area {
+    @apply flex flex-1 flex-col bg-background text-foreground px-4;
+  }
+  .safe-area {
+    @apply flex-1 bg-background max-w-screen-md mx-auto w-full;
+  }
+
   .font-heading {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 32px;
+    line-height: 40px;
     font-family: Montserrat-Bold;
     font-weight: 700;
   }

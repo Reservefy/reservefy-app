@@ -28,14 +28,14 @@ export function FormField<T extends FieldValues>(props: BaseFieldProps<T>) {
   return (
     <View>
       {props.label && (
-        <Label className="pl-1 mb-1" required={props.required}>
+        <Label className="pl-1 mb-2" required={props.required}>
           {props.label}
         </Label>
       )}
       {renderField()}
       {props.message &&
         (typeof props.message === 'string' ? (
-          <Text className="text-popover-foreground mt-0.5 pl-1 text-caption font-medium">
+          <Text className="text-popover-foreground mt-1.5 pl-1 text-caption font-regular">
             {props.message}
           </Text>
         ) : (

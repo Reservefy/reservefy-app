@@ -1,5 +1,6 @@
 import {
   AlertCircle,
+  ArrowLeft,
   Asterisk,
   Ban,
   Bell,
@@ -9,8 +10,12 @@ import {
   Check,
   CheckCircle,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   ChevronUp,
   Clock,
+  Eye,
+  EyeClosed,
   Home,
   Info,
   LayoutGrid,
@@ -28,6 +33,7 @@ import {
   Users,
   X,
 } from 'lucide-react-native';
+
 import { iconWithClassName } from './classNames';
 
 const icons = {
@@ -58,7 +64,10 @@ const icons = {
   MoonStar,
   List,
   ChevronUp,
+  ArrowLeft,
   Asterisk,
+  Eye,
+  EyeClosed,
 };
 
 Object.values(icons).forEach(iconWithClassName);
@@ -73,7 +82,12 @@ const Icons = {
   Check,
   CheckCircle,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronUp,
   Clock,
+  Eye,
+  EyeClosed,
   Home,
   Info,
   LayoutGrid,
@@ -90,8 +104,8 @@ const Icons = {
   User,
   Users,
   X,
-  ChevronUp,
   Asterisk,
+  ArrowLeft,
 } as const;
 
 export type Icon = keyof typeof Icons;
