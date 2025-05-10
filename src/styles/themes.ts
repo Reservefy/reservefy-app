@@ -1,87 +1,66 @@
 // theme.config.ts
-import { BlurTint } from 'expo-blur';
 import { StatusBarStyle } from 'expo-status-bar';
 import { vars } from 'nativewind';
 
-export enum THEMES {
-  light = 'light',
-  dark = 'dark',
-}
+export type ThemeName = 'light' | 'dark';
 
-export type ThemesVariant = (typeof THEMES)[keyof typeof THEMES];
+export type ThemeColors = Record<keyof typeof vars, string>;
+export type ThemeColorMap = Record<ThemeName, ThemeColors>;
+export type ThemeHex = Record<
+  ThemeName,
+  {
+    dark: boolean;
+    colors: {
+      primary: string;
+      background: string;
+      card: string;
+      text: string;
+      border: string;
+      notification: string;
+    };
+  }
+>;
 
-export type StatusBarThemeStyle = {
-  [keys in ThemesVariant]: {
-    style: StatusBarStyle;
-    background: string;
-  };
-};
+// 1. Raw HSL values (no rgb(...) wrapper)
+export const THEME_COLORS: ThemeColorMap = {
+  light: vars({
+    '--background': '40 20% 97%',
+    '--foreground': '240 10% 10%',
 
-export type ThemeColorKeys =
-  | '--background'
-  | '--foreground'
-  | '--muted'
-  | '--muted-foreground'
-  | '--popover'
-  | '--popover-foreground'
-  | '--card'
-  | '--card-foreground'
-  | '--border'
-  | '--input'
-  | '--primary'
-  | '--primary-foreground'
-  | '--secondary'
-  | '--secondary-foreground'
-  | '--accent'
-  | '--accent-foreground'
-  | '--destructive'
-  | '--destructive-foreground'
-  | '--ring';
+    '--card': '42 30% 95%',
+    '--card-foreground': '240 8% 20%',
 
-export type ThemeColors = Record<ThemeColorKeys, string>;
+    '--popover': '45 30% 94%',
+    '--popover-foreground': '240 8% 20%',
 
-export type AllThemes = Record<ThemesVariant, ThemeColors>;
-
-export const THEME_COLORS: AllThemes = {
-  light: {
-    '--background': '40 20% 97%' /* soft warm white */,
-    '--foreground': '240 10% 10%' /* near-black text */,
-
-    '--card': '40 20% 98%',
-    '--card-foreground': '240 10% 10%',
-
-    '--popover': '40 20% 98%',
-    '--popover-foreground': '240 10% 10%',
-
-    '--primary': '265 60% 85%' /* light purple */,
+    '--primary': '265 60% 85%',
     '--primary-foreground': '265 60% 25%',
 
-    '--secondary': '220 10% 94%' /* soft gray-blue */,
+    '--secondary': '220 10% 94%',
     '--secondary-foreground': '240 10% 25%',
 
-    '--muted': '220 6% 92%',
-    '--muted-foreground': '220 4% 40%',
+    '--muted': '220 12% 90%',
+    '--muted-foreground': '220 8% 35%',
 
     '--accent': '220 8% 96%',
     '--accent-foreground': '240 10% 25%',
 
-    '--destructive': '0 85% 72%' /* soft red */,
+    '--destructive': '0 85% 72%',
     '--destructive-foreground': '0 0% 100%',
 
     '--border': '240 8% 85%',
     '--input': '240 8% 93%',
     '--ring': '265 60% 75%',
-  },
-
-  dark: {
+  }),
+  dark: vars({
     '--background': '240 6% 10%',
     '--foreground': '0 0% 95%',
 
-    '--card': '240 6% 12%',
-    '--card-foreground': '0 0% 95%',
+    '--card': '240 8% 14%',
+    '--card-foreground': '0 0% 90%',
 
-    '--popover': '240 6% 12%',
-    '--popover-foreground': '0 0% 95%',
+    '--popover': '240 8% 13%',
+    '--popover-foreground': '0 0% 90%',
 
     '--primary': '265 60% 75%',
     '--primary-foreground': '0 0% 10%',
@@ -89,8 +68,8 @@ export const THEME_COLORS: AllThemes = {
     '--secondary': '220 8% 20%',
     '--secondary-foreground': '0 0% 95%',
 
-    '--muted': '220 6% 18%',
-    '--muted-foreground': '220 4% 60%',
+    '--muted': '220 10% 24%',
+    '--muted-foreground': '220 6% 65%',
 
     '--accent': '220 6% 22%',
     '--accent-foreground': '0 0% 95%',
@@ -101,29 +80,46 @@ export const THEME_COLORS: AllThemes = {
     '--border': '240 6% 22%',
     '--input': '240 6% 18%',
     '--ring': '265 60% 60%',
-  },
+  }),
 };
 
-export const Themes = {
-  light: vars(THEME_COLORS.light),
-  dark: vars(THEME_COLORS.dark),
-};
-
-export const StatusBarTheme: StatusBarThemeStyle = {
+// 2. Status bar styles
+export const STATUSBAR_COLORS: Record<
+  ThemeName,
+  { style: StatusBarStyle; background: string }
+> = {
   light: {
     style: 'dark',
-    background: '#fff',
+    background: '#f5f5f5',
   },
   dark: {
     style: 'light',
-    background: '#000',
+    background: '#454545',
   },
 };
 
-export const TabTints: Record<THEMES, BlurTint> = {
-  // Light Themes
-  light: 'light',
-
-  // Darker Themes
-  dark: 'default',
-} as const;
+//3. HEX Theme Colors
+export const THEMES_HEX: ThemeHex = {
+  light: {
+    dark: false,
+    colors: {
+      primary: '#d9c2f0', // hsl(265 60% 85%)
+      background: '#f7f5ec', // hsl(40 20% 97%)
+      card: '#f9f5e8', // hsl(42 30% 95%)
+      text: '#1c1c1f', // hsl(240 10% 10%)
+      border: '#d6d7e3', // hsl(240 8% 85%)
+      notification: '#f39191', // hsl(0 85% 72%)
+    },
+  },
+  dark: {
+    dark: true,
+    colors: {
+      primary: '#bf99e6', // hsl(265 60% 75%)
+      background: '#1c1c1f', // hsl(240 6% 10%)
+      card: '#24242a', // hsl(240 8% 14%)
+      text: '#f2f2f2', // hsl(0 0% 95%)
+      border: '#31313f', // hsl(240 6% 22%)
+      notification: '#db5757', // hsl(0 72% 60%)
+    },
+  },
+};

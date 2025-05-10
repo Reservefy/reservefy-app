@@ -11,10 +11,10 @@ import { useColorScheme } from '@/hooks/common/useColorScheme';
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export const unstable_settings = {
-  // Ensure that loading the initial screen does not block rendering of the app.
-  initialRoute: '(tabs)/',
-};
+// export const unstable_settings = {
+//   // Ensure that loading the initial screen does not block rendering of the app.
+//   initialRoute: '(tabs)',
+// };
 
 export default function App() {
   const [loaded] = useFonts({
@@ -42,19 +42,18 @@ export default function App() {
 
   return (
     <Suspense fallback={<ActivityIndicator className="text-primary size-14" />}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="(website)" />
+        <Stack.Screen name="+not-found" />
         <Stack.Screen
           name="(auth)"
           options={{
-            headerShown: false,
             presentation: 'modal',
             animation: 'slide_from_bottom',
             statusBarAnimation: 'slide',
           }}
         />
-        <Stack.Screen name="(website)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
       </Stack>
     </Suspense>
   );

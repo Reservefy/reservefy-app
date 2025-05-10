@@ -1,60 +1,58 @@
 import { useThemeStore } from '@/stores/useThemeStore';
-import { StatusBarTheme, Themes, THEMES, ThemesVariant } from '@/styles/themes';
+import { STATUSBAR_COLORS, THEME_COLORS, ThemeName } from '@/styles/themes';
 import clsx from 'clsx';
 import { StatusBar } from 'expo-status-bar';
-import { createContext, useCallback, useContext } from 'react';
+import React, { createContext, ReactNode, useContext, useMemo } from 'react';
 import { View, ViewProps } from 'react-native';
 
-type ThemeContextValues = {
-  theme: ThemesVariant;
+type ThemeContextType = {
+  theme: ThemeName;
+  setTheme: (theme: ThemeName) => void;
 };
 
-const ThemeProviderValues = createContext<ThemeContextValues>({
-  theme: THEMES.light,
+const ThemeContext = createContext<ThemeContextType>({
+  theme: 'light',
+  setTheme: () => {},
 });
 
-export function useThemeContextValues() {
-  return useContext(ThemeProviderValues);
+export const useTheme = () => useContext(ThemeContext);
+
+function getThemeStyle(theme: ThemeName) {
+  return THEME_COLORS[theme]; // already uses nativewind's vars()
 }
 
-type ThemeContextActions = {
-  handleThemeSwitch: (newTheme: ThemesVariant) => void;
+type ThemeProviderProps = ViewProps & {
+  children: ReactNode;
 };
 
-const ThemeProviderActions = createContext<ThemeContextActions>(
-  {} as ThemeContextActions,
-);
-
-export function useThemeContextActions() {
-  return useContext(ThemeProviderActions);
-}
-
-type ThemeProps = ViewProps;
-
-export function ThemeProvider(props: ThemeProps) {
+export function ThemeProvider({
+  children,
+  className,
+  ...rest
+}: ThemeProviderProps) {
   const { currentTheme, changeTheme } = useThemeStore();
 
-  const handleThemeSwitch = useCallback(
-    (newTheme: ThemesVariant) => {
-      changeTheme(newTheme);
-    },
-    [changeTheme],
+  const contextValue = useMemo(
+    () => ({
+      theme: currentTheme,
+      setTheme: changeTheme,
+    }),
+    [currentTheme, changeTheme],
   );
 
   return (
-    <View
-      style={[Themes[currentTheme], { direction: 'ltr' }]}
-      className={clsx('flex-1', props.className)}
-    >
-      <ThemeProviderValues.Provider value={{ theme: currentTheme }}>
-        <ThemeProviderActions.Provider value={{ handleThemeSwitch }}>
-          <StatusBar
-            style={StatusBarTheme[currentTheme]?.style}
-            backgroundColor={StatusBarTheme[currentTheme]?.background}
-          />
-          {props.children}
-        </ThemeProviderActions.Provider>
-      </ThemeProviderValues.Provider>
-    </View>
+    <ThemeContext.Provider value={contextValue}>
+      <View
+        style={getThemeStyle(currentTheme)}
+        className={clsx('flex-1', className)}
+        {...rest}
+      >
+        <StatusBar
+          style={STATUSBAR_COLORS[currentTheme].style}
+          backgroundColor={STATUSBAR_COLORS[currentTheme].background}
+        />
+        {children}
+      </View>
+    </ThemeContext.Provider>
   );
 }

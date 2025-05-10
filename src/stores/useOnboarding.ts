@@ -5,22 +5,22 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 
 export interface OnboardingState {
   visited: boolean;
-  setVisited: () => void;
   canVisitAgain: boolean;
+  setVisited: () => void;
   setCanVisitAgain: (canVisitAgain: boolean) => void;
 }
 
 export const useOnboarding = create<OnboardingState>()(
-  persist<OnboardingState>(
+  persist(
     (set) => ({
       visited: false,
+      canVisitAgain: true, // Set to true by default to allow first visit
       setVisited: () => set({ visited: true }),
-      canVisitAgain: false,
       setCanVisitAgain: (canVisitAgain: boolean) => set({ canVisitAgain }),
     }),
     {
-      name: 'onboarding-store', // Key for persistence
-      storage: createJSONStorage(() => AsyncStorage), // (optional) by default, 'localStorage'
+      name: 'onboarding-storage',
+      storage: createJSONStorage(() => AsyncStorage),
     },
   ),
 );

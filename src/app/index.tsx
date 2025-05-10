@@ -1,7 +1,7 @@
 import { useOnboarding } from '@/stores/useOnboarding';
 import { Redirect } from 'expo-router';
 
-const Page = () => {
+const Middleware = () => {
   const { visited, canVisitAgain } = useOnboarding();
 
   if (visited && !canVisitAgain) return <Redirect href="/(tabs)" />;
@@ -9,4 +9,4 @@ const Page = () => {
   return <Redirect href="/(website)" />;
 };
 
-export default Page;
+export default Middleware;

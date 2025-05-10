@@ -1,7 +1,6 @@
 import Icons from '@/lib/icons';
 import { cn } from '@/lib/utils';
 import { useThemeStore } from '@/stores/useThemeStore';
-import { THEMES } from '@/styles/themes';
 import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Animated, Easing, Pressable, Text } from 'react-native';
@@ -41,7 +40,7 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
 
   return (
     <Pressable
-      onPress={() => changeTheme(isDark ? THEMES.light : THEMES.dark)}
+      onPress={() => changeTheme(isDark ? 'light' : 'dark')}
       className={cn(
         'flex-row items-center flex gap-2 px-4 justify-between w-40 py-2 rounded-full bg-muted',
         'active:scale-95 transition-transform',

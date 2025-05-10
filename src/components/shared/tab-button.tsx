@@ -2,7 +2,8 @@ import { useColorScheme } from '@/hooks/common/useColorScheme';
 import Icons, { Icon } from '@/lib/icons';
 import { cn } from '@/lib/utils';
 import { useScrollStore } from '@/stores/useScrollStore';
-import { Themes } from '@/styles/themes';
+import { ThemeName, THEMES_HEX } from '@/styles/themes';
+
 import * as Haptics from 'expo-haptics';
 import { TabTriggerSlotProps } from 'expo-router/ui';
 import React, { useCallback } from 'react';
@@ -20,10 +21,19 @@ type Props = TabTriggerSlotProps & {
 
 export function TabButton({ isFocused, icon, children, ...props }: Props) {
   const { colorScheme } = useColorScheme();
-  const theme = Themes[colorScheme ?? 'light'];
+
   const containerAnim = useAnimatedStyle(() => ({
-    backgroundColor: withTiming(isFocused ? theme.primary : 'transparent'),
-    paddingHorizontal: withTiming(isFocused ? 6 : 0),
+    backgroundColor: withTiming(
+      isFocused
+        ? THEMES_HEX[colorScheme as ThemeName].colors.primary
+        : 'transparent',
+      {
+        duration: 120,
+      },
+    ),
+    paddingHorizontal: withTiming(isFocused ? 6 : 0, {
+      duration: 120,
+    }),
     paddingVertical: 10,
     borderRadius: 999,
   }));

@@ -23,13 +23,14 @@ const { width } = Dimensions.get('window');
 
 export default function WebsiteScreen() {
   const router = useRouter();
-  const { setVisited } = useOnboarding();
+  const { setVisited, setCanVisitAgain } = useOnboarding();
   const { t } = useTranslation();
 
   const handleGetStarted = useCallback(() => {
     setVisited();
+    setCanVisitAgain(false);
     router.replace('/(tabs)');
-  }, [router, setVisited]);
+  }, [router, setVisited, setCanVisitAgain]);
 
   return (
     <SafeAreaView className="safe-area">
@@ -121,25 +122,20 @@ export default function WebsiteScreen() {
           </MotiView>
         </Animated.View>
 
-        <Animated.View entering={FadeInUp.delay(800).springify()}>
-          <Button
-            className="py-4 rounded-full w-1/2 self-center mb-10 mt-5"
-            onPress={handleGetStarted}
-            variant="outline"
-          >
-            <Text>{t('website.cta.createAccount')}</Text>
-          </Button>
-        </Animated.View>
-
-        <Animated.View
-          entering={FadeInUp.delay(400).springify()}
-          className="px-4 py-12 bg-card"
+        <Button
+          className="py-4 rounded-full w-1/2 self-center mb-10 mt-5"
+          onPress={handleGetStarted}
+          variant="outline"
         >
+          <Text>{t('website.cta.createAccount')}</Text>
+        </Button>
+
+        <View className="px-4 py-12 bg-card">
           <Text className="text-2xl font-bold mb-6">
             {t('website.features.title')}
           </Text>
           <View className="gap-6">
-            {features.map(({ id, title, description, icon }) => (
+            {features.map(({ id, icon }) => (
               <FeatureItem
                 key={id}
                 title={t(`website.features.${id}.title`)}
@@ -148,20 +144,17 @@ export default function WebsiteScreen() {
               />
             ))}
           </View>
-        </Animated.View>
+        </View>
 
         <View className="px-2 py-12">
-          <Animated.View
-            entering={FadeInDown.delay(600).springify()}
-            className="pl-3"
-          >
+          <View className="pl-3">
             <Text className="text-2xl font-bold mb-2">
               {t('website.pricing.title')}
             </Text>
             <Text className="text-sm text-muted-foreground mb-6">
               {t('website.pricing.subtitle')}
             </Text>
-          </Animated.View>
+          </View>
 
           <ScrollView
             horizontal
@@ -169,12 +162,8 @@ export default function WebsiteScreen() {
             snapToInterval={width - width * 0.2}
             decelerationRate="fast"
           >
-            {plans.map((plan, index) => (
-              <Animated.View
-                key={plan.id}
-                entering={FadeInDown.delay(index * 200)}
-                className="flex-row flex gap-x-4"
-              >
+            {plans.map((plan) => (
+              <View key={plan.id} className="flex-row flex gap-x-4">
                 <PlanCard
                   plan={{
                     ...plan,
@@ -185,7 +174,7 @@ export default function WebsiteScreen() {
                     ),
                   }}
                 />
-              </Animated.View>
+              </View>
             ))}
           </ScrollView>
         </View>
@@ -195,7 +184,7 @@ export default function WebsiteScreen() {
             {t('website.useCases.title')}
           </Text>
           <View className="gap-4">
-            {useCases.map(({ id, title, description, icon }) => {
+            {useCases.map(({ id, icon }) => {
               const Icon = Icons[icon as Icon];
               return (
                 <View
@@ -221,7 +210,7 @@ export default function WebsiteScreen() {
           <Text className="text-2xl font-bold mb-6">
             {t('website.faq.title')}
           </Text>
-          {faqs.map(({ id, question, answer }) => (
+          {faqs.map(({ id }) => (
             <FAQItem
               key={id}
               question={t(`website.faq.questions.${id}.question`)}

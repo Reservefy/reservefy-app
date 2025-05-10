@@ -1,32 +1,21 @@
+import { ThemeName } from '@/styles/themes';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-import {
-  THEME_COLORS,
-  ThemeColors,
-  THEMES,
-  ThemesVariant,
-} from '@/styles/themes';
-
-// Define the ThemeState interface
 interface ThemeState {
-  currentTheme: ThemesVariant;
-  changeTheme: (theme: ThemesVariant) => void;
-  colors: ThemeColors;
+  currentTheme: ThemeName;
+  changeTheme: (theme: ThemeName) => void;
 }
 
-// Create the zustand store with persistence
 export const useThemeStore = create<ThemeState>()(
-  persist<ThemeState>(
+  persist(
     (set) => ({
-      currentTheme: THEMES.light, // Default theme
-      colors: THEME_COLORS[THEMES.light],
-      changeTheme: (theme) =>
-        set({ currentTheme: theme, colors: THEME_COLORS[theme] }),
+      currentTheme: 'light',
+      changeTheme: (theme: ThemeName) => set({ currentTheme: theme }),
     }),
     {
-      name: 'theme-store', // Key for persistence
+      name: 'theme-store',
       storage: createJSONStorage(() => AsyncStorage),
     },
   ),
