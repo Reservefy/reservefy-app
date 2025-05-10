@@ -1,12 +1,12 @@
-import { Colors } from '@/constants/colors';
 import { useColorScheme } from '@/hooks/common/useColorScheme';
 import Icons, { Icon } from '@/lib/icons';
 import { cn } from '@/lib/utils';
 import { useScrollStore } from '@/stores/useScrollStore';
+import { Themes } from '@/styles/themes';
 import * as Haptics from 'expo-haptics';
 import { TabTriggerSlotProps } from 'expo-router/ui';
 import React, { useCallback } from 'react';
-import { Pressable, Platform } from 'react-native';
+import { Platform, Pressable } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   withDelay,
@@ -20,7 +20,7 @@ type Props = TabTriggerSlotProps & {
 
 export function TabButton({ isFocused, icon, children, ...props }: Props) {
   const { colorScheme } = useColorScheme();
-  const theme = Colors[colorScheme ?? 'light'];
+  const theme = Themes[colorScheme ?? 'light'];
   const containerAnim = useAnimatedStyle(() => ({
     backgroundColor: withTiming(isFocused ? theme.primary : 'transparent'),
     paddingHorizontal: withTiming(isFocused ? 6 : 0),

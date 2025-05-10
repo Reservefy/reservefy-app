@@ -1,3 +1,5 @@
+import { LanguageToggle } from '@/components/shared/language-toggle';
+import { ThemeToggle } from '@/components/shared/theme-toggle';
 import { Button, Text } from '@/components/ui';
 import { FAQItem, FeatureItem, PlanCard } from '@/components/views/website';
 import {
@@ -6,11 +8,13 @@ import {
   plans,
   useCases,
 } from '@/components/views/website/data';
+import { HERO } from '@/constants/images';
 import Icons, { Icon } from '@/lib/icons';
 import { useOnboarding } from '@/stores/useOnboarding';
 import { useRouter } from 'expo-router';
 import { MotiView } from 'moti';
 import React, { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Dimensions, Image, ScrollView, View } from 'react-native';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -19,37 +23,101 @@ const { width } = Dimensions.get('window');
 
 export default function WebsiteScreen() {
   const router = useRouter();
-  const { setVisited, setCanVisitAgain } = useOnboarding();
+  const { setVisited } = useOnboarding();
+  const { t } = useTranslation();
 
   const handleGetStarted = useCallback(() => {
     setVisited();
-    setCanVisitAgain(false);
-    router.replace('/(auth)/register');
-  }, [router, setVisited, setCanVisitAgain]);
+    router.replace('/(tabs)');
+  }, [router, setVisited]);
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
+    <SafeAreaView className="safe-area">
       <ScrollView contentContainerClassName="pb-28">
         <Animated.View
           entering={FadeInDown.delay(200).springify()}
-          className="px-6 pt-12"
+          className="px-4 border-b border-primary/40 py-5"
+        >
+          <MotiView
+            from={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: 'timing', duration: 800 }}
+            className="gap-y-4"
+          >
+            <View className="space-x-2 flex flex-row items-center justify-between">
+              <Text className="text-body text-muted-foreground">
+                {t('website.settings.theme')}
+              </Text>
+              <ThemeToggle />
+            </View>
+            <View className="space-x-2 flex flex-row items-center justify-between">
+              <Text className="text-body text-muted-foreground">
+                {t('website.settings.language')}
+              </Text>
+              <LanguageToggle />
+            </View>
+          </MotiView>
+        </Animated.View>
+
+        <Animated.View
+          entering={FadeInDown.delay(200).springify()}
+          className="px-4 pt-12"
         >
           <Text className="text-4xl font-bold mb-4">
-            Streamline Your Service Bookings
+            {t('website.hero.title')}
           </Text>
-          <Text className="text-base text-muted-foreground mb-8">
-            The all-in-one platform for service providers and customers.
+          <Text className="text-base text-muted-foreground mb-6">
+            {t('website.hero.subtitle')}
           </Text>
+
           <MotiView
             from={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ type: 'timing', duration: 1000 }}
+            transition={{ type: 'timing', duration: 900 }}
+            className="gap-4"
           >
             <Image
-              source={require('@/assets/images/icon.png')}
-              className="w-full h-64 rounded-3xl"
+              source={HERO.hero_1}
+              className="aspect-video w-full h-52 rounded-2xl"
               resizeMode="cover"
             />
+
+            <MotiView
+              from={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ type: 'timing', duration: 1300 }}
+              className="gap-4"
+            >
+              <Image
+                source={HERO.hero_2}
+                className="aspect-video w-[68%] h-52 rounded-2xl self-end"
+                resizeMode="cover"
+              />
+            </MotiView>
+            <MotiView
+              from={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ type: 'timing', duration: 1600 }}
+              className="gap-4"
+            >
+              <Image
+                source={HERO.hero_3}
+                className="aspect-video w-[68%] h-52 rounded-2xl self-start"
+                resizeMode="cover"
+              />
+            </MotiView>
+            <MotiView
+              from={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ type: 'timing', duration: 1100 }}
+              className="gap-4"
+            >
+              <Image
+                source={HERO.hero_4}
+                className="aspect-video w-[60%] h-52 rounded-2xl self-end"
+                resizeMode="cover"
+              />
+            </MotiView>
           </MotiView>
         </Animated.View>
 
@@ -59,21 +127,23 @@ export default function WebsiteScreen() {
             onPress={handleGetStarted}
             variant="outline"
           >
-            <Text>Create an Account</Text>
+            <Text>{t('website.cta.createAccount')}</Text>
           </Button>
         </Animated.View>
 
         <Animated.View
           entering={FadeInUp.delay(400).springify()}
-          className="px-6 py-12 bg-card"
+          className="px-4 py-12 bg-card"
         >
-          <Text className="text-2xl font-bold mb-6">Key Features</Text>
+          <Text className="text-2xl font-bold mb-6">
+            {t('website.features.title')}
+          </Text>
           <View className="gap-6">
             {features.map(({ id, title, description, icon }) => (
               <FeatureItem
                 key={id}
-                title={title}
-                description={description}
+                title={t(`website.features.${id}.title`)}
+                description={t(`website.features.${id}.description`)}
                 icon={icon as Icon}
               />
             ))}
@@ -85,9 +155,11 @@ export default function WebsiteScreen() {
             entering={FadeInDown.delay(600).springify()}
             className="pl-3"
           >
-            <Text className="text-2xl font-bold mb-2">Simple Pricing</Text>
+            <Text className="text-2xl font-bold mb-2">
+              {t('website.pricing.title')}
+            </Text>
             <Text className="text-sm text-muted-foreground mb-6">
-              Choose the plan that works best for your goals
+              {t('website.pricing.subtitle')}
             </Text>
           </Animated.View>
 
@@ -103,14 +175,25 @@ export default function WebsiteScreen() {
                 entering={FadeInDown.delay(index * 200)}
                 className="flex-row flex gap-x-4"
               >
-                <PlanCard plan={plan} />
+                <PlanCard
+                  plan={{
+                    ...plan,
+                    name: t(`website.pricing.plans.${plan.id}.name`),
+                    price: t(`website.pricing.plans.${plan.id}.price`),
+                    features: plan.features.map((_, i) =>
+                      t(`website.pricing.plans.${plan.id}.features.${i}`),
+                    ),
+                  }}
+                />
               </Animated.View>
             ))}
           </ScrollView>
         </View>
 
-        <View className="px-6 py-12 bg-muted/10">
-          <Text className="text-2xl font-bold mb-6">Use Cases</Text>
+        <View className="px-4 py-12 bg-muted/10">
+          <Text className="text-2xl font-bold mb-6">
+            {t('website.useCases.title')}
+          </Text>
           <View className="gap-4">
             {useCases.map(({ id, title, description, icon }) => {
               const Icon = Icons[icon as Icon];
@@ -121,9 +204,11 @@ export default function WebsiteScreen() {
                 >
                   <Icon size={24} className="text-primary mt-1" />
                   <View className="flex-1">
-                    <Text className="text-lg font-semibold mb-1">{title}</Text>
+                    <Text className="text-lg font-semibold mb-1">
+                      {t(`website.useCases.${id}.title`)}
+                    </Text>
                     <Text className="text-sm text-muted-foreground">
-                      {description}
+                      {t(`website.useCases.${id}.description`)}
                     </Text>
                   </View>
                 </View>
@@ -132,12 +217,16 @@ export default function WebsiteScreen() {
           </View>
         </View>
 
-        <View className="px-6 py-12">
+        <View className="px-4 py-12">
           <Text className="text-2xl font-bold mb-6">
-            Frequently Asked Questions
+            {t('website.faq.title')}
           </Text>
           {faqs.map(({ id, question, answer }) => (
-            <FAQItem key={id} question={question} answer={answer} />
+            <FAQItem
+              key={id}
+              question={t(`website.faq.questions.${id}.question`)}
+              answer={t(`website.faq.questions.${id}.answer`)}
+            />
           ))}
         </View>
       </ScrollView>
@@ -148,7 +237,7 @@ export default function WebsiteScreen() {
       >
         <Button className="py-4" onPress={handleGetStarted}>
           <Text className="text-primary-foreground font-semibold text-center">
-            Get Started Now
+            {t('website.cta.getStarted')}
           </Text>
         </Button>
       </Animated.View>

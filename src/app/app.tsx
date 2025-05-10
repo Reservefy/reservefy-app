@@ -53,6 +53,7 @@ export default function App() {
             statusBarAnimation: 'slide',
           }}
         />
+        <Stack.Screen name="(website)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
     </Suspense>

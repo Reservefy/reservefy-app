@@ -25,13 +25,13 @@ const TabsTrigger = React.forwardRef<
   TabsPrimitive.TriggerProps
 >(({ className, ...props }, ref) => {
   const { value } = TabsPrimitive.useRootContext();
+
   return (
     <TextClassContext.Provider
       value={cn(
-        'transition-all duration-300 px-3 py-1 ',
-        value === props.value
-          ? 'text-foreground text-body leading-body font-medium border-b border-foreground '
-          : 'font-body text-muted-foreground',
+        'transition-all duration-300 px-3 py-1 text-muted-foreground font-body',
+        value === props.value &&
+          'text-foreground text-body leading-body font-medium border-b border-foreground',
       )}
     >
       <TabsPrimitive.Trigger

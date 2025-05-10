@@ -209,5 +209,111 @@
       "confirm_password_mismatch": "Parol notoʻgʻri.",
       "confirm_password_invalid": "Parolni tasdiqlang"
     }
+  },
+  "website": {
+    "settings": {
+      "theme": "Mavzu",
+      "language": "Til"
+    },
+    "hero": {
+      "title": "Xizmatlaringizni bron qilishni soddalashtiring",
+      "subtitle": "Xizmat ko‘rsatuvchilar va mijozlar uchun yagona platforma"
+    },
+    "cta": {
+      "createAccount": "Hisob yaratish",
+      "getStarted": "Boshlash"
+    },
+    "features": {
+      "title": "Asosiy xususiyatlar",
+      "1": {
+        "title": "Xizmatlarni toping va bron qiling",
+        "description": "Salonlar, shifokorlar, o‘qituvchilar kabi toifalarni osongina ko‘rib chiqing va darhol uchrashuvlar bron qiling."
+      },
+      "2": {
+        "title": "Brendingizni yarating",
+        "description": "Biznes profilingizni yarating, xizmatlaringizni joylashtiring va jamoangizni boshqaring."
+      },
+      "3": {
+        "title": "Moslashuvchan jadval",
+        "description": "Bir nechta brendlar bo‘yicha mavjudligingizni kuchli jadval vositalari bilan boshqaring."
+      },
+      "4": {
+        "title": "Aqlli boshqaruv",
+        "description": "Bron qilishlar, ishchilar va mijozlar bazasini samarali boshqaring."
+      }
+    },
+    "pricing": {
+      "title": "Oddiy narxlar",
+      "subtitle": "Maqsadingizga eng mos rejani tanlang",
+      "plans": {
+        "free": {
+          "name": "Bepul",
+          "price": "$0",
+          "features": [
+            "Asosiy bron qilish",
+            "1 ta brend",
+            "2 ta ishchi",
+            "Asosiy statistikalar"
+          ]
+        },
+        "pro": {
+          "name": "Professional",
+          "price": "$29",
+          "features": [
+            "Kengaytirilgan bron qilish",
+            "Bir nechta brendlarni qo‘llab-quvvatlash",
+            "10 ta ishchi",
+            "Ustuvor yordam"
+          ],
+          "recommended": "Tavsiya etiladi"
+        },
+        "team": {
+          "name": "Jamoa",
+          "price": "$99",
+          "features": [
+            "Cheksiz brendlar/ishchilar",
+            "To‘liq tahlil",
+            "24/7 yordam",
+            "Moslashtirilgan integratsiyalar"
+          ]
+        }
+      }
+    },
+    "useCases": {
+      "title": "Qo‘llanilish holatlari",
+      "anyone": {
+        "title": "Har qanday bron qilish ehtiyoji uchun",
+        "description": "Qanday biznes bo‘lishidan qat’i nazar — uchrashuvlar yoki jadvalni talab qiladigan xizmatlarni boshqaring."
+      },
+      "salon": {
+        "title": "Salonlar uchun",
+        "description": "Stilistlar, uchrashuvlar va mijozlar tarixini boshqaring."
+      },
+      "clinic": {
+        "title": "Klinikalar uchun",
+        "description": "Bemorlarni rejalashtiring, kalendarlarni sinxronlang va tashriflarni kuzatib boring."
+      },
+      "tutor": {
+        "title": "O‘qituvchilar uchun",
+        "description": "Darslarni tashkil qiling, qatnashuvni kuzating va to‘lovlarni boshqaring."
+      }
+    },
+    "faq": {
+      "title": "Tez-tez so‘raladigan savollar",
+      "questions": {
+        "1": {
+          "question": "Bir nechta brendlarni boshqara olamanmi?",
+          "answer": "Ha, Professional va Team rejalar bilan bir nechta brend profillarini yaratish va boshqarish mumkin."
+        },
+        "2": {
+          "question": "Nechta ishchi qo‘shishim mumkin?",
+          "answer": "Bepul rejada 2 ta ishchi qo‘shishingiz mumkin. Pro rejada 10 ta, Team rejada esa cheklov yo‘q."
+        },
+        "3": {
+          "question": "Jamoalar uchun qo‘llab-quvvatlash bormi?",
+          "answer": "Ha, Team rejasi ilg‘or kirish va hisobotlar bilan jamoaviy ishlash uchun mo‘ljallangan."
+        }
+      }
+    }
   }
 }

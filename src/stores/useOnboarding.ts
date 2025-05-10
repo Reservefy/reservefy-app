@@ -15,7 +15,7 @@ export const useOnboarding = create<OnboardingState>()(
     (set) => ({
       visited: false,
       setVisited: () => set({ visited: true }),
-      canVisitAgain: true,
+      canVisitAgain: false,
       setCanVisitAgain: (canVisitAgain: boolean) => set({ canVisitAgain }),
     }),
     {
