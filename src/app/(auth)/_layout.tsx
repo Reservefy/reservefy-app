@@ -12,6 +12,11 @@ export default function Layout() {
         animationTypeForReplace: 'push',
         keyboardHandlingEnabled: true,
       }}
-    />
+    >
+      <Stack.Screen
+        name="success"
+        options={{ headerShown: false, gestureEnabled: false }}
+      />
+    </Stack>
   );
 }

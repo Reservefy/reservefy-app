@@ -47,7 +47,7 @@ export default function ForgotPwdScreen() {
 
   const handleVerifyCode = async (data: ForgotPwdEmailFormType) => {
     // TODO: Implement verify code logic
-    router.push('/(auth)/reset-pwd');
+    router.replace('/(auth)/reset-pwd');
   };
 
   return (

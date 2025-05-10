@@ -50,12 +50,15 @@ export default function SuccessScreen() {
         }}
         className="items-center"
       >
-        <Text className="text-2xl font-heading text-center mb-2">{title}</Text>
+        <Text className="font-heading text-center mb-2">{title}</Text>
         <Text className="text-muted-foreground text-center mb-10">
           {subtitle}
         </Text>
 
-        <Button onPress={() => router.push('/(auth)/login')} className="w-full">
+        <Button
+          onPress={() => router.dismissTo('/(auth)/login')}
+          className="w-full"
+        >
           <Text>{t('auth.success.backToLogin')}</Text>
         </Button>
       </MotiView>
