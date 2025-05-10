@@ -4,6 +4,8 @@ import {
   Asterisk,
   Ban,
   Bell,
+  BookOpen,
+  Briefcase,
   Calendar,
   CalendarDays,
   CalendarPlus,
@@ -25,8 +27,11 @@ import {
   Notebook,
   Pencil,
   Plus,
+  Scissors,
   Search,
   Settings,
+  Sparkles,
+  Stethoscope,
   Sun,
   Upload,
   User,
@@ -68,6 +73,11 @@ const icons = {
   Asterisk,
   Eye,
   EyeClosed,
+  Sparkles,
+  Briefcase,
+  Scissors,
+  Stethoscope,
+  BookOpen,
 };
 
 Object.values(icons).forEach(iconWithClassName);
@@ -106,6 +116,11 @@ const Icons = {
   X,
   Asterisk,
   ArrowLeft,
+  Sparkles,
+  Briefcase,
+  Scissors,
+  Stethoscope,
+  BookOpen,
 } as const;
 
 export type Icon = keyof typeof Icons;

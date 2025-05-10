@@ -1,11 +1,12 @@
+import { useOnboarding } from '@/stores/useOnboarding';
 import { Redirect } from 'expo-router';
 
 const Page = () => {
-  const visited = true;
+  const { visited, canVisitAgain } = useOnboarding();
 
-  if (visited) return <Redirect href="/(tabs)" />;
+  if (visited && !canVisitAgain) return <Redirect href="/(tabs)" />;
 
-  return <Redirect href="/(auth)/login" />;
+  return <Redirect href="/(website)" />;
 };
 
 export default Page;
