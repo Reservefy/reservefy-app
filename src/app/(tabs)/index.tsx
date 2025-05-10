@@ -1,17 +1,19 @@
 import { SafeAreaView, ScrollView, View } from 'react-native';
 
+import { LanguageToggle } from '@/components/shared/language-toggle';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import { useYScroll } from '@/hooks/common/useYScoll';
-import { t } from '@/locales';
+import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
   const { onScroll } = useYScroll();
+  const { t } = useTranslation();
   return (
-    <SafeAreaView className="bg-background backdrop-blur-3xl blur-3xl">
+    <SafeAreaView className="bg-background">
       <ScrollView
         onScroll={onScroll}
         bounces={false}
@@ -20,7 +22,7 @@ export default function HomeScreen() {
         className="bg-background"
         showsVerticalScrollIndicator={false}
       >
-        <View className="px-6 py-4 gap-y-6 ">
+        <View className="px-6 py-4 gap-y-6 flex items-start">
           <View className="bg-card gap-y-4 p-4">
             <Text className="font-bold text-xl text-red-500">
               This is test bold text
@@ -103,6 +105,7 @@ export default function HomeScreen() {
             <Text className="text-card-foreground text-sm">card</Text>
           </View>
           <ThemeToggle />
+          <LanguageToggle />
         </View>
       </ScrollView>
     </SafeAreaView>

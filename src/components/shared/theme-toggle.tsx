@@ -1,12 +1,15 @@
 import Icons from '@/lib/icons';
 import { cn } from '@/lib/utils';
-import { t } from '@/locales';
-import { useTheme } from '@/providers/theme';
+import { useThemeStore } from '@/stores/useThemeStore';
+import { THEMES } from '@/styles/themes';
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Animated, Easing, Pressable, Text } from 'react-native';
 
 export const ThemeToggle = ({ className }: { className?: string }) => {
-  const { isDark, toggleTheme } = useTheme();
+  const { t } = useTranslation();
+  const { currentTheme, changeTheme } = useThemeStore();
+  const isDark = currentTheme === 'dark';
 
   const rotation = useRef(new Animated.Value(isDark ? 1 : 0)).current;
   const fade = useRef(new Animated.Value(isDark ? 1 : 0)).current;
@@ -38,9 +41,9 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
 
   return (
     <Pressable
-      onPress={toggleTheme}
+      onPress={() => changeTheme(isDark ? THEMES.light : THEMES.dark)}
       className={cn(
-        'flex-row items-center gap-2 px-4 justify-between w-40 py-2 rounded-full border border-border bg-secondary',
+        'flex-row items-center flex gap-2 px-4 justify-between w-40 py-2 rounded-full bg-muted',
         'active:scale-95 transition-transform',
         className,
       )}
@@ -56,18 +59,18 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
             }),
           }}
         >
-          <Sun className="text-secondary-foreground w-24 h-24 aspect-square" />
+          <Sun className="text-secondary-foreground aspect-square" size={20} />
         </Animated.View>
         <Animated.View
           style={{
             opacity: fade,
           }}
         >
-          <Moon className="text-secondary-foreground w-24 h-24 aspect-square" />
+          <Moon className="text-secondary-foreground aspect-square" size={20} />
         </Animated.View>
       </Animated.View>
 
-      <Text className="text-sm text-secondary-foreground">
+      <Text className="text-caption text-secondary-foreground">
         {isDark ? t('common.themes.dark') : t('common.themes.light')}
       </Text>
     </Pressable>

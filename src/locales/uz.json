@@ -1,28 +1,42 @@
 {
+  "CFBundleDisplayName": "Reservefy",
+  "NSContactsUsageDescription": "Allow $(CFBundleDisplayName) to access your contacts",
   "common": {
-    "welcome": "Xush kelibsiz",
-    "login": "Kirish",
-    "signup": "Ro'yxatdan o'tish",
-    "email": "Elektron pochta",
-    "password": "Parol",
-    "submit": "Yuborish",
-    "cancel": "Bekor qilish",
-    "save": "Saqlash",
-    "delete": "O'chirish",
-    "edit": "Tahrirlash",
-    "loading": "Yuklanmoqda...",
-    "error": "Xato",
-    "success": "Muvaffaqiyatli"
+    "theme": "Theme",
+    "themes": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "languages": {
+      "en-US": "English",
+      "ru-RU": "Русский",
+      "uz-UZ": "Oʻzbekcha"
+    },
+    "welcome": "Welcome",
+    "login": "Login",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "test": "Ozbekchat Ism {{name}}"
   },
   "auth": {
-    "loginTitle": "Hisobingizga kiring",
-    "signupTitle": "Yangi hisob yaratish",
-    "forgotPassword": "Parolni unutdingizmi?",
-    "rememberMe": "Meni eslab qol"
+    "loginTitle": "Login to your account",
+    "signupTitle": "Create new account",
+    "forgotPassword": "Forgot Password?",
+    "rememberMe": "Remember me"
   },
   "errors": {
-    "required": "Bu maydon to'ldirilishi shart",
-    "invalidEmail": "Noto'g'ri elektron pochta manzili",
-    "passwordTooShort": "Parol kamida 6 ta belgidan iborat bo'lishi kerak"
+    "required": "This field is required",
+    "invalidEmail": "Invalid email address",
+    "passwordTooShort": "Password must be at least 6 characters"
   }
 }

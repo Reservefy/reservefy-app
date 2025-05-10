@@ -26,8 +26,6 @@ export function TabButton({ isFocused, icon, children, ...props }: Props) {
     paddingHorizontal: withTiming(isFocused ? 6 : 0),
     paddingVertical: 10,
     borderRadius: 999,
-    flexDirection: 'row',
-    alignItems: 'center',
   }));
 
   const textAnim = useAnimatedStyle(() => ({

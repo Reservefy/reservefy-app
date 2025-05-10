@@ -1,28 +1,42 @@
 {
+  "CFBundleDisplayName": "Reservefy",
+  "NSContactsUsageDescription": "Allow $(CFBundleDisplayName) to access your contacts",
   "common": {
-    "welcome": "Добро пожаловать",
-    "login": "Войти",
-    "signup": "Регистрация",
-    "email": "Эл. почта",
-    "password": "Пароль",
-    "submit": "Отправить",
-    "cancel": "Отмена",
-    "save": "Сохранить",
-    "delete": "Удалить",
-    "edit": "Редактировать",
-    "loading": "Загрузка...",
-    "error": "Ошибка",
-    "success": "Успешно"
+    "theme": "Theme",
+    "themes": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "languages": {
+      "en-US": "English",
+      "ru-RU": "Русский",
+      "uz-UZ": "Oʻzbekcha"
+    },
+    "welcome": "Welcome",
+    "login": "Login",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "test": "Russian name {{name}}"
   },
   "auth": {
-    "loginTitle": "Войти в аккаунт",
-    "signupTitle": "Создать новый аккаунт",
-    "forgotPassword": "Забыли пароль?",
-    "rememberMe": "Запомнить меня"
+    "loginTitle": "Login to your account",
+    "signupTitle": "Create new account",
+    "forgotPassword": "Forgot Password?",
+    "rememberMe": "Remember me"
   },
   "errors": {
-    "required": "Это поле обязательно",
-    "invalidEmail": "Неверный адрес эл. почты",
-    "passwordTooShort": "Пароль должен содержать минимум 6 символов"
+    "required": "This field is required",
+    "invalidEmail": "Invalid email address",
+    "passwordTooShort": "Password must be at least 6 characters"
   }
 }

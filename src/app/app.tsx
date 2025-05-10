@@ -1,6 +1,5 @@
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { Suspense, useEffect } from 'react';
 import { ActivityIndicator, Platform } from 'react-native';
 
@@ -42,10 +41,6 @@ export default function App() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
-      <StatusBar
-        style={colorScheme === 'dark' ? 'auto' : 'dark'}
-        backgroundColor="transparent"
-      />
     </Suspense>
   );
 }

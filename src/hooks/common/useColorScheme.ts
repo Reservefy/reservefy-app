@@ -4,16 +4,16 @@ import { useEffect } from 'react';
 
 export function useColorScheme() {
   const { colorScheme, setColorScheme } = useNativewindColorScheme();
-  const { theme } = useThemeStore();
+  const { currentTheme } = useThemeStore();
 
   // Sync NativeWind color scheme with theme store
   useEffect(() => {
-    setColorScheme(theme);
-  }, [theme, setColorScheme]);
+    setColorScheme(currentTheme);
+  }, [currentTheme, setColorScheme]);
 
   return {
-    colorScheme: theme,
-    isDarkColorScheme: theme === 'dark',
+    colorScheme,
+    isDarkColorScheme: colorScheme === 'dark',
     setColorScheme,
   };
 }

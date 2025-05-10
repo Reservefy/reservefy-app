@@ -8,6 +8,11 @@
       "dark": "Dark",
       "system": "System"
     },
+    "languages": {
+      "en-US": "English",
+      "ru-RU": "Русский",
+      "uz-UZ": "Oʻzbekcha"
+    },
     "welcome": "Welcome",
     "login": "Login",
     "signup": "Sign Up",
@@ -21,7 +26,7 @@
     "loading": "Loading...",
     "error": "Error",
     "success": "Success",
-    "test": "Test %{name}"
+    "test": "Test {{name}}"
   },
   "auth": {
     "loginTitle": "Login to your account",

@@ -1,49 +1,60 @@
-import { DARK_THEME, LIGHT_THEME } from '@/constants/colors';
-import { useColorScheme } from '@/hooks/common/useColorScheme';
 import { useThemeStore } from '@/stores/useThemeStore';
-import { ThemeProvider as NavigationThemeProvider } from '@react-navigation/native';
-import React, { createContext, useContext, useEffect } from 'react';
+import { StatusBarTheme, Themes, THEMES, ThemesVariant } from '@/styles/themes';
+import clsx from 'clsx';
+import { StatusBar } from 'expo-status-bar';
+import { createContext, useCallback, useContext } from 'react';
+import { View, ViewProps } from 'react-native';
 
-interface ThemeContextType {
-  isDark: boolean;
-  toggleTheme: () => void;
-}
+type ThemeContextValues = {
+  theme: ThemesVariant;
+};
 
-const ThemeContext = createContext<ThemeContextType>({
-  isDark: false,
-  toggleTheme: () => {},
+const ThemeProviderValues = createContext<ThemeContextValues>({
+  theme: THEMES.light,
 });
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
+export function useThemeContextValues() {
+  return useContext(ThemeProviderValues);
+}
+
+type ThemeContextActions = {
+  handleThemeSwitch: (newTheme: ThemesVariant) => void;
 };
 
-const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const { theme, toggleTheme } = useThemeStore();
-  const { setColorScheme } = useColorScheme();
-  const isDark = theme === 'dark';
+const ThemeProviderActions = createContext<ThemeContextActions>(
+  {} as ThemeContextActions,
+);
 
-  // Sync NativeWind theme with our persisted theme
-  useEffect(() => {
-    setColorScheme(theme);
-  }, [theme, setColorScheme]);
+export function useThemeContextActions() {
+  return useContext(ThemeProviderActions);
+}
 
-  const themeContextValue = {
-    isDark,
-    toggleTheme,
-  };
+type ThemeProps = ViewProps;
+
+export function ThemeProvider(props: ThemeProps) {
+  const { currentTheme, changeTheme } = useThemeStore();
+
+  const handleThemeSwitch = useCallback(
+    (newTheme: ThemesVariant) => {
+      changeTheme(newTheme);
+    },
+    [changeTheme],
+  );
 
   return (
-    <ThemeContext.Provider value={themeContextValue}>
-      <NavigationThemeProvider value={isDark ? DARK_THEME : LIGHT_THEME}>
-        {children}
-      </NavigationThemeProvider>
-    </ThemeContext.Provider>
+    <View
+      style={[Themes[currentTheme], { direction: 'ltr' }]}
+      className={clsx('flex-1', props.className)}
+    >
+      <ThemeProviderValues.Provider value={{ theme: currentTheme }}>
+        <ThemeProviderActions.Provider value={{ handleThemeSwitch }}>
+          <StatusBar
+            style={StatusBarTheme[currentTheme]?.style}
+            backgroundColor={StatusBarTheme[currentTheme]?.background}
+          />
+          {props.children}
+        </ThemeProviderActions.Provider>
+      </ThemeProviderValues.Provider>
+    </View>
   );
-};
-
-export default ThemeProvider;
+}

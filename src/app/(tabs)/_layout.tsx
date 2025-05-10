@@ -11,20 +11,20 @@ export default function TabLayout() {
       <TabSlot />
       <TabList
         className={cn(
-          'absolute bottom-9 self-center flex-row justify-evenly blur-3xl backdrop-blur-3xl rounded-full shadow-2xl p-0.5 transition-all duration-500',
+          'absolute bottom-9 self-center flex-row justify-evenly blur-3xl backdrop-blur-3xl rounded-full p-0.5 transition-all duration-500 drop-shadow-2xl',
           isScrollingDown
             ? 'bg-foreground/5 opacity-30'
-            : 'bg-foreground/15 opacity-100',
+            : 'bg-foreground/10 opacity-100',
         )}
       >
-        <TabTrigger name="third" href="/third" asChild>
-          <TabButton icon="Settings">Settings</TabButton>
+        <TabTrigger name="Home" href="/" asChild>
+          <TabButton icon="Home">Home</TabButton>
         </TabTrigger>
         <TabTrigger name="second" href="/second" asChild>
           <TabButton icon="Calendar">Calendar</TabButton>
         </TabTrigger>
-        <TabTrigger name="Home" href="/" asChild>
-          <TabButton icon="Home">Home</TabButton>
+        <TabTrigger name="third" href="/third" asChild>
+          <TabButton icon="Settings">Settings</TabButton>
         </TabTrigger>
       </TabList>
     </Tabs>
