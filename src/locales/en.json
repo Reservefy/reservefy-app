@@ -29,6 +29,9 @@
     "emailPlaceholder": "Enter your email",
     "password": "Password",
     "passwordPlaceholder": "Enter your password",
+    "confirmPassword": "Confirm Password",
+    "newPasswordPlaceholder": "Enter new password",
+    "confirmPasswordPlaceholder": "Confirm new password",
     "verificationCode": "Verification Code",
     "codePlaceholder": "Enter the 6 digit code",
     "login": {
@@ -46,6 +49,11 @@
       "verify": "Verify",
       "resend": "Resend",
       "resending": "Resending..."
+    },
+    "resetPwd": {
+      "title": "Reset Password",
+      "subtitle": "Enter your new password",
+      "submit": "Reset Password"
     }
   },
   "zod": {
