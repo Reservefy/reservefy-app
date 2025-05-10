@@ -27,7 +27,7 @@ export default function ResetPwdScreen() {
 
   const handleResetPassword = async (data: ResetPwdFormType) => {
     // TODO: Implement reset password logic
-    router.push('/(auth)/login');
+    router.dismissTo('/(auth)/success?type=reset-pwd');
   };
 
   return (

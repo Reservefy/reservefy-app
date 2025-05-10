@@ -54,6 +54,17 @@
       "title": "Reset Password",
       "subtitle": "Enter your new password",
       "submit": "Reset Password"
+    },
+    "success": {
+      "reset-pwd": {
+        "title": "Password Reset Successfully",
+        "subtitle": "Your password has been reset. You can now login with your new password."
+      },
+      "register": {
+        "title": "Registration Successful",
+        "subtitle": "Your account has been created. You can now login with your credentials."
+      },
+      "backToLogin": "Back to Login"
     }
   },
   "zod": {
