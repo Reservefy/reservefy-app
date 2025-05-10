@@ -8,6 +8,7 @@ import {
   Check,
   CheckCircle,
   ChevronDown,
+  ChevronUp,
   Clock,
   Home,
   Info,
@@ -55,6 +56,7 @@ const icons = {
   Sun,
   MoonStar,
   List,
+  ChevronUp,
 };
 
 Object.values(icons).forEach(iconWithClassName);
@@ -86,6 +88,7 @@ const Icons = {
   User,
   Users,
   X,
+  ChevronUp,
 } as const;
 
 export type Icon = keyof typeof Icons;
