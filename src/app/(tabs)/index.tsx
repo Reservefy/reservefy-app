@@ -49,6 +49,11 @@ export default function HomeScreen() {
               <Text>Navigate to auth</Text>
             </Button>
           </Link>
+          <Link href="/(auth)/success" asChild>
+            <Button>
+              <Text>Navigate to success</Text>
+            </Button>
+          </Link>
           <Button variant="secondary">
             <Text>secondary</Text>
           </Button>

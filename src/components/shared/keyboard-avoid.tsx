@@ -9,9 +9,9 @@ import {
 function KeyboardAvoid({ children }: { children: React.ReactNode }) {
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 30 : 120}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 30 : 0}
     >
       <ScrollView
         bounces={false}

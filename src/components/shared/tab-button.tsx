@@ -6,7 +6,7 @@ import { useScrollStore } from '@/stores/useScrollStore';
 import * as Haptics from 'expo-haptics';
 import { TabTriggerSlotProps } from 'expo-router/ui';
 import React, { useCallback } from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, Platform } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   withDelay,
@@ -60,7 +60,15 @@ export function TabButton({ isFocused, icon, children, ...props }: Props) {
   const Icon = Icons[icon];
 
   const handlePressIn = useCallback(() => {
-    Haptics.selectionAsync();
+    try {
+      if (Platform.OS === 'ios') {
+        Haptics.selectionAsync();
+      } else {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      }
+    } catch (error) {
+      console.warn('Haptics not available:', error);
+    }
     useScrollStore.setState({ isScrollingDown: false });
   }, []);
 

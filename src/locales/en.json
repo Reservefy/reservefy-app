@@ -34,6 +34,8 @@
     "confirmPasswordPlaceholder": "Confirm new password",
     "verificationCode": "Verification Code",
     "codePlaceholder": "Enter the 6 digit code",
+    "phone": "Phone Number",
+    "phonePlaceholder": "Enter your phone number",
     "login": {
       "title": "Login",
       "subtitle": "Please enter your credentials to login",
@@ -54,6 +56,17 @@
       "title": "Reset Password",
       "subtitle": "Enter your new password",
       "submit": "Reset Password"
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Sign up to start using the app",
+      "withEmail": "Register with Email",
+      "withPhone": "Register with Phone",
+      "alreadyHaveAccount": "Already have an account?",
+      "login": "Login",
+      "submit": "Create Account",
+      "emailTab": "Email",
+      "phoneTab": "Phone"
     },
     "success": {
       "reset-pwd": {
@@ -178,6 +191,17 @@
       "never": "never",
       "map": "map",
       "set": "set"
+    },
+    "custom": {
+      "required": "Please enter required info.",
+      "email_required": "Enter your email address.",
+      "email_invalid": "Please enter the correct email format.",
+      "email_registered": "This email is already registered.",
+      "password_invalid": "Enter at least 8 characters, including uppercase & lowercase letters, numbers, and special characters.",
+      "password_required": "Enter your password.",
+      "confirm_password_required": "Enter your confirm password.",
+      "confirm_password_mismatch": "Password does not match.",
+      "confirm_password_invalid": "Password confirmation must match the password format"
     }
   }
 }

@@ -9,14 +9,8 @@ export default function Layout() {
         animationDuration: 50,
         presentation: Platform.OS === 'ios' ? 'modal' : 'card',
         animation: 'slide_from_bottom',
-        animationTypeForReplace: 'push',
         keyboardHandlingEnabled: true,
       }}
-    >
-      <Stack.Screen
-        name="success"
-        options={{ headerShown: false, gestureEnabled: false }}
-      />
-    </Stack>
+    />
   );
 }

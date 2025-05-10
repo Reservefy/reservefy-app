@@ -76,7 +76,7 @@ export default function LoginScreen() {
           </Button>
         </View>
 
-        <View className="justify-center items-center">
+        <View className="justify-center items-center mt-4">
           <TouchableOpacity onPress={() => router.push('/(auth)/forgot-pwd')}>
             <Text className="font-primary underline text-sm">
               {t('auth.login.forgotPassword')}
