@@ -1,4 +1,5 @@
 import { Control, FieldValues, Path } from 'react-hook-form';
+import { KeyboardType, ReturnKeyType } from 'react-native';
 
 export type TOption = {
   label: string;
@@ -16,4 +17,6 @@ export interface BaseFieldProps<T extends FieldValues> {
   options?: TOption[];
   fieldType: FormFieldType;
   message?: string | React.ReactNode;
+  keyboard?: KeyboardType;
+  returnKeyType?: ReturnKeyType;
 }

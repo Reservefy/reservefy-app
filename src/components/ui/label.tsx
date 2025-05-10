@@ -1,17 +1,26 @@
+import Icons from '@/lib/icons';
 import { cn } from '@/lib/utils';
 import * as LabelPrimitive from '@rn-primitives/label';
 import * as React from 'react';
 
 const Label = React.forwardRef<
   LabelPrimitive.TextRef,
-  LabelPrimitive.TextProps
+  LabelPrimitive.TextProps & { required?: boolean }
 >(
   (
-    { className, onPress, onLongPress, onPressIn, onPressOut, ...props },
+    {
+      className,
+      onPress,
+      onLongPress,
+      onPressIn,
+      onPressOut,
+      required,
+      ...props
+    },
     ref,
   ) => (
     <LabelPrimitive.Root
-      className="web:cursor-default"
+      className="web:cursor-default "
       onPress={onPress}
       onLongPress={onLongPress}
       onPressIn={onPressIn}
@@ -20,11 +29,18 @@ const Label = React.forwardRef<
       <LabelPrimitive.Text
         ref={ref}
         className={cn(
-          'font-body text-foreground native:text-base font-semibold leading-none web:peer-disabled:cursor-not-allowed web:peer-disabled:opacity-70',
+          'text-body font-medium text-foreground relative web:peer-disabled:cursor-not-allowed web:peer-disabled:opacity-70',
           className,
         )}
-        {...props}
-      />
+      >
+        {props.children}
+        {required && (
+          <Icons.Asterisk
+            size={10}
+            className="absolute right-0 top-0 -translate-y-[70%] text-destructive"
+          />
+        )}
+      </LabelPrimitive.Text>
     </LabelPrimitive.Root>
   ),
 );

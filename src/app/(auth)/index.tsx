@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { View } from 'react-native';
 
 export default function LoginScreen() {
-  const { control, handleSubmit } = useForm<LoginFormType>({
+  const { control, handleSubmit, formState } = useForm<LoginFormType>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
@@ -28,6 +28,8 @@ export default function LoginScreen() {
         placeholder="Enter email"
         message="Please enter your email"
         fieldType={FormFieldType.INPUT}
+        keyboard="email-address"
+        returnKeyType="next"
         required
       />
 
@@ -37,6 +39,7 @@ export default function LoginScreen() {
         label="Password"
         placeholder="Enter password"
         fieldType={FormFieldType.PASSWORD}
+        returnKeyType="done"
         required
       />
 

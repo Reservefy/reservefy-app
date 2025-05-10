@@ -1,5 +1,6 @@
 import {
   AlertCircle,
+  Asterisk,
   Ban,
   Bell,
   Calendar,
@@ -57,6 +58,7 @@ const icons = {
   MoonStar,
   List,
   ChevronUp,
+  Asterisk,
 };
 
 Object.values(icons).forEach(iconWithClassName);
@@ -89,6 +91,7 @@ const Icons = {
   Users,
   X,
   ChevronUp,
+  Asterisk,
 } as const;
 
 export type Icon = keyof typeof Icons;
