@@ -5,6 +5,7 @@ import { ThemeToggle } from '@/components/shared/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Text } from '@/components/ui/text';
 import { useYScroll } from '@/hooks/common/useYScoll';
+import { Link } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -43,9 +44,11 @@ export default function HomeScreen() {
           <Text className="font-subtitle text-secondary">Subtitle</Text>
           <Text className="font-body text-foreground">Body text</Text>
           <Text className="font-caption text-destructive">Caption</Text>
-          <Button>
-            <Text>Default</Text>
-          </Button>
+          <Link href="/(auth)" asChild>
+            <Button>
+              <Text>Navigate to auth</Text>
+            </Button>
+          </Link>
           <Button variant="secondary">
             <Text>secondary</Text>
           </Button>
