@@ -1,150 +1,213 @@
 {
   "CFBundleDisplayName": "Reservefy",
-  "NSContactsUsageDescription": "Allow $(CFBundleDisplayName) to access your contacts",
+  "NSContactsUsageDescription": "Разрешить $(CFBundleDisplayName) доступ к вашим контактам",
   "common": {
-    "theme": "Theme",
+    "theme": "Тема",
     "themes": {
-      "light": "Light",
-      "dark": "Dark",
-      "system": "System"
+      "light": "Светлая",
+      "dark": "Тёмная",
+      "system": "Системная"
     },
     "languages": {
       "en-US": "English",
       "ru-RU": "Русский",
       "uz-UZ": "Oʻzbekcha"
     },
-    "welcome": "Welcome",
-    "login": "Login",
-    "signup": "Sign Up",
-    "email": "Email",
-    "password": "Password",
-    "submit": "Submit",
-    "cancel": "Cancel",
-    "save": "Save",
-    "delete": "Delete",
-    "edit": "Edit",
-    "loading": "Loading...",
-    "error": "Error",
-    "success": "Success",
-    "test": "Russian name {{name}}"
+    "buttons": {
+      "login": "Войти",
+      "register": "Зарегистрироваться",
+      "forgotPassword": "Забыли пароль?",
+      "back": "Назад",
+      "submit": "Отправить",
+      "send": "Отправить"
+    },
+    "tabs": {
+      "home": "Главная",
+      "profile": "Профиль",
+      "calendar": "Календарь",
+      "settings": "Настройки"
+    }
   },
   "auth": {
-    "loginTitle": "Login to your account",
-    "signupTitle": "Create new account",
-    "forgotPassword": "Forgot Password?",
-    "rememberMe": "Remember me"
+    "username": "Имя пользователя",
+    "usernamePlaceholder": "Введите имя пользователя",
+    "email": "Электронная почта",
+    "emailPlaceholder": "Введите адрес электронной почты",
+    "password": "Пароль",
+    "passwordPlaceholder": "Введите пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "newPasswordPlaceholder": "Введите новый пароль",
+    "confirmPasswordPlaceholder": "Подтвердите новый пароль",
+    "verificationCode": "Код подтверждения",
+    "codePlaceholder": "Введите 6-значный код",
+    "phone": "Номер телефона",
+    "phonePlaceholder": "Введите номер телефона",
+    "login": {
+      "title": "Вход",
+      "subtitle": "Пожалуйста, введите свои учетные данные для входа",
+      "noAccount": "Нет аккаунта? ",
+      "register": "Зарегистрироваться",
+      "forgotPassword": "Забыли пароль?"
+    },
+    "forgotPwd": {
+      "title": "Забыли пароль",
+      "subtitle": "Введите адрес электронной почты, связанный с вашей учетной записью",
+      "sendCode": "Отправить код",
+      "backToLogin": "Вернуться к входу",
+      "verify": "Подтвердить",
+      "resend": "Отправить повторно",
+      "resending": "Повторная отправка..."
+    },
+    "resetPwd": {
+      "title": "Сброс пароля",
+      "subtitle": "Введите новый пароль",
+      "submit": "Сбросить пароль"
+    },
+    "register": {
+      "title": "Создать аккаунт",
+      "subtitle": "Зарегистрируйтесь, чтобы начать использовать приложение",
+      "withEmail": "Зарегистрироваться с помощью электронной почты",
+      "withPhone": "Зарегистрироваться с помощью телефона",
+      "alreadyHaveAccount": "Уже есть аккаунт?",
+      "login": "Войти",
+      "submit": "Создать аккаунт",
+      "emailTab": "Электронная почта",
+      "phoneTab": "Телефон"
+    },
+    "success": {
+      "reset-pwd": {
+        "title": "Пароль успешно сброшен",
+        "subtitle": "Ваш пароль был сброшен. Теперь вы можете войти с новым паролем."
+      },
+      "register": {
+        "title": "Регистрация успешна",
+        "subtitle": "Ваш аккаунт был создан. Теперь вы можете войти, используя свои учетные данные."
+      },
+      "backToLogin": "Вернуться к входу"
+    }
   },
   "zod": {
     "errors": {
-      "invalid_type": "Expected {{expected}}, received {{received}}",
-      "invalid_type_received_undefined": "Required",
-      "invalid_type_received_null": "Required",
-      "invalid_literal": "Invalid literal value, expected {{expected}}",
-      "unrecognized_keys": "Unrecognized key(s) in object: {{- keys}}",
-      "invalid_union": "Invalid input",
-      "invalid_union_discriminator": "Invalid discriminator value. Expected {{- options}}",
-      "invalid_enum_value": "Invalid enum value. Expected {{- options}}, received '{{received}}'",
-      "invalid_arguments": "Invalid function arguments",
-      "invalid_return_type": "Invalid function return type",
-      "invalid_date": "Invalid date",
-      "custom": "Invalid input",
-      "invalid_intersection_types": "Intersection results could not be merged",
-      "not_multiple_of": "Number must be a multiple of {{multipleOf}}",
-      "not_finite": "Number must be finite",
+      "invalid_type": "Ожидалось {{expected}}, получено {{received}}",
+      "invalid_type_received_undefined": "Обязательное поле",
+      "invalid_type_received_null": "Обязательное поле",
+      "invalid_literal": "Недопустимое буквальное значение, ожидалось {{expected}}",
+      "unrecognized_keys": "Неизвестные ключи в объекте: {{- keys}}",
+      "invalid_union": "Недопустимый ввод",
+      "invalid_union_discriminator": "Недопустимое значение дискриминатора. Ожидалось {{- options}}",
+      "invalid_enum_value": "Недопустимое значение перечисления. Ожидалось {{- options}}, получено '{{received}}'",
+      "invalid_arguments": "Недопустимые аргументы функции",
+      "invalid_return_type": "Недопустимый тип возвращаемого значения функции",
+      "invalid_date": "Недопустимая дата",
+      "custom": "Недопустимый ввод",
+      "invalid_intersection_types": "Результаты пересечения не могут быть объединены",
+      "not_multiple_of": "Число должно быть кратно {{multipleOf}}",
+      "not_finite": "Число должно быть конечным",
       "invalid_string": {
-        "email": "Please enter valid {{validation}}",
-        "url": "Invalid {{validation}}",
-        "uuid": "Invalid {{validation}}",
-        "cuid": "Invalid {{validation}}",
-        "regex": "Invalid",
-        "datetime": "Invalid {{validation}}",
-        "startsWith": "Invalid input: must start with \"{{startsWith}}\"",
-        "endsWith": "Invalid input: must end with \"{{endsWith}}\""
+        "email": "Пожалуйста, введите действительный {{validation}}",
+        "url": "Недопустимый {{validation}}",
+        "uuid": "Недопустимый {{validation}}",
+        "cuid": "Недопустимый {{validation}}",
+        "regex": "Недопустимый",
+        "datetime": "Недопустимый {{validation}}",
+        "startsWith": "Недопустимый ввод: должен начинаться с \"{{startsWith}}\"",
+        "endsWith": "Недопустимый ввод: должен заканчиваться на \"{{endsWith}}\""
       },
       "too_small": {
         "array": {
-          "exact": "Array must contain exactly {{minimum}} element(s)",
-          "inclusive": "Array must contain at least {{minimum}} element(s)",
-          "not_inclusive": "Array must contain more than {{minimum}} element(s)"
+          "exact": "Массив должен содержать ровно {{minimum}} элемент(ов)",
+          "inclusive": "Массив должен содержать не менее {{minimum}} элемент(ов)",
+          "not_inclusive": "Массив должен содержать более {{minimum}} элемент(ов)"
         },
         "string": {
-          "exact": "String must contain exactly {{minimum}} character(s)",
-          "inclusive": "String must contain at least {{minimum}} character(s)",
-          "not_inclusive": "String must contain over {{minimum}} character(s)"
+          "exact": "Строка должна содержать ровно {{minimum}} символ(ов)",
+          "inclusive": "Строка должна содержать не менее {{minimum}} символ(ов)",
+          "not_inclusive": "Строка должна содержать более {{minimum}} символ(ов)"
         },
         "number": {
-          "exact": "Number must be exactly {{minimum}}",
-          "inclusive": "Number must be greater than or equal to {{minimum}}",
-          "not_inclusive": "Number must be greater than {{minimum}}"
+          "exact": "Число должно быть ровно {{minimum}}",
+          "inclusive": "Число должно быть больше или равно {{minimum}}",
+          "not_inclusive": "Число должно быть больше {{minimum}}"
         },
         "set": {
-          "exact": "Invalid input",
-          "inclusive": "Invalid input",
-          "not_inclusive": "Invalid input"
+          "exact": "Недопустимый ввод",
+          "inclusive": "Недопустимый ввод",
+          "not_inclusive": "Недопустимый ввод"
         },
         "date": {
-          "exact": "Date must be exactly {{- minimum, datetime}}",
-          "inclusive": "Date must be greater than or equal to {{- minimum, datetime}}",
-          "not_inclusive": "Date must be greater than {{- minimum, datetime}}"
+          "exact": "Дата должна быть ровно {{- minimum, datetime}}",
+          "inclusive": "Дата должна быть больше или равна {{- minimum, datetime}}",
+          "not_inclusive": "Дата должна быть больше {{- minimum, datetime}}"
         }
       },
       "too_big": {
         "array": {
-          "exact": "Array must contain exactly {{maximum}} element(s)",
-          "inclusive": "Array must contain at most {{maximum}} element(s)",
-          "not_inclusive": "Array must contain less than {{maximum}} element(s)"
+          "exact": "Массив должен содержать ровно {{maximum}} элемент(ов)",
+          "inclusive": "Массив должен содержать не более {{maximum}} элемент(ов)",
+          "not_inclusive": "Массив должен содержать менее {{maximum}} элемент(ов)"
         },
         "string": {
-          "exact": "String must contain exactly {{maximum}} character(s)",
-          "inclusive": "String must contain at most {{maximum}} character(s)",
-          "not_inclusive": "String must contain under {{maximum}} character(s)"
+          "exact": "Строка должна содержать ровно {{maximum}} символ(ов)",
+          "inclusive": "Строка должна содержать не более {{maximum}} символ(ов)",
+          "not_inclusive": "Строка должна содержать менее {{maximum}} символ(ов)"
         },
         "number": {
-          "exact": "Number must be exactly {{maximum}}",
-          "inclusive": "Number must be less than or equal to {{maximum}}",
-          "not_inclusive": "Number must be less than {{maximum}}"
+          "exact": "Число должно быть ровно {{maximum}}",
+          "inclusive": "Число должно быть меньше или равно {{maximum}}",
+          "not_inclusive": "Число должно быть меньше {{maximum}}"
         },
         "set": {
-          "exact": "Invalid input",
-          "inclusive": "Invalid input",
-          "not_inclusive": "Invalid input"
+          "exact": "Недопустимый ввод",
+          "inclusive": "Недопустимый ввод",
+          "not_inclusive": "Недопустимый ввод"
         },
         "date": {
-          "exact": "Date must be exactly {{- maximum, datetime}}",
-          "inclusive": "Date must be smaller than or equal to {{- maximum, datetime}}",
-          "not_inclusive": "Date must be smaller than {{- maximum, datetime}}"
+          "exact": "Дата должна быть ровно {{- maximum, datetime}}",
+          "inclusive": "Дата должна быть меньше или равна {{- maximum, datetime}}",
+          "not_inclusive": "Дата должна быть меньше {{- maximum, datetime}}"
         }
       }
     },
     "validations": {
-      "email": "email",
-      "url": "url",
-      "uuid": "uuid",
-      "cuid": "cuid",
-      "regex": "regex",
-      "datetime": "datetime"
+      "email": "электронная почта",
+      "url": "URL",
+      "uuid": "UUID",
+      "cuid": "CUID",
+      "regex": "регулярное выражение",
+      "datetime": "дата и время"
     },
     "types": {
-      "function": "function",
-      "number": "number",
-      "string": "string",
-      "nan": "nan",
-      "integer": "integer",
-      "float": "float",
-      "boolean": "boolean",
-      "date": "date",
-      "bigint": "bigint",
-      "undefined": "undefined",
-      "symbol": "symbol",
+      "function": "функция",
+      "number": "число",
+      "string": "строка",
+      "nan": "не число",
+      "integer": "целое число",
+      "float": "число с плавающей точкой",
+      "boolean": "логическое значение",
+      "date": "дата",
+      "bigint": "большое число",
+      "undefined": "неопределено",
+      "symbol": "символ",
       "null": "null",
-      "array": "array",
-      "object": "object",
-      "unknown": "unknown",
-      "promise": "promise",
-      "void": "void",
-      "never": "never",
-      "map": "map",
-      "set": "set"
+      "array": "массив",
+      "object": "объект",
+      "unknown": "неизвестно",
+      "promise": "обещание",
+      "void": "пусто",
+      "never": "никогда",
+      "map": "карта",
+      "set": "набор"
+    },
+    "custom": {
+      "required": "Пожалуйста, введите необходимую информацию.",
+      "email_required": "Введите адрес электронной почты.",
+      "email_invalid": "Пожалуйста, введите корректный формат электронной почты.",
+      "email_registered": "Этот адрес электронной почты уже зарегистрирован.",
+      "password_invalid": "Введите не менее 8 символов, включая заглавные и строчные буквы, цифры и специальные символы.",
+      "password_required": "Введите пароль.",
+      "confirm_password_required": "Введите подтверждение пароля.",
+      "confirm_password_mismatch": "Пароли не совпадают.",
+      "confirm_password_invalid": "Подтверждение пароля должно соответствовать формату пароля"
     }
   }
 }

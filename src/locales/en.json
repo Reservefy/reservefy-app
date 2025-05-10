@@ -20,6 +20,12 @@
       "back": "Back",
       "submit": "Submit",
       "send": "Send"
+    },
+    "tabs": {
+      "home": "Home",
+      "profile": "Profile",
+      "calendar": "Calendar",
+      "settings": "Settings"
     }
   },
   "auth": {

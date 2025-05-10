@@ -1,12 +1,12 @@
 {
   "CFBundleDisplayName": "Reservefy",
-  "NSContactsUsageDescription": "Allow $(CFBundleDisplayName) to access your contacts",
+  "NSContactsUsageDescription": "$(CFBundleDisplayName) ilovasiga kontaktlaringizga kirishga ruxsat bering",
   "common": {
-    "theme": "Theme",
+    "theme": "Mavzu",
     "themes": {
-      "light": "Light",
-      "dark": "Dark",
-      "system": "System"
+      "light": "Yorugʻ",
+      "dark": "Qorongʻi",
+      "system": "Tizim"
     },
     "languages": {
       "en-US": "English",
@@ -14,141 +14,200 @@
       "uz-UZ": "Oʻzbekcha"
     },
     "buttons": {
-      "login": "Login",
-      "register": "Register",
-      "forgotPassword": "Forgot Password?",
-      "back": "Back",
-      "submit": "Submit",
-      "send": "Send",
-      "resend": "Resend"
+      "login": "Kirish",
+      "register": "Roʻyxatdan oʻtish",
+      "forgotPassword": "Parolni unutdingizmi?",
+      "back": "Orqaga",
+      "submit": "Yuborish",
+      "send": "Joʻnatish"
+    },
+    "tabs": {
+      "home": "Boshlash",
+      "profile": "Profil",
+      "calendar": "Kalender",
+      "settings": "Sozlamalar"
     }
   },
   "auth": {
-    "username": "Username",
-    "usernamePlaceholder": "Enter your username",
-    "email": "Email",
-    "emailPlaceholder": "Enter your email",
-    "password": "Password",
-    "passwordPlaceholder": "Enter your password",
+    "username": "Foydalanuvchi nomi",
+    "usernamePlaceholder": "Foydalanuvchi nomingizni kiriting",
+    "email": "Elektron pochta",
+    "emailPlaceholder": "Elektron pochtangizni kiriting",
+    "password": "Parol",
+    "passwordPlaceholder": "Parolingizni kiriting",
+    "confirmPassword": "Parolni tasdiqlang",
+    "newPasswordPlaceholder": "Yangi parolni kiriting",
+    "confirmPasswordPlaceholder": "Yangi parolni tasdiqlang",
+    "verificationCode": "Tasdiqlash kodi",
+    "codePlaceholder": "6 xonali kodni kiriting",
+    "phone": "Telefon raqami",
+    "phonePlaceholder": "Telefon raqamingizni kiriting",
     "login": {
-      "title": "Login",
-      "subtitle": "Please enter your credentials to login",
-      "noAccount": "Don't have an account? ",
-      "register": "Register",
-      "forgotPassword": "Forgot Password?"
+      "title": "Kirish",
+      "subtitle": "Kirish uchun ma'lumotlaringizni kiriting",
+      "noAccount": "Hisobingiz yoʻqmi? ",
+      "register": "Roʻyxatdan oʻtish",
+      "forgotPassword": "Parolni unutdingizmi?"
+    },
+    "forgotPwd": {
+      "title": "Parolni unutdingiz",
+      "subtitle": "Hisobingiz bilan bogʻlangan elektron pochtani kiriting",
+      "sendCode": "Kod yuborish",
+      "backToLogin": "Kirishga qaytish",
+      "verify": "Tasdiqlash",
+      "resend": "Qayta yuborish",
+      "resending": "Qayta yuborilmoqda..."
+    },
+    "resetPwd": {
+      "title": "Parolni tiklash",
+      "subtitle": "Yangi parolingizni kiriting",
+      "submit": "Parolni tiklash"
+    },
+    "register": {
+      "title": "Hisob yaratish",
+      "subtitle": "Ilovadan foydalanishni boshlash uchun roʻyxatdan oʻting",
+      "withEmail": "Elektron pochta bilan roʻyxatdan oʻtish",
+      "withPhone": "Telefon bilan roʻyxatdan oʻtish",
+      "alreadyHaveAccount": "Allaqachon hisobingiz bormi?",
+      "login": "Kirish",
+      "submit": "Hisob yaratish",
+      "emailTab": "Elektron pochta",
+      "phoneTab": "Telefon"
+    },
+    "success": {
+      "reset-pwd": {
+        "title": "Parol muvaffaqiyatli tiklandi",
+        "subtitle": "Parolingiz tiklandi. Endi yangi parolingiz bilan kirishingiz mumkin."
+      },
+      "register": {
+        "title": "Roʻyxatdan oʻtish muvaffaqiyatli",
+        "subtitle": "Hisobingiz yaratildi. Endi ma'lumotlaringiz bilan kirishingiz mumkin."
+      },
+      "backToLogin": "Kirishga qaytish"
     }
   },
   "zod": {
     "errors": {
-      "invalid_type": "Expected {{expected}}, received {{received}}",
-      "invalid_type_received_undefined": "Required",
-      "invalid_type_received_null": "Required",
-      "invalid_literal": "Invalid literal value, expected {{expected}}",
-      "unrecognized_keys": "Unrecognized key(s) in object: {{- keys}}",
-      "invalid_union": "Invalid input",
-      "invalid_union_discriminator": "Invalid discriminator value. Expected {{- options}}",
-      "invalid_enum_value": "Invalid enum value. Expected {{- options}}, received '{{received}}'",
-      "invalid_arguments": "Invalid function arguments",
-      "invalid_return_type": "Invalid function return type",
-      "invalid_date": "Invalid date",
-      "custom": "Invalid input",
-      "invalid_intersection_types": "Intersection results could not be merged",
-      "not_multiple_of": "Number must be a multiple of {{multipleOf}}",
-      "not_finite": "Number must be finite",
+      "invalid_type": "Kutilgan: {{expected}}, olingan: {{received}}",
+      "invalid_type_received_undefined": "Majburiy",
+      "invalid_type_received_null": "Majburiy",
+      "invalid_literal": "Notoʻgʻri literal qiymat, kutilgan: {{expected}}",
+      "unrecognized_keys": "Obyektda tanilmagan kalit(lar): {{- keys}}",
+      "invalid_union": "Notoʻgʻri kiritish",
+      "invalid_union_discriminator": "Notoʻgʻri ajratuvchi qiymati. Kutilgan: {{- options}}",
+      "invalid_enum_value": "Notoʻgʻri enum qiymati. Kutilgan: {{- options}}, olingan: '{{received}}'",
+      "invalid_arguments": "Notoʻgʻri funksiya argumentlari",
+      "invalid_return_type": "Notoʻgʻri funksiya qaytish turi",
+      "invalid_date": "Notoʻgʻri sana",
+      "custom": "Notoʻgʻri kiritish",
+      "invalid_intersection_types": "Kesishma natijalari birlashtirib boʻlmadi",
+      "not_multiple_of": "Raqam {{multipleOf}} ga koʻpaytmasi boʻlishi kerak",
+      "not_finite": "Raqam cheksiz boʻlmasligi kerak",
       "invalid_string": {
-        "email": "Please enter valid {{validation}}",
-        "url": "Invalid {{validation}}",
-        "uuid": "Invalid {{validation}}",
-        "cuid": "Invalid {{validation}}",
-        "regex": "Invalid",
-        "datetime": "Invalid {{validation}}",
-        "startsWith": "Invalid input: must start with \"{{startsWith}}\"",
-        "endsWith": "Invalid input: must end with \"{{endsWith}}\""
+        "email": "Iltimos, toʻgʻri {{validation}} kiriting",
+        "url": "Notoʻgʻri {{validation}}",
+        "uuid": "Notoʻgʻri {{validation}}",
+        "cuid": "Notoʻgʻri {{validation}}",
+        "regex": "Notoʻgʻri",
+        "datetime": "Notoʻgʻri {{validation}}",
+        "startsWith": "Notoʻgʻri kiritish: \"{{startsWith}}\" bilan boshlanishi kerak",
+        "endsWith": "Notoʻgʻri kiritish: \"{{endsWith}}\" bilan tugashi kerak"
       },
       "too_small": {
         "array": {
-          "exact": "Array must contain exactly {{minimum}} element(s)",
-          "inclusive": "Array must contain at least {{minimum}} element(s)",
-          "not_inclusive": "Array must contain more than {{minimum}} element(s)"
+          "exact": "Massiv aynan {{minimum}} element(lar)ni oʻz ichiga olishi kerak",
+          "inclusive": "Massiv kamida {{minimum}} element(lar)ni oʻz ichiga olishi kerak",
+          "not_inclusive": "Massiv {{minimum}} element(lar)dan koʻproq boʻlishi kerak"
         },
         "string": {
-          "exact": "String must contain exactly {{minimum}} character(s)",
-          "inclusive": "String must contain at least {{minimum}} character(s)",
-          "not_inclusive": "String must contain over {{minimum}} character(s)"
+          "exact": "Satr aynan {{minimum}} belgi(lar)ni oʻz ichiga olishi kerak",
+          "inclusive": "Satr kamida {{minimum}} belgi(lar)ni oʻz ichiga olishi kerak",
+          "not_inclusive": "Satr {{minimum}} belgi(lar)dan koʻproq boʻlishi kerak"
         },
         "number": {
-          "exact": "Number must be exactly {{minimum}}",
-          "inclusive": "Number must be greater than or equal to {{minimum}}",
-          "not_inclusive": "Number must be greater than {{minimum}}"
+          "exact": "Raqam aynan {{minimum}} boʻlishi kerak",
+          "inclusive": "Raqam {{minimum}} dan katta yoki teng boʻlishi kerak",
+          "not_inclusive": "Raqam {{minimum}} dan katta boʻlishi kerak"
         },
         "set": {
-          "exact": "Invalid input",
-          "inclusive": "Invalid input",
-          "not_inclusive": "Invalid input"
+          "exact": "Notoʻgʻri kiritish",
+          "inclusive": "Notoʻgʻri kiritish",
+          "not_inclusive": "Notoʻgʻri kiritish"
         },
         "date": {
-          "exact": "Date must be exactly {{- minimum, datetime}}",
-          "inclusive": "Date must be greater than or equal to {{- minimum, datetime}}",
-          "not_inclusive": "Date must be greater than {{- minimum, datetime}}"
+          "exact": "Sana aynan {{- minimum, datetime}} boʻlishi kerak",
+          "inclusive": "Sana {{- minimum, datetime}} dan katta yoki teng boʻlishi kerak",
+          "not_inclusive": "Sana {{- minimum, datetime}} dan katta boʻlishi kerak"
         }
       },
       "too_big": {
         "array": {
-          "exact": "Array must contain exactly {{maximum}} element(s)",
-          "inclusive": "Array must contain at most {{maximum}} element(s)",
-          "not_inclusive": "Array must contain less than {{maximum}} element(s)"
+          "exact": "Massiv aynan {{maximum}} element(lar)ni oʻz ichiga olishi kerak",
+          "inclusive": "Massiv eng koʻpi bilan {{maximum}} element(lar)ni oʻz ichiga olishi kerak",
+          "not_inclusive": "Massiv {{maximum}} element(lar)dan kam boʻlishi kerak"
         },
         "string": {
-          "exact": "String must contain exactly {{maximum}} character(s)",
-          "inclusive": "String must contain at most {{maximum}} character(s)",
-          "not_inclusive": "String must contain under {{maximum}} character(s)"
+          "exact": "Satr aynan {{maximum}} belgi(lar)ni oʻz ichiga olishi kerak",
+          "inclusive": "Satr eng koʻpi bilan {{maximum}} belgi(lar)ni oʻz ichiga olishi kerak",
+          "not_inclusive": "Satr {{maximum}} belgi(lar)dan kam boʻlishi kerak"
         },
         "number": {
-          "exact": "Number must be exactly {{maximum}}",
-          "inclusive": "Number must be less than or equal to {{maximum}}",
-          "not_inclusive": "Number must be less than {{maximum}}"
+          "exact": "Raqam aynan {{maximum}} boʻlishi kerak",
+          "inclusive": "Raqam {{maximum}} dan kichik yoki teng boʻlishi kerak",
+          "not_inclusive": "Raqam {{maximum}} dan kichik boʻlishi kerak"
         },
         "set": {
-          "exact": "Invalid input",
-          "inclusive": "Invalid input",
-          "not_inclusive": "Invalid input"
+          "exact": "Notoʻgʻri kiritish",
+          "inclusive": "Notoʻgʻri kiritish",
+          "not_inclusive": "Notoʻgʻri kiritish"
         },
         "date": {
-          "exact": "Date must be exactly {{- maximum, datetime}}",
-          "inclusive": "Date must be smaller than or equal to {{- maximum, datetime}}",
-          "not_inclusive": "Date must be smaller than {{- maximum, datetime}}"
+          "exact": "Sana aynan {{- maximum, datetime}} boʻlishi kerak",
+          "inclusive": "Sana {{- maximum, datetime}} dan kichik yoki teng boʻlishi kerak",
+          "not_inclusive": "Sana {{- maximum, datetime}} dan kichik boʻlishi kerak"
         }
       }
     },
     "validations": {
-      "email": "email",
-      "url": "url",
-      "uuid": "uuid",
-      "cuid": "cuid",
-      "regex": "regex",
-      "datetime": "datetime"
+      "email": "elektron pochta",
+      "url": "URL",
+      "uuid": "UUID",
+      "cuid": "CUID",
+      "regex": "regulyar ifoda",
+      "datetime": "sana va vaqt"
     },
     "types": {
-      "function": "function",
-      "number": "number",
-      "string": "string",
-      "nan": "nan",
-      "integer": "integer",
-      "float": "float",
-      "boolean": "boolean",
-      "date": "date",
-      "bigint": "bigint",
-      "undefined": "undefined",
-      "symbol": "symbol",
+      "function": "funksiya",
+      "number": "raqam",
+      "string": "satr",
+      "nan": "NaN",
+      "integer": "butun son",
+      "float": "suzuvchi nuqta soni",
+      "boolean": "mantiqiy",
+      "date": "sana",
+      "bigint": "katta son",
+      "undefined": "aniqlanmagan",
+      "symbol": "belgi",
       "null": "null",
-      "array": "array",
-      "object": "object",
-      "unknown": "unknown",
-      "promise": "promise",
-      "void": "void",
-      "never": "never",
-      "map": "map",
+      "array": "massiv",
+      "object": "obyekt",
+      "unknown": "noma'lum",
+      "promise": "va'da",
+      "void": "bo'sh",
+      "never": "hech qachon",
+      "map": "xarita",
       "set": "set"
+    },
+    "custom": {
+      "required": "To'ldirilishi kerak",
+      "email_required": "Email manzilini kiritishingiz kerak.",
+      "email_invalid": "Notoʻgʻri email formati.",
+      "email_registered": "Bu email allaqachon ro'yxatdan o'tilgan.",
+      "password_invalid": "Parol 8 ta belgidan kam boʻlishi boʻladi",
+      "password_required": "Parol kiritilishi kerak.",
+      "confirm_password_required": "Parolni tasdiqlang.",
+      "confirm_password_mismatch": "Parol notoʻgʻri.",
+      "confirm_password_invalid": "Parolni tasdiqlang"
     }
   }
 }
