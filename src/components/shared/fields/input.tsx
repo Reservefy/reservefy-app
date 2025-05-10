@@ -21,6 +21,7 @@ export function InputField<T extends FieldValues>(props: BaseFieldProps<T>) {
             editable={!props.disabled}
             keyboardType={props.keyboard}
             returnKeyType={props.returnKeyType}
+            autoCapitalize={props.capitalize}
           />
           {fieldState.error?.message && (
             <Text className="text-destructive mt-0.5 pl-1 font-caption">

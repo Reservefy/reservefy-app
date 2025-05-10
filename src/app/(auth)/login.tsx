@@ -7,12 +7,16 @@ import {
   loginSchema,
 } from '@/components/views/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { View } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { TouchableOpacity, View } from 'react-native';
 
 export default function LoginScreen() {
-  const { control, handleSubmit, formState } = useForm<LoginFormType>({
+  const { t } = useTranslation();
+  const router = useRouter();
+  const { control, handleSubmit } = useForm<LoginFormType>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
@@ -29,16 +33,15 @@ export default function LoginScreen() {
       <View className="main-area">
         <View className="pt-20">
           <AuthHeader
-            title="Log in"
-            subtitle="Please enter your credentials to continue"
+            title={t('auth.login.title')}
+            subtitle={t('auth.login.subtitle')}
           />
           <View className="gap-y-6 mt-10">
             <FormField
               control={control}
               name="email"
-              label="Email"
-              placeholder="Enter email"
-              message="Please enter your email"
+              label={t('auth.email')}
+              placeholder={t('auth.emailPlaceholder')}
               fieldType={FormFieldType.INPUT}
               keyboard="email-address"
               returnKeyType="next"
@@ -48,8 +51,8 @@ export default function LoginScreen() {
             <FormField
               control={control}
               name="password"
-              label="Password"
-              placeholder="Enter password"
+              label={t('auth.password')}
+              placeholder={t('auth.passwordPlaceholder')}
               fieldType={FormFieldType.PASSWORD}
               returnKeyType="done"
               required
@@ -58,8 +61,28 @@ export default function LoginScreen() {
         </View>
 
         <Button className="my-10" onPress={handleSubmit(onSubmit)}>
-          <Text>Login</Text>
+          <Text>{t('common.buttons.login')}</Text>
         </Button>
+
+        <View className="flex flex-row justify-center items-center">
+          <Text className="text-sm text-muted-foreground text-center">
+            {t('auth.login.noAccount')}
+          </Text>
+          <Button
+            variant="link"
+            onPress={() => router.push('/(auth)/register')}
+          >
+            <Text className="font-primary">{t('auth.login.register')}</Text>
+          </Button>
+        </View>
+
+        <View className="justify-center items-center">
+          <TouchableOpacity onPress={() => router.push('/(auth)/forgot-pwd')}>
+            <Text className="font-primary underline text-sm">
+              {t('auth.login.forgotPassword')}
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </KeyboardAvoid>
   );

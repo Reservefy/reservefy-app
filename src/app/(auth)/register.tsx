@@ -3,14 +3,12 @@ import { Link, useRouter } from 'expo-router';
 import React from 'react';
 import { Text, View } from 'react-native';
 
-interface IRegisterProps {}
-
-const Register: React.FC<IRegisterProps> = (props) => {
+const Register: React.FC = () => {
   const router = useRouter();
   return (
     <View>
       <Text>Register</Text>
-      <Link href="/(auth)" asChild>
+      <Link href="/(auth)/login" asChild>
         <Button>
           <Text>Navigate to login</Text>
         </Button>

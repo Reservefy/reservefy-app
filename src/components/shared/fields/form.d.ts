@@ -19,4 +19,5 @@ export interface BaseFieldProps<T extends FieldValues> {
   message?: string | React.ReactNode;
   keyboard?: KeyboardType;
   returnKeyType?: ReturnKeyType;
+  capitalize?: 'none' | 'sentences' | 'words' | 'characters';
 }

@@ -5,7 +5,7 @@ const Page = () => {
 
   if (visited) return <Redirect href="/(tabs)" />;
 
-  return <Redirect href="/(auth)" />;
+  return <Redirect href="/(auth)/login" />;
 };
 
 export default Page;

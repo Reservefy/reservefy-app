@@ -44,7 +44,7 @@ export default function HomeScreen() {
           <Text className="font-subtitle text-secondary">Subtitle</Text>
           <Text className="font-body text-foreground">Body text</Text>
           <Text className="font-caption text-destructive">Caption</Text>
-          <Link href="/(auth)" asChild>
+          <Link href="/(auth)/login" asChild>
             <Button>
               <Text>Navigate to auth</Text>
             </Button>

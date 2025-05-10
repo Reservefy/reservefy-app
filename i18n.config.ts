@@ -8,11 +8,16 @@ import enLocalization from '@/locales/en.json';
 import ruLocalization from '@/locales/ru.json';
 import uzLocalization from '@/locales/uz.json';
 
+import { z } from 'zod';
+import { makeZodI18nMap, zodI18nMap } from 'zod-i18n-map';
+
 const resources = {
-  'en-US': { translation: enLocalization },
-  'ru-RU': { translation: ruLocalization },
-  'uz-UZ': { translation: uzLocalization },
+  'en-US': { translation: enLocalization, zod: enLocalization.zod },
+  'ru-RU': { translation: ruLocalization, zod: ruLocalization.zod },
+  'uz-UZ': { translation: uzLocalization, zod: uzLocalization.zod },
 };
+
+export type Locale = keyof typeof resources;
 
 export const initI18n = async () => {
   let savedLanguage = 'en-US';
@@ -33,13 +38,20 @@ export const initI18n = async () => {
     compatibilityJSON: 'v4',
     lng: savedLanguage,
     fallbackLng: 'en-US',
+    ns: ['zod'],
+    defaultNS: 'translation',
     resources,
     interpolation: { escapeValue: false },
   });
 
+  try {
+    z.setErrorMap(makeZodI18nMap({ t: i18next.t, ns: ['zod'] }));
+  } catch (err) {
+    console.warn(err);
+    z.setErrorMap(zodI18nMap); // fallback
+  }
+
   return i18next;
 };
-
-initI18n();
 
 export default i18next;

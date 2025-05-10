@@ -1,9 +1,9 @@
-import { Button } from '@/components/ui';
+import { Button, Text } from '@/components/ui';
 import Icons from '@/lib/icons';
 import { useNavigation } from 'expo-router';
 
 import { AnimatePresence, MotiView } from 'moti';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 export function AuthHeader({
   title = 'Log in',
@@ -32,7 +32,7 @@ export function AuthHeader({
           </Button>
         )}
         <View className="flex flex-col items-start gap-y-1 mt-5">
-          <Text className="font-bold text-heading">{title}</Text>
+          <Text className="font-heading">{title}</Text>
           <Text className="font-regular text-card-foreground pl-0.5">
             {subtitle}
           </Text>
