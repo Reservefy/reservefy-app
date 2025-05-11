@@ -18,6 +18,7 @@ import {
   Clock,
   Eye,
   EyeClosed,
+  Heart,
   Home,
   Info,
   LayoutGrid,
@@ -30,7 +31,9 @@ import {
   Scissors,
   Search,
   Settings,
+  SlidersHorizontal,
   Sparkles,
+  Star,
   Stethoscope,
   Sun,
   Upload,
@@ -78,6 +81,9 @@ const icons = {
   Scissors,
   Stethoscope,
   BookOpen,
+  SlidersHorizontal,
+  Star,
+  Heart,
 };
 
 Object.values(icons).forEach(iconWithClassName);
@@ -121,6 +127,9 @@ const Icons = {
   Scissors,
   Stethoscope,
   BookOpen,
+  SlidersHorizontal,
+  Star,
+  Heart,
 } as const;
 
 export type Icon = keyof typeof Icons;

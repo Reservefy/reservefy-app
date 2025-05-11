@@ -50,9 +50,9 @@ export const LanguageToggle = () => {
   }, [currentLanguage, mounted, translateX, width]);
 
   return (
-    <View className="flex-row relative items-center rounded-full bg-muted py-1 px-2">
+    <View className="flex-row relative items-center rounded-full bg-muted">
       <Animated.View
-        className="absolute h-8 bg-primary rounded-full"
+        className="absolute h-9 bg-primary rounded-full"
         style={indicatorStyle}
       />
       {langs.map((lng) => (
@@ -66,7 +66,7 @@ export const LanguageToggle = () => {
               setMounted(true);
             }
           }}
-          className="h-8 items-center justify-center px-3"
+          className="h-9 items-center justify-center px-3"
         >
           <Text
             className={cn(

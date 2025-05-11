@@ -26,7 +26,46 @@
       "profile": "Profile",
       "calendar": "Calendar",
       "settings": "Settings"
+    },
+    "labels": {
+      "search": "Search",
+      "searchFor": "Search for {{type}}"
     }
+  },
+  "major": {
+    "barber": "Barber",
+    "hairSalon": "Hair Salon",
+    "spa": "Spa",
+    "massageTherapist": "Massage Therapist",
+    "dentist": "Dentist",
+    "generalDoctor": "General Doctor",
+    "pediatrician": "Pediatrician",
+    "dermatologist": "Dermatologist",
+    "psychologist": "Psychologist",
+    "physiotherapist": "Physiotherapist",
+    "personalTrainer": "Personal Trainer",
+    "yogaInstructor": "Yoga Instructor",
+    "tattooArtist": "Tattoo Artist",
+    "musicTeacher": "Music Teacher",
+    "languageTutor": "Language Tutor",
+    "photographer": "Photographer",
+    "videographer": "Videographer",
+    "makeupArtist": "Makeup Artist",
+    "nailTechnician": "Nail Technician",
+    "petGroomer": "Pet Groomer",
+    "veterinarian": "Veterinarian",
+    "autoMechanic": "Auto Mechanic",
+    "drivingInstructor": "Driving Instructor",
+    "homeCleaner": "Home Cleaner",
+    "electrician": "Electrician",
+    "plumber": "Plumber",
+    "carpenter": "Carpenter",
+    "locksmith": "Locksmith",
+    "applianceRepair": "Appliance Repair",
+    "eventPlanner": "Event Planner",
+    "legalAdvisor": "Legal Advisor",
+    "financialConsultant": "Financial Consultant",
+    "careerCoach": "Career Coach"
   },
   "auth": {
     "username": "Username",
@@ -310,5 +349,9 @@
         }
       }
     }
+  },
+  "categories": {
+    "title": "Categories",
+    "seeAll": "See All"
   }
 }

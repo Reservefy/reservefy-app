@@ -122,14 +122,6 @@ export default function WebsiteScreen() {
           </MotiView>
         </Animated.View>
 
-        <Button
-          className="py-4 rounded-full w-1/2 self-center mb-10 mt-5"
-          onPress={handleGetStarted}
-          variant="outline"
-        >
-          <Text>{t('website.cta.createAccount')}</Text>
-        </Button>
-
         <View className="px-4 py-12 bg-card">
           <Text className="text-2xl font-bold mb-6">
             {t('website.features.title')}

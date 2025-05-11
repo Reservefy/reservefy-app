@@ -1,34 +1,35 @@
+import { useColorScheme } from '@/hooks/common/useColorScheme';
 import Icons from '@/lib/icons';
 import { cn } from '@/lib/utils';
-import { useThemeStore } from '@/stores/useThemeStore';
 import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Animated, Easing, Pressable, Text } from 'react-native';
 
 export const ThemeToggle = ({ className }: { className?: string }) => {
   const { t } = useTranslation();
-  const { currentTheme, changeTheme } = useThemeStore();
-  const isDark = currentTheme === 'dark';
+  const { isDarkColorScheme, changeTheme } = useColorScheme();
 
-  const rotation = useRef(new Animated.Value(isDark ? 1 : 0)).current;
-  const fade = useRef(new Animated.Value(isDark ? 1 : 0)).current;
+  const rotation = useRef(
+    new Animated.Value(isDarkColorScheme ? 1 : 0),
+  ).current;
+  const fade = useRef(new Animated.Value(isDarkColorScheme ? 1 : 0)).current;
 
   useEffect(() => {
     Animated.parallel([
       Animated.timing(rotation, {
-        toValue: isDark ? 1 : 0,
+        toValue: isDarkColorScheme ? 1 : 0,
         duration: 1500, // slower for elegance
         easing: Easing.out(Easing.exp),
         useNativeDriver: true,
       }),
       Animated.timing(fade, {
-        toValue: isDark ? 1 : 0,
+        toValue: isDarkColorScheme ? 1 : 0,
         duration: 600,
         easing: Easing.ease,
         useNativeDriver: true,
       }),
     ]).start();
-  }, [isDark, rotation, fade]);
+  }, [isDarkColorScheme, rotation, fade]);
 
   const rotate = rotation.interpolate({
     inputRange: [0, 1],
@@ -40,7 +41,7 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
 
   return (
     <Pressable
-      onPress={() => changeTheme(isDark ? 'light' : 'dark')}
+      onPress={() => changeTheme(isDarkColorScheme ? 'light' : 'dark')}
       className={cn(
         'flex-row items-center flex gap-2 px-4 justify-between w-40 py-2 rounded-full bg-muted',
         'active:scale-95 transition-transform',
@@ -70,7 +71,7 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
       </Animated.View>
 
       <Text className="text-caption text-secondary-foreground">
-        {isDark ? t('common.themes.dark') : t('common.themes.light')}
+        {isDarkColorScheme ? t('common.themes.dark') : t('common.themes.light')}
       </Text>
     </Pressable>
   );
