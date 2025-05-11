@@ -2,14 +2,14 @@ import { Text } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import { MotiView } from 'moti';
 import React from 'react';
-import { Dimensions, Image, Pressable, ScrollView } from 'react-native';
+import { Dimensions, Image, Pressable, ScrollView, View } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   withSpring,
 } from 'react-native-reanimated';
 
 const { width } = Dimensions.get('window');
-const CARD_WIDTH = width * 0.8;
+const CARD_WIDTH = width * 0.935;
 const CARD_GAP = 16;
 
 const offers = [
@@ -75,14 +75,16 @@ export function PromoOffers({ className }: { className?: string }) {
       transition={{ type: 'timing', duration: 500 }}
       className={cn('mt-10', className)}
     >
-      <Text className="font-title mb-4 pl-6">Offers ({offers.length})</Text>
+      <View className="flex-row items-center">
+        <Text className="font-title mb-4 pl-6">Offers / Promotions</Text>
+        <Text className="font-subtitle mb-4 ml-2">({offers.length})</Text>
+      </View>
 
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
         snapToInterval={CARD_WIDTH + CARD_GAP}
         decelerationRate="fast"
-        contentContainerStyle={{ paddingRight: 32 }}
         className="first:pl-4"
       >
         {offers.map((item, index) => (

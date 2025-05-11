@@ -350,6 +350,11 @@
       }
     }
   },
+  "home": {
+    "mostBookedBrands": "Best In Demand Brands",
+    "mostPopularBrands": "Most Popular Brands",
+    "mostBookedWorkers": "Professionals"
+  },
   "categories": {
     "title": "Categories",
     "seeAll": "See All"

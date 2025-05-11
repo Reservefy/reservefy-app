@@ -81,6 +81,7 @@ const icons = {
   Scissors,
   Stethoscope,
   BookOpen,
+  ChevronRight,
   SlidersHorizontal,
   Star,
   Heart,

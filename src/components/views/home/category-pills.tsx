@@ -23,7 +23,7 @@ export function CategoryPills({ className }: Props) {
   const { t } = useTranslation();
 
   return (
-    <View className={cn('mt-7 px-4', className)}>
+    <View className={cn('mt-10 px-4', className)}>
       <View className="flex-row flex-wrap items-center justify-between gap-x-2 gap-y-3">
         {MAJOR_CATEGORIES.map((category, index) => (
           <MotiView
