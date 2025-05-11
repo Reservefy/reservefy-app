@@ -20,6 +20,29 @@ export const forgotPwdCodeSchema = z.object({
 export type ForgotPwdEmailFormType = z.infer<typeof forgotPwdEmailSchema>;
 export type ForgotPwdCodeFormType = z.infer<typeof forgotPwdCodeSchema>;
 
+export const forgotPwdPhoneSchema = z.object({
+  phone: z.string().refine((data) => data.match(/^\+?[1-9]\d{1,14}$/), {
+    params: {
+      i18n: 'custom.invalid_phone',
+    },
+  }),
+  code: z.string().optional(),
+});
+
+export const forgotPwdPhoneCodeSchema = z.object({
+  phone: z.string().refine((data) => data.match(/^\+?[1-9]\d{1,14}$/), {
+    params: {
+      i18n: 'custom.invalid_phone',
+    },
+  }),
+  code: z.string().length(6),
+});
+
+export type ForgotPwdPhoneFormType = z.infer<typeof forgotPwdPhoneSchema>;
+export type ForgotPwdPhoneCodeFormType = z.infer<
+  typeof forgotPwdPhoneCodeSchema
+>;
+
 export const resetPwdSchema = z
   .object({
     password: z.string().min(6),

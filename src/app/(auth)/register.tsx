@@ -1,7 +1,14 @@
 import { FormField, FormFieldType } from '@/components/shared/fields';
 import KeyboardAvoid from '@/components/shared/keyboard-avoid';
-import { Button, Text } from '@/components/ui';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  Button,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Text,
+} from '@/components/ui';
+
 import {
   AuthHeader,
   RegisterEmailFormType,
@@ -70,7 +77,7 @@ export default function RegisterScreen() {
             subtitle={t('auth.register.subtitle')}
           />
 
-          <Tabs value={tab} onValueChange={setTab} className="w-full">
+          <Tabs value={tab} onValueChange={setTab} className="w-full mt-10">
             <TabsList>
               <TabsTrigger value="email">
                 <Text>{t('auth.register.emailTab')}</Text>

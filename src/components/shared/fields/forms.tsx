@@ -1,4 +1,5 @@
 import { Label } from '@/components/ui';
+import { cn } from '@/lib/utils';
 import { FieldValues } from 'react-hook-form';
 import { Text, View } from 'react-native';
 import { BaseFieldProps } from './form';
@@ -26,7 +27,7 @@ export function FormField<T extends FieldValues>(props: BaseFieldProps<T>) {
   };
 
   return (
-    <View>
+    <View className={cn(props.className)}>
       {props.label && (
         <Label className="pl-1 mb-2" required={props.required}>
           {props.label}
