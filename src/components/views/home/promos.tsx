@@ -73,7 +73,7 @@ export function PromoOffers({ className }: { className?: string }) {
       from={{ opacity: 0, translateY: 20 }}
       animate={{ opacity: 1, translateY: 0 }}
       transition={{ type: 'timing', duration: 500 }}
-      className={cn('mt-10', className)}
+      className={cn('mt-12', className)}
     >
       <View className="flex-row items-center">
         <Text className="font-title mb-4 pl-6">Offers / Promotions</Text>

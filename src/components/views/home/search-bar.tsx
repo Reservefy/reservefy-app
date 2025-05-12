@@ -49,7 +49,7 @@ export function SearchBar({ onPress, className }: Props) {
       from={{ opacity: 0, translateY: 10 }}
       animate={{ opacity: 1, translateY: 0 }}
       transition={{ type: 'timing', duration: 500 }}
-      className={cn('px-4 mt-7', className)}
+      className={cn('px-4 mt-10', className)}
     >
       <View className="flex-row items-center px-4 bg-card/50 rounded-full border border-border">
         <Input

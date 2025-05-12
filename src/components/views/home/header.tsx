@@ -20,7 +20,7 @@ export function Header({ user, className }: Props) {
     <MotiView
       from={{ opacity: 0, translateY: -10 }}
       animate={{ opacity: 1, translateY: 0 }}
-      className={cn('px-4', className)}
+      className={cn('px-4 mt-2', className)}
     >
       <View className="flex-row items-start justify-between">
         {user ? (

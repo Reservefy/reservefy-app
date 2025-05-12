@@ -27,10 +27,10 @@ export const THEME_COLORS: ThemeColorMap = {
     '--background': '40 20% 97%',
     '--foreground': '240 10% 10%',
 
-    '--card': '42 30% 95%',
+    '--card': '45 25% 96%',
     '--card-foreground': '240 8% 20%',
 
-    '--popover': '45 30% 94%',
+    '--popover': '45 20% 94%',
     '--popover-foreground': '240 8% 20%',
 
     '--primary': '265 60% 85%',

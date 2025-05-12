@@ -29,7 +29,7 @@ export function BrandCard({
     >
       <TouchableOpacity
         onPress={onPress}
-        className="w-[300px] mr-4 bg-card overflow-hidden rounded-lg shadow-lg"
+        className="w-[300px] mr-4 bg-card overflow-hidden rounded-lg shadow-md border border-border"
       >
         <View className="flex-row h-fit min-h-40">
           <View className="w-1/2 p-4 justify-between">
@@ -43,9 +43,12 @@ export function BrandCard({
               </Text>
             </View>
             {rating && (
-              <View className="flex-row items-center bg-primary/10 self-start px-2 py-1 rounded-full">
-                <Icons.Star size={14} className="text-primary" />
-                <Text className="ml-1 text-xs font-medium text-primary">
+              <View className="flex-row items-center shadow-md self-start px-2 py-1 rounded-full border border-ring/10">
+                <Icons.Star
+                  size={14}
+                  className="fill-primary stroke-1 stroke-primary"
+                />
+                <Text className="ml-1 text-xs font-medium text-card-foreground">
                   {rating.toFixed(1)}
                 </Text>
               </View>

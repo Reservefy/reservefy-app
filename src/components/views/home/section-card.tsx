@@ -10,7 +10,7 @@ export function SectionCard({
   onSeeAll?: () => void;
 }) {
   return (
-    <View className="flex-row items-center justify-between mt-10 mb-4 pl-6">
+    <View className="flex-row items-center justify-between mt-12 mb-4 pl-6">
       <Text className="font-title">{title}</Text>
       {onSeeAll && (
         <Button

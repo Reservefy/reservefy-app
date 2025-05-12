@@ -25,7 +25,7 @@ export function ServiceCard({
   return (
     <TouchableOpacity
       onPress={onPress}
-      className="w-[180px] aspect-[3/4] relative overflow-hidden rounded-2xl mr-4"
+      className="w-[180px] aspect-[3/4] bg-popover border border-ring/10 relative overflow-hidden rounded-2xl mr-4"
     >
       <Image
         source={{ uri: avatar }}
@@ -42,10 +42,16 @@ export function ServiceCard({
         {/* Top Section */}
         {rating && (
           <View className="self-end">
-            <BlurView intensity={80} className="rounded-full overflow-hidden">
-              <View className="flex-row items-center px-2.5 py-1">
-                <Icons.Star size={12} className="text-yellow-400" />
-                <Text className="ml-1 text-xs font-medium text-white">
+            <BlurView
+              intensity={80}
+              className="rounded-full border border-border overflow-hidden"
+            >
+              <View className="flex-row items-center px-2.5 py-1 bg-accent">
+                <Icons.Star
+                  size={12}
+                  className="fill-primary stroke-primary stroke-1"
+                />
+                <Text className="ml-1 text-xs font-regular">
                   {rating.toFixed(1)}
                 </Text>
               </View>
@@ -55,11 +61,11 @@ export function ServiceCard({
 
         {/* Bottom Section */}
         <View>
-          <Text className="font-title text-white text-base mb-1 drop-shadow-sm">
+          <Text className="font-title text-popover-foreground text-base mb-1 drop-shadow-sm">
             {name}
           </Text>
           <Text
-            className="text-white/90 text-sm drop-shadow-sm"
+            className="text-popover-foreground/90 text-sm drop-shadow-sm"
             numberOfLines={2}
           >
             {subtitle}
