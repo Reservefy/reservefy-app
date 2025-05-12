@@ -32,9 +32,9 @@ export function ServiceCard({
 
       {/* Top Right Rating */}
       {rating && (
-        <View className="absolute top-2 right-2 z-10 bg-black/40 px-2 py-1 rounded-full flex-row items-center">
+        <View className="absolute top-2 right-2 z-10 bg-foreground/40 px-2 py-1 rounded-full flex-row items-center">
           <Icons.Star size={12} className="text-accent fill-accent mr-1" />
-          <Text className="font-caption ">{rating.toFixed(1)}</Text>
+          <Text className="font-caption text-white">{rating.toFixed(1)}</Text>
         </View>
       )}
 
@@ -42,11 +42,11 @@ export function ServiceCard({
       <View className="absolute bottom-0 left-0 right-0">
         <BlurView
           intensity={3}
-          tint="systemUltraThinMaterialLight"
+          tint="systemThickMaterialDark"
           className="p-1.5"
         >
-          <Text className="font-subtitle">{name}</Text>
-          <Text className="text-foreground/90 font-caption" numberOfLines={2}>
+          <Text className="font-subtitle text-white">{name}</Text>
+          <Text className="text-white/90 font-caption" numberOfLines={2}>
             {subtitle}
           </Text>
           <View className="h-0.5 w-12 bg-primary mt-0.5 rounded-full" />

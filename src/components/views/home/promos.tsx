@@ -1,4 +1,5 @@
 import { Text } from '@/components/ui';
+import Icons from '@/lib/icons';
 import { cn } from '@/lib/utils';
 import { MotiView } from 'moti';
 import React from 'react';
@@ -16,7 +17,8 @@ const offers = [
   {
     id: '1',
     title: 'Haircut  jkhdfajkl kljasdhkl hasdklh',
-    subtitle: 'Limited time offer',
+    subtitle:
+      'Limited time offer asijkfajks bfhkajsh fkasdhfk sdahfkladhsfjkldsa fadsjfh asklfh adsfkjhadsf jhadsjklf hasdjkfh sakdljhf jklasdhfjk asdjlkf ashdjkl dsafhalkjsfhajksdfhjkds hjkfkasdhfklasfl',
     discount: '50% off',
     dates: 'Feb 14 - Mar 24',
     image:
@@ -29,7 +31,7 @@ const offers = [
     discount: '30% off',
     dates: 'Apr 01 - Apr 20',
     image:
-      'https://images.unsplash.com/photo-1592336232088-99c7c7f19cfa?q=80&w=2074&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: '2312',
@@ -38,7 +40,7 @@ const offers = [
     discount: '30% off',
     dates: 'Apr 01 - Apr 20',
     image:
-      'https://images.unsplash.com/photo-1592336232088-99c7c7f19cfa?q=80&w=2074&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: '23121',
@@ -47,7 +49,7 @@ const offers = [
     discount: '30% off',
     dates: 'Apr 01 - Apr 20',
     image:
-      'https://images.unsplash.com/photo-1592336232088-99c7c7f19cfa?q=80&w=2074&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80',
   },
   {
     id: '221313123',
@@ -56,7 +58,7 @@ const offers = [
     discount: '30% off',
     dates: 'Apr 01 - Apr 20',
     image:
-      'https://images.unsplash.com/photo-1592336232088-99c7c7f19cfa?q=80&w=2074&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80',
   },
   // more offers...
 ];
@@ -75,9 +77,13 @@ export function PromoOffers({ className }: { className?: string }) {
       transition={{ type: 'timing', duration: 500 }}
       className={cn('mt-12', className)}
     >
-      <View className="flex-row items-center">
-        <Text className="font-title mb-4 pl-6">Offers / Promotions</Text>
-        <Text className="font-subtitle mb-4 ml-2">({offers.length})</Text>
+      <View className="flex-row items-center justify-between px-6 mb-4">
+        <Text className="font-title text-lg text-foreground">
+          Offers & Promotions
+        </Text>
+        <Text className="font-subtitle font-regular text-muted-foreground">
+          {offers.length} available
+        </Text>
       </View>
 
       <ScrollView
@@ -85,7 +91,7 @@ export function PromoOffers({ className }: { className?: string }) {
         showsHorizontalScrollIndicator={false}
         snapToInterval={CARD_WIDTH + CARD_GAP}
         decelerationRate="fast"
-        className="first:pl-4"
+        contentContainerStyle={{ paddingHorizontal: 16 }}
       >
         {offers.map((item, index) => (
           <MotiView
@@ -104,32 +110,40 @@ export function PromoOffers({ className }: { className?: string }) {
           >
             <AnimatedPressable
               style={animatedStyle}
-              className="flex-row items-center p-4 bg-card rounded-xl border border-border overflow-hidden h-[190px]"
+              className="bg-popover rounded-xl border border-border overflow-hidden p-2.5 w-full h-[320px] justify-between"
             >
-              <MotiView className="flex-1 pr-4">
-                <Text className="font-subtitle line-clamp-1 text-foreground">
-                  {item.title}
-                </Text>
-                <Text className="font-caption line-clamp-1">
-                  {item.subtitle}
-                </Text>
-                <Text className="text-title leading-title font-bold text-primary my-2">
-                  {item.discount}
-                </Text>
-                <Text className="text-caption text-muted-foreground">
-                  {item.dates}
-                </Text>
-                <Pressable className="bg-primary px-4 py-2 rounded-full self-start mt-4">
-                  <Text className="text-sm font-medium text-primary-foreground">
-                    Get Offer Now
-                  </Text>
-                </Pressable>
-              </MotiView>
               <Image
                 source={{ uri: item.image }}
-                className="w-28 h-28 rounded-xl"
+                className="w-full h-44 rounded-lg"
                 resizeMode="cover"
               />
+
+              <View className="gap-y-1">
+                <Text className="font-title text-base text-foreground line-clamp-1">
+                  {item.title}
+                </Text>
+                <Text className="font-caption text-muted-foreground line-clamp-3">
+                  {item.subtitle}
+                </Text>
+              </View>
+
+              <View className="flex-row px-3 items-center justify-between flex">
+                <Text className="text-3xl font-bold text-primary">
+                  {item.discount}
+                </Text>
+
+                <View className="gap-x-2 flex-row items-center">
+                  <Text className="text-xs text-muted-foreground">
+                    {item.dates}
+                  </Text>
+                  <Pressable className=" bg-secondary p-2 rounded-full">
+                    <Icons.ChevronRight
+                      size={16}
+                      className="text-secondary-foreground"
+                    />
+                  </Pressable>
+                </View>
+              </View>
             </AnimatedPressable>
           </MotiView>
         ))}
