@@ -29,7 +29,8 @@
     },
     "labels": {
       "search": "Search",
-      "searchFor": "Search for {{type}}"
+      "searchFor": "Search for {{type}}",
+      "searching": "Searching..."
     }
   },
   "major": {

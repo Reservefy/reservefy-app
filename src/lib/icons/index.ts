@@ -28,6 +28,7 @@ import {
   Notebook,
   Pencil,
   Plus,
+  RefreshCcw,
   Scissors,
   Search,
   Settings,
@@ -84,6 +85,7 @@ const icons = {
   ChevronRight,
   SlidersHorizontal,
   Star,
+  RefreshCcw,
   Heart,
 };
 
@@ -131,6 +133,7 @@ const Icons = {
   SlidersHorizontal,
   Star,
   Heart,
+  RefreshCcw,
 } as const;
 
 export type Icon = keyof typeof Icons;
