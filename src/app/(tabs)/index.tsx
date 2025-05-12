@@ -13,7 +13,7 @@ import {
 
 import { useYScroll } from '@/hooks/common/useYScoll';
 import { useTranslation } from 'react-i18next';
-import { SafeAreaView, ScrollView } from 'react-native';
+import { Platform, SafeAreaView, ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const SAMPLE_USER = {
@@ -33,7 +33,10 @@ export default function HomeScreen() {
       <ScrollView
         onScroll={onScroll}
         bounces={false}
-        contentContainerStyle={{ paddingBottom: insets.bottom + 50 }}
+        contentContainerStyle={{
+          paddingBottom: insets.bottom + (Platform.OS === 'ios' ? 50 : 90),
+          paddingTop: Platform.OS === 'android' ? insets.top : 0,
+        }}
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}
       >
@@ -65,7 +68,7 @@ export default function HomeScreen() {
           className="first:pl-4"
         >
           {mostBookedWorkers.map((worker, index) => (
-            <ServiceCard key={worker.id} {...worker} index={index} />
+            <ServiceCard key={worker.id} {...worker} />
           ))}
         </ScrollView>
         {/* Most Popular Brands */}

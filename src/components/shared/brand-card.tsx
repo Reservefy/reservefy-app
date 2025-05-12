@@ -1,7 +1,7 @@
 import Icons from '@/lib/icons';
-import { Image } from 'expo-image';
+
 import { MotiView } from 'moti';
-import { TouchableOpacity, View } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 import { Text } from '../ui';
 
 interface BrandCardProps {
@@ -57,14 +57,11 @@ export function BrandCard({
           <View className="w-1/2 relative">
             <Image
               source={{ uri: avatar }}
-              className="absolute inset-0"
-              contentFit="cover"
-              transition={200}
+              className="absolute inset-0 w-full h-full"
             />
             <View className="absolute inset-0 bg-gradient-to-l from-transparent to-card/20" />
           </View>
         </View>
-        <View className="h-1 bg-gradient-to-r from-primary/20 to-primary" />
       </TouchableOpacity>
     </MotiView>
   );

@@ -13,10 +13,8 @@ export default function TabLayout() {
       <TabSlot />
       <TabList
         className={cn(
-          'absolute bottom-9 self-center flex-row justify-evenly blur-3xl backdrop-blur-3xl rounded-full transition-all duration-500 drop-shadow-2xl',
-          isScrollingDown
-            ? 'bg-foreground/5 opacity-30'
-            : 'bg-foreground/10 opacity-100',
+          'absolute bg-foreground/10 bottom-9 self-center flex-row justify-evenly blur-3xl backdrop-blur-3xl rounded-full transition-all duration-500 drop-shadow-2xl',
+          isScrollingDown ? ' opacity-50' : ' opacity-100',
         )}
       >
         <TabTrigger name="Home" href="/" asChild>
