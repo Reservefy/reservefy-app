@@ -83,6 +83,7 @@ const icons = {
   Stethoscope,
   BookOpen,
   ChevronRight,
+  ChevronLeft,
   SlidersHorizontal,
   Star,
   RefreshCcw,

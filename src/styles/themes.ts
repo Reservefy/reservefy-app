@@ -90,11 +90,11 @@ export const STATUSBAR_COLORS: Record<
 > = {
   light: {
     style: 'dark',
-    background: '#f5f5f5',
+    background: '#f7f5ec',
   },
   dark: {
     style: 'light',
-    background: '#454545',
+    background: '#1c1c1f',
   },
 };
 

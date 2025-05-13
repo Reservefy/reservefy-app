@@ -20,7 +20,7 @@ export default function TabLayout() {
         <TabTrigger name="Home" href="/" asChild>
           <TabButton icon="Home">{t('common.tabs.home')}</TabButton>
         </TabTrigger>
-        <TabTrigger name="second" href="/calendar" asChild>
+        <TabTrigger name="second" href="/(calendar)/month" asChild>
           <TabButton icon="Calendar">{t('common.tabs.calendar')}</TabButton>
         </TabTrigger>
         <TabTrigger name="third" href="/third" asChild>

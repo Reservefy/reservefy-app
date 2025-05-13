@@ -22,3 +22,22 @@ export function useYScroll(threshold = 1) {
 
   return { onScroll };
 }
+
+export function useYMonthScroll() {
+  const lastMonth = useRef<number | null>(null);
+  const setScrollingDown = useScrollStore((s) => s.setScrollingDown);
+
+  const onVisibleMonthsChange = (months: { year: number; month: number }[]) => {
+    if (!months?.length) return;
+    const current = months[0];
+    const currentIndex = current.year * 12 + current.month;
+
+    if (lastMonth.current !== null) {
+      setScrollingDown(currentIndex > lastMonth.current);
+    }
+
+    lastMonth.current = currentIndex;
+  };
+
+  return { onVisibleMonthsChange };
+}
