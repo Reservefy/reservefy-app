@@ -1,26 +1,31 @@
-import { useColorScheme, useYMonthScroll } from '@/hooks/common';
+import { Text } from '@/components/ui';
+import { useHeaderMonthControls } from '@/components/views/calendars/month/visible-month';
+import { useColorScheme } from '@/hooks/common';
 import { getMonthTheme } from '@/styles/month-calendar';
 import dayjs from 'dayjs';
 import { useRouter } from 'expo-router';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Text, View } from 'react-native';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { View } from 'react-native';
 import { CalendarList, DateData } from 'react-native-calendars';
-import testIDs from './constants';
 
-const RANGE = 24;
+const RANGE = 120;
 const initialDate = dayjs().format('YYYY-MM-DD');
 
 // fake dynamic dates (replace with backend later)
 const dynamicEvents = [
   dayjs().add(1, 'week').format('YYYY-MM-DD'),
   dayjs().add(3, 'week').format('YYYY-MM-DD'),
+  dayjs().add(3, 'week').format('YYYY-MM-DD'),
+  dayjs().add(3, 'week').format('YYYY-MM-DD'),
   dayjs().add(1, 'month').format('YYYY-MM-DD'),
 ];
 
 const MonthScreen = () => {
   const router = useRouter();
+  const calendarRef = useRef(null);
   const { colors } = useColorScheme();
-  const { onVisibleMonthsChange } = useYMonthScroll();
+  const handleVisibleMonthsChange = useHeaderMonthControls(calendarRef);
+
   const [selected, setSelected] = useState(initialDate);
 
   const marked = useMemo(() => {
@@ -45,8 +50,6 @@ const MonthScreen = () => {
     return entries;
   }, [selected, colors]);
 
-  const theme = useCallback(() => getMonthTheme(colors), [colors]);
-
   const onDayPress = useCallback(
     (day: DateData) => {
       setSelected(day.dateString);
@@ -55,37 +58,35 @@ const MonthScreen = () => {
     [router],
   );
 
-  useEffect(() => {
-    theme();
-  }, [theme]);
-
   return (
-    <View className="safe-area" style={{ paddingBottom: 0 }}>
+    <View className="safe-area">
       <CalendarList
-        testID={testIDs.calendarList.CONTAINER}
+        id="month-calendar"
+        ref={calendarRef}
         current={initialDate}
         pastScrollRange={RANGE}
         futureScrollRange={RANGE}
         firstDay={1}
         onDayPress={onDayPress}
         markedDates={marked}
-        onVisibleMonthsChange={onVisibleMonthsChange}
-        renderHeader={renderCustomHeader}
-        theme={theme()}
+        onVisibleMonthsChange={handleVisibleMonthsChange}
+        theme={getMonthTheme(colors)}
+        extraData={getMonthTheme(colors)}
+        renderHeader={renderHeader}
+        hideDayNames
+        calendarHeight={260}
       />
     </View>
   );
 };
 
-function renderCustomHeader(date: any) {
-  const [year, month] = dayjs(date.toString()).format('YYYY MMMM').split(' ');
-
+const renderHeader = (date: Date) => {
+  const d = dayjs(date);
   return (
-    <View className="flex-row justify-between items-center w-full pr-2">
-      <Text className="text-primary text-lg font-semibold">{month}</Text>
-      <Text className="text-primary text-lg font-semibold">{year}</Text>
+    <View className="flex-row items-start w-full">
+      <Text className="font-subtitle">{d.format('MMMM')}</Text>
     </View>
   );
-}
+};
 
 export default MonthScreen;

@@ -104,7 +104,7 @@ export const THEMES_HEX: ThemeHex = {
     dark: false,
     colors: {
       primary: '#d9c2f0', // hsl(265 60% 85%)
-      background: '#f7f5ec', // hsl(40 20% 97%)
+      background: '#f5f5f5', // hsl(40 20% 97%)
       card: '#f9f5e8', // hsl(42 30% 95%)
       text: '#1c1c1f', // hsl(240 10% 10%)
       border: '#d6d7e3', // hsl(240 8% 85%)
