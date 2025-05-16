@@ -69,6 +69,9 @@ const MonthScreen = () => {
     (day: DateData) => {
       setSelected(day.dateString);
       router.push(`/(calendar)/(week)/${day.dateString}`);
+      router.setParams({
+        hideTabBarInWeek: 'true',
+      });
     },
     [router],
   );
@@ -86,12 +89,11 @@ const MonthScreen = () => {
         current={initialDate}
         futureScrollRange={12}
         pastScrollRange={16}
-        bounces={false}
         firstDay={1}
         onDayPress={onDayPress}
         markedDates={marked}
         onVisibleMonthsChange={handleVisibleMonthsChange}
-        theme={getMonthTheme(colors)}
+        theme={theme}
         extraData={selected} // only depends on selected
         renderHeader={renderHeader}
         hideDayNames
@@ -99,6 +101,11 @@ const MonthScreen = () => {
         maxToRenderPerBatch={10}
         updateCellsBatchingPeriod={10}
         initialNumToRender={10}
+        bounces={false}
+        scrollEventThrottle={50}
+        maintainVisibleContentPosition={{
+          minIndexForVisible: 1,
+        }}
       />
     </View>
   );

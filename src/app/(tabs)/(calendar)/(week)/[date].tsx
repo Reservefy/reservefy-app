@@ -1,9 +1,11 @@
 import { TimeEvent, TimelineEvent } from '@/components/views/calendars';
 import { useColorScheme } from '@/hooks/common';
 import { getTimelineTheme } from '@/styles/month-calendar';
-import { getDate, groupBy } from '@/utils/helpers';
+import { getDate } from '@/utils/helpers';
+
 import dayjs from 'dayjs';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { groupBy } from 'lodash';
 import React, { useCallback, useMemo, useState } from 'react';
 import { View } from 'react-native';
 import {
@@ -15,7 +17,6 @@ import {
 } from 'react-native-calendars';
 import { UpdateSources } from 'react-native-calendars/src/expandableCalendar/commons';
 import { PackedEvent } from 'react-native-calendars/src/timeline/EventBlock';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const timelineEvents: TimeEvent[] = [
   {
@@ -56,9 +57,9 @@ const EVENTS: TimeEvent[] = timelineEvents;
 
 export default function TimelineCalendarScreen() {
   const router = useRouter();
-  const insets = useSafeAreaInsets();
   const { date } = useLocalSearchParams();
   const { colors, isDarkColorScheme } = useColorScheme();
+  const theme = useMemo(() => getTimelineTheme(colors), [colors]);
   const [eventsByDate, setEventsByDate] = useState<Record<string, TimeEvent[]>>(
     () => groupBy(EVENTS, (e) => dayjs(e.start).format('YYYY-MM-DD')),
   );
@@ -76,7 +77,7 @@ export default function TimelineCalendarScreen() {
 
   // Memoized renderEvent WITHOUT key
   const renderEvent = useCallback(
-    (event: PackedEvent) => <TimelineEvent {...event} key={event.index} />,
+    (event: PackedEvent) => <TimelineEvent {...event} />,
     [],
   );
 
@@ -96,15 +97,15 @@ export default function TimelineCalendarScreen() {
       },
       events: currentEvents,
       overlapEventsSpacing: 4,
-      rightEdgeSpacing: 6,
+      rightEdgeSpacing: 8,
       start: 0,
       end: 24,
-      theme: getTimelineTheme(colors),
+      theme,
       // Add these props to improve VirtualizedList performance
       maxVisibleItems: 15, // Limit the number of visible items
       initialNumToRender: 10, // Reduce initial render batch size
     }),
-    [renderEvent, currentEvents, colors],
+    [renderEvent, currentEvents, theme],
   );
 
   // Handle month changes in the calendar
@@ -123,7 +124,7 @@ export default function TimelineCalendarScreen() {
   const timelineList = useMemo(
     () => (
       <TimelineList
-        showNowIndicator
+        scrollToNow={false}
         scrollToFirst={false}
         events={eventsByDate}
         timelineProps={timelineProps}
@@ -139,11 +140,12 @@ export default function TimelineCalendarScreen() {
         style={{ backgroundColor: colors.background }}
       >
         <ExpandableCalendar
+          initialDate={date as string}
           hideArrows
           firstDay={1}
           markedDates={marked}
           renderHeader={() => null}
-          theme={getTimelineTheme(colors)}
+          theme={theme}
           style={{
             backgroundColor: colors.background,
             borderBottomColor: colors.border,

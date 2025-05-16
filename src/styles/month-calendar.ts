@@ -31,30 +31,6 @@ export const getMonthTheme = (colors: ThemeHex['dark']['colors']): Theme => {
       fontWeight: '600',
       textAlign: 'center',
     },
-    stylesheet: {
-      day: {
-        basic: {
-          base: {
-            width: 32,
-            height: 32,
-            alignItems: 'center',
-            justifyContent: 'center',
-          },
-          text: {
-            color: colors.text,
-            fontFamily: 'Montserrat-Regular',
-          },
-        },
-      },
-      dot: {
-        dot: {
-          width: 5,
-          height: 5,
-          borderRadius: 3,
-          marginTop: 1,
-        },
-      },
-    },
   };
 };
 
@@ -66,6 +42,7 @@ export const getTimelineTheme = (colors: ThemeHex['dark']['colors']): Theme => {
     todayTextColor: colors.primary,
     selectedDayTextColor: colors.text,
     selectedDayBackgroundColor: colors.primary,
+    todayDotColor: colors.primary,
     dotColor: colors.primary,
     selectedDotColor: colors.primary,
     textDisabledColor: colors.border,
@@ -75,40 +52,18 @@ export const getTimelineTheme = (colors: ThemeHex['dark']['colors']): Theme => {
     textMonthFontSize: 16,
     textMonthFontFamily: 'Montserrat-Bold',
     todayButtonPosition: 'center',
-    stylesheet: {
-      calendar: {
-        header: {
-          week: {
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginHorizontal: 10,
-            marginTop: 10,
-            marginBottom: 10,
-          },
-        },
-      },
-      day: {
-        basic: {
-          base: {
-            width: 32,
-            height: 32,
-            alignItems: 'center',
-            justifyContent: 'center',
-          },
-          text: {
-            color: colors.text,
-            fontFamily: 'Montserrat-Regular',
-          },
-        },
-      },
-      dot: {
-        dot: {
-          width: 5,
-          height: 5,
-          borderRadius: 3,
-          marginTop: 1,
-        },
-      },
+    line: {
+      borderColor: colors.border,
+      borderWidth: 0.2,
+    },
+    verticalLine: {
+      borderColor: colors.border,
+      borderWidth: 0.2,
+    },
+    timeLabel: {
+      fontFamily: 'Montserrat-Regular',
+      fontSize: 12,
+      color: colors.text,
     },
   };
 };
