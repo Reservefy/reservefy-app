@@ -91,7 +91,7 @@ export default function CalendarLayout() {
         options={{
           headerShown: true,
           headerBackTitle: month,
-          headerTitleStyle: { color: colors.text },
+          title: month,
           headerStyle: {
             backgroundColor: colors.background,
           },
@@ -100,7 +100,6 @@ export default function CalendarLayout() {
               <Icons.ChevronLeft size={24} className="text-primary" />
             </TouchableOpacity>
           ),
-          headerTitle: () => <Text className="font-body">{date}</Text>,
           headerRight: () => (
             <TouchableOpacity>
               <Icons.Search size={24} className="text-primary" />

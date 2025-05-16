@@ -9,7 +9,7 @@ export const getMonthTheme = (colors: ThemeHex['dark']['colors']): Theme => {
     todayTextColor: colors.primary,
     selectedDayTextColor: colors.text,
     selectedDayBackgroundColor: colors.primary,
-    dotColor: '#FFC107',
+    dotColor: colors.primary,
     selectedDotColor: colors.primary,
     textDisabledColor: colors.border,
     weekVerticalMargin: 4,
@@ -18,21 +18,39 @@ export const getMonthTheme = (colors: ThemeHex['dark']['colors']): Theme => {
     textMonthFontSize: 16,
     textMonthFontFamily: 'Montserrat-Bold',
     todayButtonPosition: 'center',
-    todayDotColor: '#FFC107',
-    todayBackgroundColor: '#C107',
+
     stylesheet: {
+      calendar: {
+        header: {
+          week: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginHorizontal: 10,
+            marginTop: 10,
+            marginBottom: 10,
+          },
+        },
+      },
       day: {
         basic: {
-          today: {
-            borderRadius: 999,
-            borderWidth: 1,
-            borderColor: colors.border,
+          base: {
+            width: 32,
+            height: 32,
+            alignItems: 'center',
+            justifyContent: 'center',
           },
-          todayText: {
-            fontWeight: '600',
-            fontFamily: 'Montserrat-Bold',
-            color: colors.primary,
+          text: {
+            color: colors.text,
+            fontFamily: 'Montserrat-Regular',
           },
+        },
+      },
+      dot: {
+        dot: {
+          width: 5,
+          height: 5,
+          borderRadius: 3,
+          marginTop: 1,
         },
       },
     },
