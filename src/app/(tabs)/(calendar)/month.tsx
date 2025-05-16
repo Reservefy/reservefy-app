@@ -1,15 +1,24 @@
 import { Text } from '@/components/ui';
-import { useHeaderMonthControls } from '@/components/views/calendars/month/visible-month';
+import { useHeaderMonthControls } from '@/hooks/calendar';
 import { useColorScheme } from '@/hooks/common';
 import { getMonthTheme } from '@/styles/month-calendar';
 import dayjs from 'dayjs';
 import { useRouter } from 'expo-router';
+import { debounce } from 'lodash';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { View } from 'react-native';
 import { CalendarList, DateData } from 'react-native-calendars';
 
-const RANGE = 120;
 const initialDate = dayjs().format('YYYY-MM-DD');
+
+type MarkedDateProps = {
+  marked: boolean;
+  dotColor: string;
+  selected: boolean;
+  selectedTextColor: string;
+  disableTouchEvent?: boolean;
+  selectedColor?: string;
+};
 
 // fake dynamic dates (replace with backend later)
 const dynamicEvents = [
@@ -23,21 +32,27 @@ const dynamicEvents = [
 const MonthScreen = () => {
   const router = useRouter();
   const calendarRef = useRef(null);
-  const { colors } = useColorScheme();
-  const handleVisibleMonthsChange = useHeaderMonthControls(calendarRef);
+  const { colors, isDarkColorScheme } = useColorScheme();
+  const theme = useMemo(() => getMonthTheme(colors), [colors]);
+  const monthControlsCallback = useHeaderMonthControls(calendarRef);
+
+  const handleVisibleMonthsChange = useMemo(
+    () => debounce(monthControlsCallback, 100),
+    [monthControlsCallback],
+  );
 
   const [selected, setSelected] = useState(initialDate);
 
   const marked = useMemo(() => {
-    const entries = dynamicEvents.reduce((acc, date) => {
-      acc[date] = {
+    const entries: Record<string, MarkedDateProps> = {};
+    for (const date of dynamicEvents) {
+      entries[date] = {
         marked: true,
         dotColor: colors.primary,
         selected: selected === date,
         selectedTextColor: colors.text,
       };
-      return acc;
-    }, {} as any);
+    }
 
     entries[selected] = {
       ...(entries[selected] || {}),
@@ -48,7 +63,7 @@ const MonthScreen = () => {
     };
 
     return entries;
-  }, [selected, colors]);
+  }, [selected, colors.primary, colors.text]);
 
   const onDayPress = useCallback(
     (day: DateData) => {
@@ -59,22 +74,31 @@ const MonthScreen = () => {
   );
 
   return (
-    <View className="safe-area">
+    <View
+      className="safe-area"
+      key={isDarkColorScheme ? 'dark' : 'light'}
+      style={{ backgroundColor: colors.background }}
+    >
       <CalendarList
-        id="month-calendar"
         ref={calendarRef}
+        id="month-calendar"
+        testID="month-calendar"
         current={initialDate}
-        pastScrollRange={RANGE}
-        futureScrollRange={RANGE}
+        futureScrollRange={12}
+        pastScrollRange={16}
+        bounces={false}
         firstDay={1}
         onDayPress={onDayPress}
         markedDates={marked}
         onVisibleMonthsChange={handleVisibleMonthsChange}
         theme={getMonthTheme(colors)}
-        extraData={getMonthTheme(colors)}
+        extraData={selected} // only depends on selected
         renderHeader={renderHeader}
         hideDayNames
         calendarHeight={260}
+        maxToRenderPerBatch={10}
+        updateCellsBatchingPeriod={10}
+        initialNumToRender={10}
       />
     </View>
   );

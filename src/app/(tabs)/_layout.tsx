@@ -1,17 +1,24 @@
 import { TabButton } from '@/components/shared/tab-button';
 import { cn } from '@/lib/utils';
 import { useScrollStore } from '@/stores/useScrollStore';
+import { useNavigation } from 'expo-router';
 import { TabList, Tabs, TabSlot, TabTrigger } from 'expo-router/ui';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default function TabLayout() {
-  const isScrollingDown = useScrollStore((s) => s.isScrollingDown);
   const { t } = useTranslation();
+  const navigation = useNavigation();
+  const isScrollingDown = useScrollStore((s) => s.isScrollingDown);
   return (
     <Tabs>
       <TabSlot />
       <TabList
+        style={{
+          display: navigation.getState()?.routeNames.includes('date')
+            ? 'none'
+            : 'flex',
+        }}
         className={cn(
           'absolute bg-foreground/10 bottom-9 self-center flex-row justify-evenly blur-3xl backdrop-blur-3xl rounded-full transition-all duration-500 drop-shadow-2xl',
           isScrollingDown ? ' opacity-50' : ' opacity-100',

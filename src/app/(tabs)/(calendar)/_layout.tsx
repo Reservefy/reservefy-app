@@ -4,6 +4,7 @@ import Icons from '@/lib/icons';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import dayjs from 'dayjs';
 import { Stack, useGlobalSearchParams, useRouter } from 'expo-router';
+import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -18,13 +19,16 @@ interface CustomNavigationOptions extends NativeStackNavigationOptions {
 }
 
 export default function CalendarLayout() {
-  const { colors } = useColorScheme();
-  const { date } = useGlobalSearchParams();
+  const { date, month } = useGlobalSearchParams<{
+    date: string;
+    month: string;
+  }>();
   const router = useRouter();
-
-  const month = date
-    ? dayjs(date as string).format('MMMM')
-    : dayjs().format('MMMM');
+  const { colors } = useColorScheme();
+  // Use the month parameter from the URL or calculate it from the date
+  const monthName =
+    month ||
+    (date ? dayjs(date as string).format('MMMM') : dayjs().format('MMMM'));
 
   return (
     <Stack
@@ -91,10 +95,10 @@ export default function CalendarLayout() {
         options={{
           headerShown: true,
           headerBackTitle: month,
-          title: month,
           headerStyle: {
             backgroundColor: colors.background,
           },
+          headerTitle: () => <Text className="font-subtitle">{monthName}</Text>,
           headerLeft: () => (
             <TouchableOpacity onPress={() => router.back()}>
               <Icons.ChevronLeft size={24} className="text-primary" />

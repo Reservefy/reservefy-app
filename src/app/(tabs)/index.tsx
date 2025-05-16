@@ -13,8 +13,11 @@ import {
 
 import { useYScroll } from '@/hooks/common/useYScoll';
 import { useTranslation } from 'react-i18next';
-import { Platform, SafeAreaView, ScrollView } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Platform, ScrollView } from 'react-native';
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 
 const SAMPLE_USER = {
   name: 'Mical Jackson',
@@ -29,7 +32,7 @@ export default function HomeScreen() {
   const { t } = useTranslation();
 
   return (
-    <SafeAreaView className="safe-area">
+    <SafeAreaView className="safe-area" edges={['top']}>
       <ScrollView
         onScroll={onScroll}
         bounces={false}

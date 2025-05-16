@@ -1,1 +1,2 @@
-export * from './month/visible-month';
+export * from './timeline/events';
+export * from './timeline/types';

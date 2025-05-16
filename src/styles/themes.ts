@@ -116,9 +116,9 @@ export const THEMES_HEX: ThemeHex = {
     colors: {
       primary: '#bf99e6', // hsl(265 60% 75%)
       background: '#1c1c1f', // hsl(240 6% 10%)
-      card: '#24242a', // hsl(240 8% 14%)
+      card: '#292931', // hsl(240 8% 17%)
       text: '#f2f2f2', // hsl(0 0% 95%)
-      border: '#31313f', // hsl(240 6% 22%)
+      border: '#38383f', // hsl(240 6% 25%)
       notification: '#db5757', // hsl(0 72% 60%)
     },
   },
