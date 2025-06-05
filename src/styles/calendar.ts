@@ -4,10 +4,6 @@ import { ThemeHex } from './themes';
 export const getMonthTheme = (colors: ThemeHex['dark']['colors']): Theme => {
   return {
     calendarBackground: colors.background,
-    contentStyle: {
-      backgroundColor: colors.background,
-      paddingBottom: 100,
-    },
     textSectionTitleColor: colors.text,
     dayTextColor: colors.text,
     todayTextColor: colors.primary,

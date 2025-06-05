@@ -3,14 +3,6 @@
 @tailwind utilities;
 
 @layer utilities {
-  .main-area {
-    @apply flex flex-1 flex-col bg-background text-foreground px-4;
-  }
-
-  .safe-area {
-    @apply flex-1 bg-background;
-  }
-
   .font-heading {
     font-size: 32px;
     line-height: 40px;
@@ -44,5 +36,29 @@
     line-height: 18px;
     font-family: Montserrat-Regular;
     font-weight: 400;
+  }
+}
+
+@layer base {
+  .flex-center {
+    @apply flex items-center justify-center w-full h-full;
+  }
+  .flex-between {
+    @apply flex flex-row items-center justify-between w-full;
+  }
+  .flex-s-between {
+    @apply flex flex-row items-start justify-between w-full;
+  }
+  .flex-e-between {
+    @apply flex flex-row items-end justify-between w-full;
+  }
+
+  /* Layouts */
+  .main-area {
+    @apply flex flex-1 flex-col bg-background text-foreground px-4 lg:px-6;
+  }
+
+  .safe-area {
+    @apply flex-1 bg-background;
   }
 }

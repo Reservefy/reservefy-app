@@ -1,7 +1,7 @@
-import { Text } from '@/components/ui';
+import { RenderHeader } from '@/components/views/calendars/month/header';
 import { useHeaderMonthControls } from '@/hooks/calendar';
-import { useColorScheme } from '@/hooks/common';
-import { getMonthTheme } from '@/styles/month-calendar';
+import { useColorScheme, useLanguage } from '@/hooks/common';
+import { getMonthTheme } from '@/styles/calendar';
 import dayjs from 'dayjs';
 import { useRouter } from 'expo-router';
 import { debounce } from 'lodash';
@@ -31,6 +31,7 @@ const dynamicEvents = [
 
 const MonthScreen = () => {
   const router = useRouter();
+  const { currentLanguage } = useLanguage();
   const calendarRef = useRef(null);
   const { colors, isDarkColorScheme } = useColorScheme();
   const theme = useMemo(() => getMonthTheme(colors), [colors]);
@@ -95,7 +96,7 @@ const MonthScreen = () => {
         onVisibleMonthsChange={handleVisibleMonthsChange}
         theme={theme}
         extraData={selected} // only depends on selected
-        renderHeader={renderHeader}
+        renderHeader={RenderHeader}
         hideDayNames
         calendarHeight={260}
         maxToRenderPerBatch={10}
@@ -110,14 +111,4 @@ const MonthScreen = () => {
     </View>
   );
 };
-
-const renderHeader = (date: Date) => {
-  const d = dayjs(date);
-  return (
-    <View className="flex-row items-start w-full">
-      <Text className="font-subtitle">{d.format('MMMM')}</Text>
-    </View>
-  );
-};
-
 export default MonthScreen;

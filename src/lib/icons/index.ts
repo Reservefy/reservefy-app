@@ -36,6 +36,7 @@ import {
   Sparkles,
   Star,
   Stethoscope,
+  Store,
   Sun,
   Upload,
   User,
@@ -88,6 +89,7 @@ const icons = {
   Star,
   RefreshCcw,
   Heart,
+  Store,
 };
 
 Object.values(icons).forEach(iconWithClassName);
@@ -135,6 +137,7 @@ const Icons = {
   Star,
   Heart,
   RefreshCcw,
+  Store,
 } as const;
 
 export type Icon = keyof typeof Icons;

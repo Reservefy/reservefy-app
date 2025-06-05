@@ -25,12 +25,14 @@
       "home": "Home",
       "profile": "Profile",
       "calendar": "Calendar",
-      "settings": "Settings"
+      "settings": "Settings",
+      "store": "Store"
     },
     "labels": {
       "search": "Search",
       "searchFor": "Search for {{type}}",
-      "searching": "Searching..."
+      "searching": "Searching...",
+      "today": "Today"
     }
   },
   "major": {

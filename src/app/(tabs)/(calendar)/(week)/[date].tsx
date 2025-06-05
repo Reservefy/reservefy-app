@@ -1,6 +1,7 @@
 import { TimeEvent, TimelineEvent } from '@/components/views/calendars';
 import { useColorScheme } from '@/hooks/common';
-import { getTimelineTheme } from '@/styles/month-calendar';
+import { getTimelineTheme } from '@/styles/calendar';
+import { formatMonth } from '@/utils/date';
 import { getDate } from '@/utils/helpers';
 
 import dayjs from 'dayjs';
@@ -20,11 +21,51 @@ import { PackedEvent } from 'react-native-calendars/src/timeline/EventBlock';
 
 const timelineEvents: TimeEvent[] = [
   {
+    id: '14323242',
+    start: `${getDate()} 00:00:00`,
+    end: `${getDate()} 00:10:00`,
+    title: 'Event 1',
+    color: 'lightblue',
+    summary: 'summary 1',
+  },
+  {
+    id: '4252',
+    start: `${getDate()} 00:11:00`,
+    end: `${getDate()} 00:39:00`,
+    title: 'Event 1',
+    color: 'yellow',
+    summary: 'summary 1',
+  },
+  {
+    id: '424352',
+    start: `${getDate()} 00:11:00`,
+    end: `${getDate()} 00:58:00`,
+    title: 'Event 1',
+    color: 'blue',
+    summary: 'summary 1',
+  },
+  {
+    id: 'ufs9fs',
+    start: `${getDate()} 00:40:00`,
+    end: `${getDate()} 00:54:00`,
+    title: 'Event 1',
+    color: 'red',
+    summary: 'summary 1',
+  },
+  {
+    id: 'f543l',
+    start: `${getDate()} 00:55:00`,
+    end: `${getDate()} 01:05:00`,
+    title: 'Event 1',
+    color: 'purple',
+    summary: 'summary 1',
+  },
+  {
     id: '1',
     start: `${getDate()} 09:00:00`,
     end: `${getDate()} 10:00:00`,
     title: 'Event 1',
-    color: 'lightblue',
+    color: 'gray',
     summary: 'summary 1',
   },
   {
@@ -57,6 +98,7 @@ const EVENTS: TimeEvent[] = timelineEvents;
 
 export default function TimelineCalendarScreen() {
   const router = useRouter();
+
   const { date } = useLocalSearchParams();
   const { colors, isDarkColorScheme } = useColorScheme();
   const theme = useMemo(() => getTimelineTheme(colors), [colors]);
@@ -96,7 +138,7 @@ export default function TimelineCalendarScreen() {
         console.log('Event pressed:', event);
       },
       events: currentEvents,
-      overlapEventsSpacing: 4,
+      overlapEventsSpacing: 2,
       rightEdgeSpacing: 8,
       start: 0,
       end: 24,
@@ -104,6 +146,12 @@ export default function TimelineCalendarScreen() {
       // Add these props to improve VirtualizedList performance
       maxVisibleItems: 15, // Limit the number of visible items
       initialNumToRender: 10, // Reduce initial render batch size
+
+      // initial time
+      initialTime: {
+        hour: 0,
+        minutes: 0,
+      },
     }),
     [renderEvent, currentEvents, theme],
   );
@@ -111,7 +159,7 @@ export default function TimelineCalendarScreen() {
   // Handle month changes in the calendar
   const onMonthChange = useCallback(
     (date: DateData, updateSource: UpdateSources) => {
-      const monthName = dayjs(date.dateString).format('MMMM');
+      const monthName = formatMonth(date.dateString);
       // Update the URL params to reflect the current month
       router.setParams({
         month: monthName,
@@ -128,13 +176,21 @@ export default function TimelineCalendarScreen() {
         scrollToFirst={false}
         events={eventsByDate}
         timelineProps={timelineProps}
+        initialTime={{
+          hour: 0,
+          minutes: 0,
+        }}
       />
     ),
     [eventsByDate, timelineProps],
   );
 
   return (
-    <CalendarProvider date={date as string} onMonthChange={onMonthChange}>
+    <CalendarProvider
+      date={date as string}
+      onMonthChange={onMonthChange}
+      theme={theme}
+    >
       <View
         key={isDarkColorScheme ? 'dark' : 'light'}
         style={{ backgroundColor: colors.background }}
