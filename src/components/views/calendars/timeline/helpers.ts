@@ -1,3 +1,4 @@
+import { ThemeHex } from '@/styles/themes';
 import { Dispatch, RefObject, SetStateAction } from 'react';
 import { SearchBarCommands, SearchBarProps } from 'react-native-screens';
 
@@ -5,6 +6,7 @@ interface ISearchBox {
   ref: RefObject<SearchBarCommands>;
   showSearch: boolean;
   setShowSearch: Dispatch<SetStateAction<boolean>>;
+  colors: ThemeHex;
 }
 
 export function searchbox({
@@ -12,6 +14,17 @@ export function searchbox({
   showSearch,
   setShowSearch,
 }: ISearchBox): SearchBarProps | undefined {
+  const hideSearch = () => {
+    // Ensure we blur the search field first
+    if (ref.current) {
+      ref.current.blur();
+    }
+    // Then set the state to hide it
+    setTimeout(() => {
+      setShowSearch(false);
+    }, 0);
+  };
+
   return showSearch
     ? {
         ref,
@@ -21,11 +34,16 @@ export function searchbox({
         placeholder: 'Search...',
         cancelButtonText: 'Cancel',
         autoFocus: true,
-        onClose() {
-          setShowSearch(false);
-        },
-        onCancelButtonPress(e) {
-          setShowSearch(false);
+        autoCapitalize: 'none',
+        disableBackButtonOverride: false,
+        barTintColor: 'primary',
+        tintColor: 'primary',
+        hideWhenScrolling: true,
+        onBlur: hideSearch,
+        onCancelButtonPress: hideSearch,
+        onSearchButtonPress: () => {
+          // This is called when the search button on the keyboard is pressed
+          hideSearch();
         },
       }
     : undefined;

@@ -2,9 +2,10 @@ import { Text } from '@/components/ui';
 import { searchbox, StackHeader } from '@/components/views/calendars';
 import { useColorScheme } from '@/hooks/common';
 import Icons from '@/lib/icons';
+import { THEMES_HEX } from '@/styles/themes';
 import { formatMonth } from '@/utils/date';
 import { Stack, useGlobalSearchParams, useRouter } from 'expo-router';
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { SearchBarCommands } from 'react-native-screens';
 
@@ -16,11 +17,28 @@ export default function CalendarLayout() {
   const router = useRouter();
   const { colors } = useColorScheme();
   const [showSearch, setShowSearch] = useState(false);
+  console.log(`file: _layout.tsx:19 ~ showSearch:`, showSearch);
   // Use the month parameter from the URL or calculate it from the date
   const monthName = month || formatMonth(date);
 
-  const ref = useRef<SearchBarCommands>();
-  console.log(` ref:`, ref);
+  const ref = useRef<SearchBarCommands>(null);
+
+  const hadleSearch = useCallback(() => {
+    if (showSearch) {
+      // When search is already showing, blur and hide it
+      ref.current?.blur();
+      setShowSearch(false);
+    } else {
+      // When search is not showing, show it and focus after a short delay
+      setShowSearch(true);
+      // Use setTimeout to ensure the search bar is rendered before trying to focus
+      setTimeout(() => {
+        if (ref.current) {
+          ref.current.focus();
+        }
+      }, 150); // Slightly longer delay for more reliability
+    }
+  }, [setShowSearch, showSearch, ref]);
 
   return (
     <Stack
@@ -29,7 +47,8 @@ export default function CalendarLayout() {
         presentation: 'card',
         keyboardHandlingEnabled: true,
         headerSearchBarOptions: searchbox({
-          ref,
+          ref: ref as React.RefObject<SearchBarCommands>,
+          colors: THEMES_HEX,
           showSearch,
           setShowSearch,
         }),
@@ -59,12 +78,7 @@ export default function CalendarLayout() {
             </TouchableOpacity>
           ),
           headerRight: () => (
-            <TouchableOpacity
-              onPress={() => {
-                setShowSearch(!showSearch);
-                ref.current?.focus();
-              }}
-            >
+            <TouchableOpacity onPress={hadleSearch}>
               {!showSearch ? (
                 <Icons.Search size={24} className="text-primary" />
               ) : (
