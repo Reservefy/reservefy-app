@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 
 const isValidDate = (date: string | null) =>
-  !date || date === undefined || date !== typeof 'string';
+  !date || typeof date !== 'string';
 
 export const getLocalizedWeeks = () => {
   const current = new Date().getFullYear();
