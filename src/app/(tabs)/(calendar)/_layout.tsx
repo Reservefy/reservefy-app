@@ -2,7 +2,6 @@ import { Text } from '@/components/ui';
 import { searchbox, StackHeader } from '@/components/views/calendars';
 import { useColorScheme } from '@/hooks/common';
 import Icons from '@/lib/icons';
-import { THEMES_HEX } from '@/styles/themes';
 import { formatMonth } from '@/utils/date';
 import { Stack, useGlobalSearchParams, useRouter } from 'expo-router';
 import React, { useCallback, useRef, useState } from 'react';
@@ -17,7 +16,6 @@ export default function CalendarLayout() {
   const router = useRouter();
   const { colors } = useColorScheme();
   const [showSearch, setShowSearch] = useState(false);
-  console.log(`file: _layout.tsx:19 ~ showSearch:`, showSearch);
   // Use the month parameter from the URL or calculate it from the date
   const monthName = month || formatMonth(date);
 
@@ -46,9 +44,11 @@ export default function CalendarLayout() {
         headerShown: false,
         presentation: 'card',
         keyboardHandlingEnabled: true,
+        headerBackButtonMenuEnabled: false,
+        headerTransparent: false,
         headerSearchBarOptions: searchbox({
           ref: ref as React.RefObject<SearchBarCommands>,
-          colors: THEMES_HEX,
+          colors: colors,
           showSearch,
           setShowSearch,
         }),
@@ -79,11 +79,7 @@ export default function CalendarLayout() {
           ),
           headerRight: () => (
             <TouchableOpacity onPress={hadleSearch}>
-              {!showSearch ? (
-                <Icons.Search size={24} className="text-primary" />
-              ) : (
-                <Icons.X size={24} className="text-accent-foreground" />
-              )}
+              <Icons.Search size={24} className="text-primary" />
             </TouchableOpacity>
           ),
         }}

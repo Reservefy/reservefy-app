@@ -6,23 +6,17 @@ interface ISearchBox {
   ref: RefObject<SearchBarCommands>;
   showSearch: boolean;
   setShowSearch: Dispatch<SetStateAction<boolean>>;
-  colors: ThemeHex;
+  colors: ThemeHex['dark']['colors'];
 }
 
 export function searchbox({
   ref,
+  colors,
   showSearch,
   setShowSearch,
 }: ISearchBox): SearchBarProps | undefined {
   const hideSearch = () => {
-    // Ensure we blur the search field first
-    if (ref.current) {
-      ref.current.blur();
-    }
-    // Then set the state to hide it
-    setTimeout(() => {
-      setShowSearch(false);
-    }, 0);
+    setShowSearch(false);
   };
 
   return showSearch
@@ -36,15 +30,11 @@ export function searchbox({
         autoFocus: true,
         autoCapitalize: 'none',
         disableBackButtonOverride: false,
-        barTintColor: 'primary',
-        tintColor: 'primary',
+        tintColor: colors.primary,
         hideWhenScrolling: true,
         onBlur: hideSearch,
         onCancelButtonPress: hideSearch,
-        onSearchButtonPress: () => {
-          // This is called when the search button on the keyboard is pressed
-          hideSearch();
-        },
+        onSearchButtonPress: hideSearch,
       }
     : undefined;
 }
