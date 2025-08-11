@@ -21,6 +21,8 @@ export type ThemeHex = Record<
   }
 >;
 
+// TODO: add the colors
+
 // 1. Raw HSL values (no rgb(...) wrapper)
 export const THEME_COLORS: ThemeColorMap = {
   light: vars({
@@ -51,6 +53,8 @@ export const THEME_COLORS: ThemeColorMap = {
     '--border': '240 8% 85%',
     '--input': '240 8% 93%',
     '--ring': '265 60% 75%',
+    '--success': '',
+    '--warning': '',
   }),
   dark: vars({
     '--background': '240 6% 10%',
@@ -80,6 +84,8 @@ export const THEME_COLORS: ThemeColorMap = {
     '--border': '240 6% 22%',
     '--input': '240 6% 18%',
     '--ring': '265 60% 60%',
+    '--success': '',
+    '--warning': '',
   }),
 };
 

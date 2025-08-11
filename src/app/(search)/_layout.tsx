@@ -7,12 +7,13 @@ import { SearchBarCommands } from 'react-native-screens';
 export default function SearchLayout() {
   const { t } = useTranslation();
   const router = useRouter();
+
   const { colors } = useColorScheme();
-  const { query, type } = useGlobalSearchParams<{
-    query: string;
+  const { type } = useGlobalSearchParams<{
     type: string;
   }>();
-  const [searchText, setSearchText] = useState(query || '');
+
+  const [searchText, setSearchText] = useState('');
   // Use non-null assertion to satisfy the type constraint
   const ref = useRef<SearchBarCommands>(
     null,
@@ -30,32 +31,31 @@ export default function SearchLayout() {
   const handleSearchSubmit = useCallback(() => {
     // Update URL params with current search text
     router.setParams({ query: searchText });
+    console.log('pressed');
   }, [router, searchText]);
 
-  // Update search text when URL params change
   useEffect(() => {
-    if (query) {
-      setSearchText(query);
-      // Focus the search bar after a short delay to ensure it's mounted
-      setTimeout(() => {
-        if (ref.current) {
-          ref.current.focus();
-        }
-      }, 150);
-    }
-  }, [query]);
+    setTimeout(() => {
+      if (type) {
+        ref.current.focus();
+        console.log('did render');
+      }
+    }, 550);
+  }, [type]);
 
   return (
     <Stack
       screenOptions={{
-        headerTitle: type ? t(`search.${type}`) : t('search.title'),
+        headerTitle: t('common.labels.search'),
+        headerBackButtonMenuEnabled: true,
+        headerBackButtonDisplayMode: 'generic',
         headerSearchBarOptions: {
           ref,
           placement: 'stacked',
           shouldShowHintSearchIcon: true,
           inputType: 'text',
           placeholder: t('common.labels.search'),
-          cancelButtonText: t('common.labels.cancel'),
+          cancelButtonText: t('common.buttons.back'),
           autoFocus: true,
           autoCapitalize: 'none',
           disableBackButtonOverride: false,
@@ -63,6 +63,7 @@ export default function SearchLayout() {
           hideWhenScrolling: false,
           onChangeText: handleSearchChange,
           onSearchButtonPress: handleSearchSubmit,
+          onCancelButtonPress: () => router.back(),
         },
       }}
     />

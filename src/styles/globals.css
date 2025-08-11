@@ -37,6 +37,13 @@
     font-family: Montserrat-Regular;
     font-weight: 400;
   }
+  // BREAK SINGLE TYPED WORDS INTO FORMAT
+  .separate-words {
+    @apply break-words line-clamp-1 truncate;
+  }
+  .separate-words-2 {
+    @apply break-words line-clamp-2 truncate;
+  }
 }
 
 @layer base {
@@ -57,7 +64,6 @@
   .main-area {
     @apply flex flex-1 flex-col bg-background text-foreground px-4 lg:px-6;
   }
-
   .safe-area {
     @apply flex-1 bg-background;
   }

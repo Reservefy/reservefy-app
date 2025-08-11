@@ -4,9 +4,9 @@ import Icons from '@/lib/icons';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'expo-router';
 import { MotiView } from 'moti';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, View } from 'react-native';
+import { Pressable } from 'react-native';
 import {
   useSharedValue,
   withDelay,
@@ -24,21 +24,16 @@ export function SearchBar({ className }: Props) {
   const router = useRouter();
   const { t } = useTranslation();
   const [index, setIndex] = useState(0);
-  const [search, setSearch] = useState<string | undefined>();
 
   const trigger = useSharedValue(0);
 
-  const handleSearch = useCallback(() => {
-    if (!search?.trim()) return;
-
+  const handleSearch = () =>
     router.push({
       pathname: '/(search)',
       params: {
-        query: search,
-        type: 'main',
+        type: 'search',
       },
     });
-  }, [router, search]);
 
   useEffect(() => {
     trigger.value = withRepeat(
@@ -64,26 +59,21 @@ export function SearchBar({ className }: Props) {
       transition={{ type: 'timing', duration: 500 }}
       className={cn('px-4 mt-10', className)}
     >
-      <View className="flex-row items-center px-4 bg-card/50 rounded-full border border-border">
+      <Pressable
+        onPress={handleSearch}
+        className="flex-row items-center px-4 bg-card/50 rounded-full border border-border"
+      >
         <Input
           placeholder={t('common.labels.searchFor', {
             type: t(`major.${currentType}`),
           })}
           className="flex-1 border-0 h-auto bg-transparent font-body"
           returnKeyLabel={t('common.labels.search')}
-          returnKeyType="search"
-          value={search}
-          onChangeText={(text) => setSearch(text)}
-          onKeyPress={(e) => {
-            if (e.nativeEvent.key === 'Enter') {
-              handleSearch();
-            }
-          }}
+          editable={false}
+          onPress={handleSearch}
         />
-        <Pressable onPress={handleSearch}>
-          <Icons.Search size={22} className=" text-muted-foreground" />
-        </Pressable>
-      </View>
+        <Icons.Search size={22} className=" text-muted-foreground" />
+      </Pressable>
     </MotiView>
   );
 }

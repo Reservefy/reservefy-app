@@ -80,13 +80,13 @@ export function TabButton({ isFocused, icon, children, ...props }: Props) {
     <Animated.View style={containerAnim}>
       <Pressable
         {...props}
-        className="flex-row items-center gap-1 px-4"
+        className="flex-row items-center gap-2 px-3"
         onPressIn={handlePressIn}
       >
         <Animated.View style={iconAnim}>
           <Icon
             className={cn(
-              'w-4 h-4 shrink-0 ',
+              'w-3 h-3 shrink-0 ',
               isFocused
                 ? 'text-secondary stroke-2'
                 : 'text-muted-foreground stroke-1',

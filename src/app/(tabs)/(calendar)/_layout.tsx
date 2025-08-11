@@ -5,7 +5,7 @@ import Icons from '@/lib/icons';
 import { formatMonth } from '@/utils/date';
 import { Stack, useGlobalSearchParams, useRouter } from 'expo-router';
 import React, { useCallback, useRef, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { SearchBarCommands } from 'react-native-screens';
 
 export default function CalendarLayout() {
@@ -21,7 +21,7 @@ export default function CalendarLayout() {
 
   const ref = useRef<SearchBarCommands>(null);
 
-  const hadleSearch = useCallback(() => {
+  const handle = useCallback(() => {
     if (showSearch) {
       // When search is already showing, blur and hide it
       ref.current?.blur();
@@ -71,14 +71,18 @@ export default function CalendarLayout() {
           headerStyle: {
             backgroundColor: colors.background,
           },
-          headerTitle: () => <Text className="font-subtitle">{monthName}</Text>,
           headerLeft: () => (
             <TouchableOpacity onPress={() => router.back()}>
               <Icons.ChevronLeft size={24} className="text-primary" />
             </TouchableOpacity>
           ),
+          headerTitle: () => (
+            <View className="min-w-fit">
+              <Text className="font-subtitle w-28 truncate">{monthName}</Text>
+            </View>
+          ),
           headerRight: () => (
-            <TouchableOpacity onPress={hadleSearch}>
+            <TouchableOpacity onPress={handle}>
               <Icons.Search size={24} className="text-primary" />
             </TouchableOpacity>
           ),

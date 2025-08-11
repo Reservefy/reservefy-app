@@ -19,7 +19,8 @@
       "forgotPassword": "Forgot Password?",
       "back": "Back",
       "submit": "Submit",
-      "send": "Send"
+      "send": "Send",
+      "cancel": "Cancel"
     },
     "tabs": {
       "home": "Home",

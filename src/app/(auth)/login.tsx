@@ -1,6 +1,13 @@
 import { FormField, FormFieldType } from '@/components/shared/fields';
 import KeyboardAvoid from '@/components/shared/keyboard-avoid';
-import { Button, Text } from '@/components/ui';
+import {
+  Button,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Text,
+} from '@/components/ui';
 import {
   AuthHeader,
   LoginFormType,
@@ -8,7 +15,7 @@ import {
 } from '@/components/views/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'expo-router';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { TouchableOpacity, View } from 'react-native';
@@ -16,16 +23,24 @@ import { TouchableOpacity, View } from 'react-native';
 export default function LoginScreen() {
   const { t } = useTranslation();
   const router = useRouter();
-  const { control, handleSubmit } = useForm<LoginFormType>({
+  const [tab, setTab] = useState('email');
+  const { control, handleSubmit, setValue } = useForm<LoginFormType>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
+      method: 'email',
       email: '',
+      phone: '',
       password: '',
     },
   });
 
   const onSubmit = (data: LoginFormType) => {
     console.log('Login:', data);
+  };
+
+  const handleTab = (tab: string) => {
+    setValue('method', tab as 'email' | 'phone');
+    setTab(tab);
   };
 
   return (
@@ -36,28 +51,60 @@ export default function LoginScreen() {
             title={t('auth.login.title')}
             subtitle={t('auth.login.subtitle')}
           />
-          <View className="gap-y-6 mt-10">
-            <FormField
-              control={control}
-              name="email"
-              label={t('auth.email')}
-              placeholder={t('auth.emailPlaceholder')}
-              fieldType={FormFieldType.INPUT}
-              keyboard="email-address"
-              returnKeyType="next"
-              required
-            />
+          <Tabs value={tab} onValueChange={handleTab} className="w-full mt-10">
+            <TabsList>
+              <TabsTrigger value="email">
+                <Text>{t('auth.register.emailTab')}</Text>
+              </TabsTrigger>
+              <TabsTrigger value="phone">
+                <Text>{t('auth.register.phoneTab')}</Text>
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="email" className="gap-y-6 mt-10">
+              <FormField
+                control={control}
+                name="email"
+                label={t('auth.email')}
+                placeholder={t('auth.emailPlaceholder')}
+                fieldType={FormFieldType.INPUT}
+                keyboard="email-address"
+                returnKeyType="next"
+                required
+              />
 
-            <FormField
-              control={control}
-              name="password"
-              label={t('auth.password')}
-              placeholder={t('auth.passwordPlaceholder')}
-              fieldType={FormFieldType.PASSWORD}
-              returnKeyType="done"
-              required
-            />
-          </View>
+              <FormField
+                control={control}
+                name="password"
+                label={t('auth.password')}
+                placeholder={t('auth.passwordPlaceholder')}
+                fieldType={FormFieldType.PASSWORD}
+                returnKeyType="done"
+                required
+              />
+            </TabsContent>
+            <TabsContent value="phone" className="gap-y-6 mt-10">
+              <FormField
+                control={control}
+                name="phone"
+                label={t('auth.phone')}
+                placeholder={t('auth.phonePlaceholder')}
+                fieldType={FormFieldType.INPUT}
+                keyboard="email-address"
+                returnKeyType="next"
+                required
+              />
+
+              <FormField
+                control={control}
+                name="password"
+                label={t('auth.password')}
+                placeholder={t('auth.passwordPlaceholder')}
+                fieldType={FormFieldType.PASSWORD}
+                returnKeyType="done"
+                required
+              />
+            </TabsContent>
+          </Tabs>
         </View>
 
         <Button className="my-10" onPress={handleSubmit(onSubmit)}>
