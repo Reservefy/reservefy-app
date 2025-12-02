@@ -4,13 +4,16 @@ import { useColorScheme as useNativewindColorScheme } from 'nativewind';
 import { useEffect } from 'react';
 
 export function useColorScheme() {
-  const { colorScheme, setColorScheme } = useNativewindColorScheme();
+  const { colorScheme, setColorScheme, toggleColorScheme } =
+    useNativewindColorScheme();
   const { currentTheme, changeTheme } = useThemeStore();
 
   // Sync NativeWind color scheme with theme store
   useEffect(() => {
-    setColorScheme(currentTheme);
-  }, [currentTheme, setColorScheme]);
+    if (colorScheme !== currentTheme) {
+      toggleColorScheme();
+    }
+  }, [currentTheme, colorScheme, toggleColorScheme]);
 
   return {
     colorScheme,
