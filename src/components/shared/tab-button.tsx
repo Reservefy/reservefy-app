@@ -1,7 +1,7 @@
-import { useColorScheme } from '@/hooks/common/useColorScheme';
+import { useColorScheme } from '@/hooks/common/use-color-scheme';
 import Icons, { Icon } from '@/lib/icons';
 import { cn } from '@/lib/utils';
-import { useScrollStore } from '@/stores/useScrollStore';
+import { useScrollStore } from '@/stores/use-scroll-store';
 
 import * as Haptics from 'expo-haptics';
 import { TabTriggerSlotProps } from 'expo-router/ui';

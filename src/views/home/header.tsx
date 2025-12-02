@@ -1,5 +1,5 @@
 import { Text } from '@/components/ui';
-import { useUserLocation } from '@/hooks/common/useLocation';
+import { useUserLocation } from '@/hooks/common/use-location';
 import Icons from '@/lib/icons';
 import { cn } from '@/lib/utils';
 import { Link } from 'expo-router';

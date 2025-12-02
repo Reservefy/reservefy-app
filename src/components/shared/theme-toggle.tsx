@@ -1,4 +1,4 @@
-import { useColorScheme } from '@/hooks/common/useColorScheme';
+import { useColorScheme } from '@/hooks/common/use-color-scheme';
 import Icons from '@/lib/icons';
 import { cn } from '@/lib/utils';
 import React, { useEffect, useRef } from 'react';

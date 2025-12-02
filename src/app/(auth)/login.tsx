@@ -8,11 +8,7 @@ import {
   TabsTrigger,
   Text,
 } from '@/components/ui';
-import {
-  AuthHeader,
-  LoginFormType,
-  loginSchema,
-} from '@/components/views/auth';
+import { AuthHeader, LoginFormType, loginSchema } from '@/views/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';

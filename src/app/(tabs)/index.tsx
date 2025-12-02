@@ -9,9 +9,9 @@ import {
   mostBookedBrands,
   mostBookedWorkers,
   mostPopularBrands,
-} from '@/components/views/home';
+} from '@/views/home';
 
-import { useYScroll } from '@/hooks/common/useYScoll';
+import { useYScroll } from '@/hooks/common/use-y-scroll';
 import { useTranslation } from 'react-i18next';
 import { Platform, ScrollView } from 'react-native';
 import {

@@ -1,5 +1,5 @@
 // hooks/useYScroll.ts
-import { useScrollStore } from '@/stores/useScrollStore';
+import { useScrollStore } from '@/stores/use-scroll-store';
 import { useCallback, useRef } from 'react';
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 

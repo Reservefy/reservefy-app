@@ -1,8 +1,8 @@
-import { TimeEvent, TimelineEvent } from '@/components/views/calendars';
 import { useColorScheme } from '@/hooks/common';
 import { getTimelineTheme } from '@/styles/calendar';
 import { formatMonth } from '@/utils/date';
 import { getDate } from '@/utils/helpers';
+import { TimeEvent, TimelineEvent } from '@/views/calendars';
 
 import dayjs from 'dayjs';
 import { useLocalSearchParams, useRouter } from 'expo-router';

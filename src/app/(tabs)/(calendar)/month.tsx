@@ -1,7 +1,7 @@
-import { RenderHeader } from '@/components/views/calendars/month/header';
 import { useHeaderMonthControls } from '@/hooks/calendar';
 import { useColorScheme, useLanguage } from '@/hooks/common';
 import { getMonthTheme } from '@/styles/calendar';
+import { RenderHeader } from '@/views/calendars/month/header';
 import dayjs from 'dayjs';
 import { useRouter } from 'expo-router';
 import { debounce } from 'lodash';

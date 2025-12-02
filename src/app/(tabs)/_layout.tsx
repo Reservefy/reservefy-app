@@ -1,6 +1,6 @@
 import { TabButton } from '@/components/shared/tab-button';
 import { cn } from '@/lib/utils';
-import { useScrollStore } from '@/stores/useScrollStore';
+import { useScrollStore } from '@/stores/use-scroll-store';
 import { TabList, Tabs, TabSlot, TabTrigger } from 'expo-router/ui';
 import React from 'react';
 import { useTranslation } from 'react-i18next';

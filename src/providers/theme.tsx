@@ -1,4 +1,4 @@
-import { useThemeStore } from '@/stores/useThemeStore';
+import { useThemeStore } from '@/stores/use-theme-store';
 import { STATUSBAR_COLORS, THEME_COLORS, ThemeName } from '@/styles/themes';
 import clsx from 'clsx';
 import { StatusBar } from 'expo-status-bar';

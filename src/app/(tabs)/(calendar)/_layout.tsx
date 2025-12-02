@@ -1,8 +1,8 @@
 import { Text } from '@/components/ui';
-import { searchbox, StackHeader } from '@/components/views/calendars';
 import { useColorScheme } from '@/hooks/common';
 import Icons from '@/lib/icons';
 import { formatMonth } from '@/utils/date';
+import { searchbox, StackHeader } from '@/views/calendars';
 import { Stack, useGlobalSearchParams, useRouter } from 'expo-router';
 import React, { useCallback, useRef, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';

@@ -1,11 +1,7 @@
 import { FormField, FormFieldType } from '@/components/shared/fields';
 import KeyboardAvoid from '@/components/shared/keyboard-avoid';
 import { Button, Text } from '@/components/ui';
-import {
-  AuthHeader,
-  ResetPwdFormType,
-  resetPwdSchema,
-} from '@/components/views/auth';
+import { AuthHeader, ResetPwdFormType, resetPwdSchema } from '@/views/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'expo-router';
 import React from 'react';

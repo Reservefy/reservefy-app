@@ -16,7 +16,7 @@ import {
   forgotPwdEmailSchema,
   forgotPwdPhoneCodeSchema,
   forgotPwdPhoneSchema,
-} from '@/components/views/auth';
+} from '@/views/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';

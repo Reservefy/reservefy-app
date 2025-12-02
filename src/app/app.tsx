@@ -6,7 +6,7 @@ import { ActivityIndicator, Platform } from 'react-native';
 import MontserratBold from '@/assets/fonts/Montserrat-Bold.ttf';
 import MontserratMedium from '@/assets/fonts/Montserrat-Medium.ttf';
 import MontserratRegular from '@/assets/fonts/Montserrat-Regular.ttf';
-import { useColorScheme } from '@/hooks/common/useColorScheme';
+import { useColorScheme } from '@/hooks/common/use-color-scheme';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();

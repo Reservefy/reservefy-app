@@ -1,16 +1,11 @@
 import { LanguageToggle } from '@/components/shared/language-toggle';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
 import { Button, Text } from '@/components/ui';
-import { FAQItem, FeatureItem, PlanCard } from '@/components/views/website';
-import {
-  faqs,
-  features,
-  plans,
-  useCases,
-} from '@/components/views/website/data';
 import { HERO } from '@/constants/images';
 import Icons, { Icon } from '@/lib/icons';
-import { useOnboarding } from '@/stores/useOnboarding';
+import { useOnboarding } from '@/stores/use-onboarding';
+import { FAQItem, FeatureItem, PlanCard } from '@/views/website';
+import { faqs, features, plans, useCases } from '@/views/website/data';
 import { useRouter } from 'expo-router';
 import { MotiView } from 'moti';
 import React, { useCallback } from 'react';

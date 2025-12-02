@@ -1,1 +1,1 @@
-export * from './useVisibleMonth';
+export * from './use-visible-month';

@@ -1,4 +1,4 @@
-export * from './useColorScheme';
-export * from './useKeyboard';
-export * from './useLanguage';
-export { useYMonthScroll, useYScroll } from './useYScoll';
+export * from './use-color-scheme';
+export * from './use-keyboard';
+export * from './use-language';
+export { useYMonthScroll, useYScroll } from './use-y-scroll';

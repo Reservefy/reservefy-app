@@ -1,3 +1,3 @@
-export * from './useOnboarding';
-export * from './useScrollStore';
-export * from './useThemeStore';
+export * from './use-onboarding';
+export * from './use-scroll-store';
+export * from './use-theme-store';
