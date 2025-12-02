@@ -8,13 +8,13 @@ import MontserratMedium from '@/assets/fonts/Montserrat-Medium.ttf';
 import MontserratRegular from '@/assets/fonts/Montserrat-Regular.ttf';
 import { useColorScheme } from '@/hooks/common/use-color-scheme';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
 // export const unstable_settings = {
 //   // Ensure that loading the initial screen does not block rendering of the app.
 //   initialRoute: '(tabs)',
 // };
+
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [loaded] = useFonts({
@@ -24,21 +24,21 @@ export default function App() {
   });
 
   const { colorScheme } = useColorScheme();
-  if (Platform.OS === 'web') {
-    document.documentElement.classList.toggle('dark', colorScheme === 'dark');
-    document.documentElement.classList.add('bg-background');
-  }
+
+  // Apply color scheme to document for web
+  useEffect(() => {
+    if (Platform.OS === 'web') {
+      document.documentElement.classList.toggle('dark', colorScheme === 'dark');
+      document.documentElement.classList.add('bg-background');
+    }
+  }, [colorScheme]);
 
   // Hide the splash screen once fonts are loaded
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
+    if (loaded) SplashScreen.hideAsync();
   }, [loaded]);
 
-  if (!loaded) {
-    return null;
-  }
+  if (!loaded) return null;
 
   return (
     <Suspense fallback={<ActivityIndicator className="text-primary size-14" />}>
