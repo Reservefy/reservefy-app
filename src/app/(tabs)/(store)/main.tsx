@@ -5,6 +5,7 @@ import {
   BrutalInfoBox,
 } from '@/components/brutalism';
 import { Button, Text } from '@/components/ui';
+import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -17,6 +18,40 @@ const Store: React.FC = () => {
     <SafeAreaView className="safe-area" edges={['top']}>
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         <View className="p-6 gap-8">
+          {/* Design Comparison */}
+          <View className="gap-4">
+            <Text className="brutal-heading">DESIGN SYSTEMS</Text>
+            <Text className="brutal-subheading text-gray-600 mt-2">
+              Compare Brutalism vs Minimalist
+            </Text>
+
+            <View className="flex-row gap-3 mt-4">
+              <Button
+                onPress={() => router.push('/(store)/set-up')}
+                className="flex-1 brutal-button h-16 bg-black"
+              >
+                <Text className="brutal-button-text text-white">
+                  BRUTALIST SETUP
+                </Text>
+              </Button>
+
+              <Button
+                onPress={() => router.push('/(store)/set-up-minimal')}
+                className="flex-1 h-16 rounded-xl border border-gray-200 bg-white"
+                style={{
+                  shadowColor: '#000',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.1,
+                  shadowRadius: 8,
+                }}
+              >
+                <Text className="text-base font-semibold text-gray-900">
+                  Minimalist Setup
+                </Text>
+              </Button>
+            </View>
+          </View>
+
           {/* Page Title */}
           <View className="brutal-card-lg">
             <Text className="brutal-heading">BRUTALISM</Text>
