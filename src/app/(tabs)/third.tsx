@@ -18,12 +18,6 @@ const Third: React.FC = () => {
         <Link href="/(store)/set-up" className="text-center">
           <Text className="text-pretty text-purple-600">Go to Set Up</Text>
         </Link>
-
-        <Link href="/(store)/set-up-minimal" className="text-center">
-          <Text className="text-pretty text-purple-600">
-            Go to Set Up Minimal
-          </Text>
-        </Link>
         <Badge size="sm">
           <Text>Default sm</Text>
         </Badge>

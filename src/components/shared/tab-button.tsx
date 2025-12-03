@@ -24,9 +24,6 @@ export function TabButton({ isFocused, icon, children, ...props }: Props) {
   const containerAnim = useAnimatedStyle(() => {
     'worklet';
     return {
-      backgroundColor: withTiming(isFocused ? colors.primary : 'transparent', {
-        duration: 400,
-      }),
       paddingHorizontal: withTiming(isFocused ? 6 : 0, {
         duration: 400,
       }),
@@ -44,6 +41,7 @@ export function TabButton({ isFocused, icon, children, ...props }: Props) {
       },
     ],
     opacity: withTiming(isFocused ? 1 : 0, { duration: 120 }),
+    fontWeight: withTiming(isFocused ? '700' : '500', { duration: 120 }),
   }));
 
   const iconAnim = useAnimatedStyle(() => ({
@@ -64,15 +62,20 @@ export function TabButton({ isFocused, icon, children, ...props }: Props) {
     ],
   }));
 
-  const Icon = Icons[icon];
-
   const handlePressIn = useCallback(() => {
     Feedback.selection();
     useScrollStore.setState({ isScrollingDown: false });
   }, []);
 
+  const Icon = Icons[icon];
+
   return (
-    <Animated.View style={containerAnim}>
+    <Animated.View
+      style={[
+        containerAnim,
+        { backgroundColor: isFocused ? colors.primary : 'transparent' },
+      ]}
+    >
       <Pressable
         {...props}
         className="flex-row items-center gap-2 px-3"
@@ -91,10 +94,7 @@ export function TabButton({ isFocused, icon, children, ...props }: Props) {
         {isFocused && (
           <Animated.Text
             style={textAnim}
-            className={cn(
-              'text-body leading-body text-primary-foreground',
-              isFocused ? 'font-bold' : 'font-medium',
-            )}
+            className="text-body leading-body text-primary-foreground"
           >
             {children}
           </Animated.Text>
