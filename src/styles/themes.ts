@@ -53,8 +53,8 @@ export const THEME_COLORS: ThemeColorMap = {
     '--border': '240 8% 85%',
     '--input': '240 8% 93%',
     '--ring': '265 60% 75%',
-    '--success': '',
-    '--warning': '',
+    '--success': '140 50% 45%',
+    '--warning': '40 90% 55%',
   }),
   dark: vars({
     '--background': '240 6% 10%',
@@ -84,8 +84,8 @@ export const THEME_COLORS: ThemeColorMap = {
     '--border': '240 6% 22%',
     '--input': '240 6% 18%',
     '--ring': '265 60% 60%',
-    '--success': '',
-    '--warning': '',
+    '--success': '140 45% 40%',
+    '--warning': '40 85% 50%',
   }),
 };
 

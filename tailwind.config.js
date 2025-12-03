@@ -45,6 +45,12 @@ module.exports = {
           DEFAULT: 'hsl(var(--card) / <alpha-value>)',
           foreground: 'hsl(var(--card-foreground) / <alpha-value>)',
         },
+        success: {
+          DEFAULT: 'hsl(var(--success) / <alpha-value>)',
+        },
+        warning: {
+          DEFAULT: 'hsl(var(--warning) / <alpha-value>)',
+        },
       },
       fontFamily: {
         regular: platformSelect({

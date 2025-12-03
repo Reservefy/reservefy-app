@@ -3,7 +3,8 @@ import { ThemeToggle } from '@/components/shared/theme-toggle';
 import { Badge, Text } from '@/components/ui';
 import { Link } from 'expo-router';
 import React from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Third: React.FC = () => {
   return (
@@ -13,6 +14,9 @@ const Third: React.FC = () => {
         <LanguageToggle />
         <Link href="/(auth)/login" className="text-center">
           <Text className="text-pretty text-purple-600">Go to Auth</Text>
+        </Link>
+        <Link href="/(store)/set-up" className="text-center">
+          <Text className="text-pretty text-purple-600">Go to Set Up</Text>
         </Link>
 
         <Badge size="sm">

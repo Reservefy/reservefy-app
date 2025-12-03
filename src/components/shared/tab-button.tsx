@@ -86,9 +86,9 @@ export function TabButton({ isFocused, icon, children, ...props }: Props) {
         <Animated.View style={iconAnim}>
           <Icon
             className={cn(
-              'w-3 h-3 shrink-0 ',
+              'w-3 h-3 shrink-0',
               isFocused
-                ? 'text-secondary stroke-2'
+                ? 'text-primary-foreground stroke-2'
                 : 'text-muted-foreground stroke-1',
             )}
           />
@@ -97,7 +97,7 @@ export function TabButton({ isFocused, icon, children, ...props }: Props) {
           <Animated.Text
             style={textAnim}
             className={cn(
-              'text-body leading-body text-secondary',
+              'text-body leading-body text-primary-foreground',
               isFocused ? 'font-bold' : 'font-medium',
             )}
           >
