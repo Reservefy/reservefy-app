@@ -1,4 +1,4 @@
-import { Control, FieldValues, Path } from 'react-hook-form';
+import { Control, FieldValues } from 'react-hook-form';
 import { KeyboardType, ReturnKeyType } from 'react-native';
 
 export type TOption = {
@@ -9,7 +9,7 @@ export type TOption = {
 
 export interface BaseFieldProps<T extends FieldValues> {
   control: Control<T>;
-  name: Path<T>;
+  name: string;
   label?: string | React.ReactNode;
   placeholder?: string;
   disabled?: boolean;

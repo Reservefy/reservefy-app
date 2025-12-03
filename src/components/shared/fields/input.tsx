@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Text } from '@/components/ui';
 import { Input } from '@/components/ui/input';
 import Icons from '@/lib/icons';
-import { Controller, FieldValues } from 'react-hook-form';
+import { Controller, FieldValues, Path } from 'react-hook-form';
 import { TouchableOpacity, View } from 'react-native';
 import { BaseFieldProps } from './form';
 
@@ -11,7 +11,7 @@ export function InputField<T extends FieldValues>(props: BaseFieldProps<T>) {
   return (
     <Controller
       control={props.control}
-      name={props.name}
+      name={props.name as Path<T>}
       render={({ field, fieldState }) => (
         <>
           <Input
@@ -40,7 +40,7 @@ export function PasswordField<T extends FieldValues>(props: BaseFieldProps<T>) {
   return (
     <Controller
       control={props.control}
-      name={props.name}
+      name={props.name as Path<T>}
       render={({ field, fieldState }) => (
         <>
           <View className="relative">

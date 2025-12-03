@@ -1,12 +1,12 @@
 import { useColorScheme } from '@/hooks/common/use-color-scheme';
+import { Feedback } from '@/lib/haptics';
 import Icons, { Icon } from '@/lib/icons';
 import { cn } from '@/lib/utils';
 import { useScrollStore } from '@/stores/use-scroll-store';
 
-import * as Haptics from 'expo-haptics';
 import { TabTriggerSlotProps } from 'expo-router/ui';
 import React, { useCallback } from 'react';
-import { Platform, Pressable } from 'react-native';
+import { Pressable } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   withDelay,
@@ -21,16 +21,19 @@ type Props = TabTriggerSlotProps & {
 export function TabButton({ isFocused, icon, children, ...props }: Props) {
   const { colors } = useColorScheme();
 
-  const containerAnim = useAnimatedStyle(() => ({
-    backgroundColor: withTiming(isFocused ? colors.primary : 'transparent', {
-      duration: 400,
-    }),
-    paddingHorizontal: withTiming(isFocused ? 6 : 0, {
-      duration: 400,
-    }),
-    paddingVertical: 10,
-    borderRadius: 999,
-  }));
+  const containerAnim = useAnimatedStyle(() => {
+    'worklet';
+    return {
+      backgroundColor: withTiming(isFocused ? colors.primary : 'transparent', {
+        duration: 400,
+      }),
+      paddingHorizontal: withTiming(isFocused ? 6 : 0, {
+        duration: 400,
+      }),
+      paddingVertical: 10,
+      borderRadius: 999,
+    };
+  });
 
   const textAnim = useAnimatedStyle(() => ({
     transform: [
@@ -64,15 +67,7 @@ export function TabButton({ isFocused, icon, children, ...props }: Props) {
   const Icon = Icons[icon];
 
   const handlePressIn = useCallback(() => {
-    try {
-      if (Platform.OS === 'ios') {
-        Haptics.selectionAsync();
-      } else {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-      }
-    } catch (error) {
-      console.warn('Haptics not available:', error);
-    }
+    Feedback.selection();
     useScrollStore.setState({ isScrollingDown: false });
   }, []);
 
