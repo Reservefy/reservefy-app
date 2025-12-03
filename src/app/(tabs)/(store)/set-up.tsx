@@ -136,12 +136,12 @@ const SetUpStore: React.FC = () => {
       >
         <View className="px-6 py-8">
           {/* Header */}
-          <View className="mb-8">
-            <Text className="text-heading font-bold text-foreground mb-2">
-              Create Your Brand
+          <View className="mb-8 border-4 border-black bg-primary p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <Text className="text-3xl font-black uppercase tracking-tight text-primary-foreground">
+              BRAND SETUP
             </Text>
-            <Text className="text-body text-muted-foreground">
-              Set up your business profile in a few simple steps
+            <Text className="text-sm font-bold text-primary-foreground mt-2 opacity-90">
+              Complete all steps to activate your brand
             </Text>
           </View>
 
@@ -149,7 +149,7 @@ const SetUpStore: React.FC = () => {
           <StepIndicator currentStep={currentStep} totalSteps={STEPS.length} />
 
           {/* Current Step Content */}
-          <View className="mb-8">{renderCurrentStep()}</View>
+          <View className="my-8">{renderCurrentStep()}</View>
 
           {/* Navigation Buttons */}
           <View className="flex-row gap-4">
@@ -157,18 +157,24 @@ const SetUpStore: React.FC = () => {
               <Button
                 variant="outline"
                 onPress={handleBack}
-                className="flex-1 h-14"
+                className="flex-1 h-16 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
               >
-                <Text className="text-title font-bold">← Back</Text>
+                <Text className="text-lg font-black uppercase">← BACK</Text>
               </Button>
             )}
             {currentStep < STEPS.length - 1 ? (
-              <Button onPress={handleNext} className="flex-1 h-14">
-                <Text className="text-title font-bold">Next →</Text>
+              <Button
+                onPress={handleNext}
+                className="flex-1 h-16 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+              >
+                <Text className="text-lg font-black uppercase">NEXT →</Text>
               </Button>
             ) : (
-              <Button onPress={handleSubmit(onSubmit)} className="flex-1 h-14">
-                <Text className="text-title font-bold">Submit ✓</Text>
+              <Button
+                onPress={handleSubmit(onSubmit)}
+                className="flex-1 h-16 border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] bg-primary"
+              >
+                <Text className="text-lg font-black uppercase">SUBMIT ✓</Text>
               </Button>
             )}
           </View>

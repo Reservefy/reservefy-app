@@ -133,7 +133,7 @@ function AnimatedBox({
       className={cn(
         'w-14 h-14 border-2 border-black justify-center items-center mb-2',
         isActive
-          ? 'bg-[#CBFF00] border-b-4 border-r-4'
+          ? 'bg-primary border-b-4 border-r-4'
           : isCompleted
             ? 'bg-black border-b-2 border-r-2'
             : 'bg-white border-b-2 border-r-2',
